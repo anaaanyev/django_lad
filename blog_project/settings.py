@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
-    "blog_app",
+    # ... базовые системные приложения Django (admin, auth, contenttypes) ...
+    'blog_app', # Подключаем наше новое приложение
 ]
 
 MIDDLEWARE = [
