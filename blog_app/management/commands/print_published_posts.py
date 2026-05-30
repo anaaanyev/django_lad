@@ -4,10 +4,10 @@ from blog_app.models import Post
 
 
 class Command(BaseCommand):
-    help = "Выводит список всех постов из БД"
+    help = "Выводит список опубликованных постов"
 
     def handle(self, *args, **options):
-        posts = Post.objects.all()
+        posts = Post.objects.filter(published=True)
 
         if not posts.exists():
             self.stdout.write(self.style.WARNING("Статей нет"))
@@ -15,4 +15,4 @@ class Command(BaseCommand):
 
         for post in posts:
             self.stdout.write(f"{post.id}: {post.title} - {post.created_at:%Y-%m-%d}")
-        self.stdout.write(self.style.SUCCESS(f"Найдено статей: {posts.count()}"))
+        self.stdout.write(self.style.SUCCESS(f"Найдено постов: {posts.count()}"))

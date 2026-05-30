@@ -11,7 +11,7 @@ class Category(models.Model):
 
     class Meta:
         ordering = ("id",)
-        verbose_name = "Категория"
+        verbose_name = "Категорию"
         verbose_name_plural = "Категории"
 
     def __str__(self):
@@ -25,7 +25,7 @@ class Post(models.Model):
     author = models.ForeignKey(
         to=User,
         on_delete=models.CASCADE,
-        verbose_name="Автор"
+        verbose_name="Автор",
     )
 
     # Флаг "Черновик" или "Опубликовано". По умолчанию - черновик.
@@ -47,7 +47,7 @@ class Post(models.Model):
 
     class Meta:
         ordering = ("-created_at", )
-        verbose_name = "Статья"
+        verbose_name = "Статью"
         verbose_name_plural = "Статьи"
 
 

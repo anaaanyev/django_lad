@@ -12,3 +12,18 @@ migrate:
 
 lint:
 	uv run pre-commit run --all-files
+
+print_posts:
+	uv run manage.py print_posts
+
+print_published_posts:
+	uv run manage.py print_published_posts
+
+create_post:
+	uv run manage.py create_post -t "$(title)" -c "$(content)"
+
+delete_post:
+	uv run manage.py delete_post $(id)
+
+update_post:
+	uv run manage.py update_post $(id) -t "$(title)"
