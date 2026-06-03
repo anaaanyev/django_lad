@@ -7,7 +7,7 @@ class Command(BaseCommand):
     help = "Выводит список опубликованных постов"
 
     def handle(self, *args, **options):
-        posts = Post.objects.filter(published=True)
+        posts = Post.objects.filter(published=Post.Status.PUBLISHED)
 
         if not posts.exists():
             self.stdout.write(self.style.WARNING("Статей нет"))

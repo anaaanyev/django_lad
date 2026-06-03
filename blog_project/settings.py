@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/6.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
-
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,6 +37,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
+    "debug_toolbar",
+    "django_extensions",
+    "tinymce",
+
     # ... базовые системные приложения Django (admin, auth, contenttypes) ...
     'blog_app', # Подключаем наше новое приложение
 ]
@@ -50,6 +53,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = "blog_project.urls"
@@ -118,3 +122,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = "static/"
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+TINYMCE_DEFAULT_CONFIG = {
+    "theme": "silver",
+    "height": 500,
+    "menubar": True,
+    "plugins": "advlist,autolink,lists,link,image,charmap,print,preview,anchor,"
+    "searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,paste,"
+    "code,help,wordcount",
+    "toolbar": "undo redo | formatselect | "
+    "bold italic backcolor | alignleft aligncenter "
+    "alignright alignjustify | bullist numlist outdent indent | "
+    "removeformat | help",
+}

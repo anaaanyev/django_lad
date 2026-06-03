@@ -1,28 +1,44 @@
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 
-from blog_app.models import Post
-
+from blog_app.models import Post, Category
 
 def index(request):
     return HttpResponse("<h1>Hello World!</h1>")
 
+
 def posts_list(request):
-    posts = Post.objects.filter(published=True)
-
-    content = "<h1>Опубликованные статьи</h1><br><br>"
-    for post in posts:
-        content += f"<a href='/posts/{post.pk}'>{post.title}</a> ({post.created_at:%Y-%m-%d})<br>"
-
+    posts = Post.objects.filter(published=Post.Status.PUBLISHED)
+    li_posts = list(map(lambda post:
+                        f"\t<li><a href='/posts/{post.slug}/'>{post.title}</a> - {post.created_at:%Y-%m-%d %H:%M}</li>\n",
+                        posts))
+    content = f'<h1>Опубликованные статьи</h1>\n<ul>\n{"".join(li_posts)}</ul>'
     return HttpResponse(content)
 
-def post_detail(request, post_id):
-    post = get_object_or_404(Post, id=post_id)
-    content = f"""
-        <h1>{post.title}</h1>
-        <p>Автор: {post.author}</p>
-        <div>{post.content}</div>
-        <hr>
-        <a href="/posts/">Назад к статьям</a>
-    """
+
+def post_detail(request, post_slug):
+    post = get_object_or_404(Post, slug=post_slug)
+    content = (f"<h1>{post.title}</h1>\n"
+               f"<p><strong>Автор:</strong> {post.author}</p>\n"
+               f"<div>{post.content}</div>\n"
+               f"<hr>\n"
+               f"<a href='/posts/'>Назад к статьям</a>")
+    return HttpResponse(content)
+
+
+def categories_list(request):
+    categories = Category.objects.all()
+    li_categories = list(map(lambda cat: f"\t<li><a href='/categories/{cat.id}/'>{cat.title}</a></li>\n", categories))
+    content = f"<h1>Категории</h1>\n<ul>\n{''.join(li_categories)}</ul>"
+    return HttpResponse(content)
+
+
+def category_detail(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    posts_in_cat = Post.objects.filter(category=category, published=Post.Status.PUBLISHED)
+    li_posts = list(map(lambda post: f"\t<li><a href='/posts/{post.slug}/'>{post.title}</a></li>\n", posts_in_cat))
+    content = (f"<h1>Все посты категории '{category.title}'</h1>\n"
+               f"<ul>\n{''.join(li_posts)}</ul>\n"
+               f"<hr>\n"
+               f"<a href='/categories/'>Назад к категориям</a>")
     return HttpResponse(content)
