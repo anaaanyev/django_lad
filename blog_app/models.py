@@ -1,11 +1,13 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.urls import reverse
+from tinymce import models as tinymce_models
+
 
 class Category(models.Model):
     # Название категории (например: "Технологии", "Дизайн")
     title = models.CharField(max_length=100, verbose_name="Название")
 
-    # Идентификатор для URL (например: "tehnologii")
     # unique=True гарантирует, что в базе не будет двух категорий с одинаковым slug.
     slug = models.SlugField(unique=True, verbose_name="URL")
 
@@ -14,14 +16,21 @@ class Category(models.Model):
         verbose_name = "Категорию"
         verbose_name_plural = "Категории"
 
+    def get_absolute_url(self):
+        return reverse("blog:category_detail", kwargs={"category_id": self.pk})
+
     def __str__(self):
         return self.title
 
 
 class Post(models.Model):
+    class Status(models.IntegerChoices):
+        DRAFT = 0, "Черновик"
+        PUBLISHED = 1, "Опубликовано"
+
     title = models.CharField(max_length=255, verbose_name="Заголовок")
     slug = models.SlugField(unique=True, verbose_name="URL")
-    content = models.TextField(verbose_name="Содержимое")
+    content = tinymce_models.HTMLField(verbose_name="Содержимое")
     author = models.ForeignKey(
         to=User,
         on_delete=models.CASCADE,
@@ -29,7 +38,7 @@ class Post(models.Model):
     )
 
     # Флаг "Черновик" или "Опубликовано". По умолчанию - черновик.
-    published = models.BooleanField(default=False, verbose_name="Опубликовано")
+    published = models.BooleanField(choices=Status.choices, default=Status.DRAFT, verbose_name="Статус")
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
@@ -54,6 +63,9 @@ class Post(models.Model):
     def increase_views_count(self):
         self.views_count += 1
         self.save()
+
+    def get_absolute_url(self):
+        return reverse("blog:post_detail", kwargs={"post_slug": self.slug})
 
     def __str__(self):
         return self.title

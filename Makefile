@@ -27,3 +27,6 @@ delete_post:
 
 update_post:
 	uv run manage.py update_post $(id) -t "$(title)"
+
+shell_plus:
+	uv run manage.py shell_plus --print-sql
