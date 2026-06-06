@@ -1,7 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
-from tinymce import models as tinymce_models
 
 
 class Category(models.Model):
@@ -30,7 +29,8 @@ class Post(models.Model):
 
     title = models.CharField(max_length=255, verbose_name="Заголовок")
     slug = models.SlugField(unique=True, verbose_name="URL")
-    content = tinymce_models.HTMLField(verbose_name="Содержимое")
+    # content = tinymce_models.HTMLField(verbose_name="Содержимое")
+    content = models.TextField(verbose_name="Содержимое")
     author = models.ForeignKey(
         to=User,
         on_delete=models.CASCADE,
