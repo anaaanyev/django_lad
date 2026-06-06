@@ -1,5 +1,4 @@
 from django.db.models import Count, Q
-from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 
 from blog_app.models import Post, Category
@@ -16,12 +15,10 @@ def index(request):
 
 def posts_list(request):
     posts = Post.objects.filter(published=Post.Status.PUBLISHED)
-    li_posts = list(map(lambda post:
-                        f"\t<li><a href='/posts/{post.slug}/'>{post.title}</a> - {post.created_at:%Y-%m-%d %H:%M}</li>\n",
-                        posts))
-    content = f'<h1>Опубликованные статьи</h1>\n<ul>\n{"".join(li_posts)}</ul>'
-    return HttpResponse(content)
-
+    context = {
+        "posts": posts
+    }
+    return render(request, "blog/posts_list.html", context)
 
 def post_detail(request, post_slug):
     # Безопасно получаем опубликованный пост по слагу или отдаем 404 ошибку
