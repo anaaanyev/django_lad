@@ -7,7 +7,7 @@
         <div class="col-lg-10">
             <article class="bg-white p-5 rounded border shadow-sm">
                 <!-- Ссылка на возврат назад -->
-                <a href="{% url 'blog:posts_published' %}" class="text-decoration-none text-muted small">&larr; Вернуться к
+                <a href="{% url 'blog:posts_list' %}" class="text-decoration-none text-muted small">&larr; Вернуться к
                     списку статей</a>
 
                 <header class="mt-3 mb-4">
@@ -43,7 +43,7 @@
                             </a>
                         {% endif %}
                     </div>
-                    <a href="{% url 'blog:posts_published' %}" class="btn btn-dark">Все статьи</a>
+                    <a href="{% url 'blog:posts_list' %}" class="btn btn-dark">Все статьи</a>
                 </div>
             </article>
         </div>

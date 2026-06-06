@@ -61,9 +61,11 @@ class Post(models.Model):
 
 
     def increase_views_count(self):
+        """Увеличивает число просмотров статьи"""
         self.views_count += 1
         self.save()
 
+    # https://www.youtube.com/watch?v=QFYIEwDkepM&list=PLA0M1Bcd0w8yU5h2vwZ4LO7h1xt8COUXl&index=23
     def get_absolute_url(self):
         return reverse("blog:post_detail", kwargs={"post_slug": self.slug})
 

@@ -16,8 +16,17 @@ class PostAdmin(admin.ModelAdmin):
     # Магия: при вводе title, поле slug будет заполняться автоматически транслитом!
     prepopulated_fields = {'slug': ('title',)}
 
+    # Пагинатор (кол-во отображаемых статей в админке на странице)
+    list_per_page = 30
+
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
+    list_display = ('title', 'show_count_posts')
+    list_display_links = ('title',)
     prepopulated_fields = {'slug': ('title',)}
+
+    # https://www.youtube.com/watch?v=eb-Oesr4Zbk&list=PLA0M1Bcd0w8yU5h2vwZ4LO7h1xt8COUXl&index=40
+    @admin.display(description="Кол-во опубликованных статей")
+    def show_count_posts(self, category: Category):
+        return category.posts.filter(published=Post.Status.PUBLISHED).count()

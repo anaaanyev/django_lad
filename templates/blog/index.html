@@ -26,14 +26,16 @@
                     <div class="card-body p-4">
                         <!-- Заголовок категории (если она есть) -->
                         {% if post.category %}
-                            <a href="{% url 'blog:category_detail' post.category.id %}"
+{#                            <a href="{% url 'blog:category_detail' post.category.id %}"#}
+                            <a href="{{ post.category.get_absolute_url }}"
                                class="text-decoration-none text-primary fw-bold text-uppercase fs-6">
                                 {{ post.category.title }}
                             </a>
                         {% endif %}
 
                         <h3 class="card-title h2 mt-2 fw-bold">
-                            <a href="{% url 'blog:post_detail' post.slug %}"
+{#                            <a href="{% url 'blog:post_detail' post.slug %}"#}
+                            <a href="{{ post.get_absolute_url }}"
                                class="text-decoration-none text-dark hover-primary">
                                 {{ post.title }}
                             </a>
@@ -50,7 +52,8 @@
                         </p>
 
                         <div class="d-flex justify-content-between align-items-center">
-                            <a href="{% url 'blog:post_detail' post.slug %}" class="btn btn-outline-dark">
+{#                            <a href="{% url 'blog:post_detail' post.slug %}" class="btn btn-outline-dark">#}
+                            <a href="{{ post.get_absolute_url }}" class="btn btn-outline-dark">
                                 Читать далее &rarr;
                             </a>
                         </div>
