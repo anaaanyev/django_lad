@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Главная страница - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <!-- Левая колонка с приветствием и списком постов -->
+        <div class="col-lg-8">
+            <div class="p-5 mb-4 bg-white rounded-3 shadow-sm border">
+                <div class="container-fluid py-2">
+                    <h1 class="display-5 fw-bold text-dark">Добро пожаловать в DevBlog!</h1>
+                    <p class="col-md-12 fs-5 text-muted">
+                        Здесь мы делимся интересными статьями о разработке программного обеспечения, архитектуре и
+                        технологиях будущего. Приятного чтения!
+                    </p>
+                </div>
+            </div>
+
+            <h2 class="mb-4 fw-bold">Последние публикации</h2>
+
+            {% for post in posts %}
+                <article class="card mb-4 border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <!-- Заголовок категории (если она есть) -->
+                        {% if post.category %}
+                            <a href="{% url 'blog:category_detail' post.category.id %}"
+                               class="text-decoration-none text-primary fw-bold text-uppercase fs-6">
+                                {{ post.category.title }}
+                            </a>
+                        {% endif %}
+
+                        <h3 class="card-title h2 mt-2 fw-bold">
+                            <a href="{% url 'blog:post_detail' post.slug %}"
+                               class="text-decoration-none text-dark hover-primary">
+                                {{ post.title }}
+                            </a>
+                        </h3>
+
+                        <!-- Метаинформация -->
+                        <div class="text-muted small mb-3">
+                            Опубликовано: {{ post.created_at|date:"d M Y в H:i" }} | Автор: {{ post.author }}
+                        </div>
+
+                        <!-- Обрезка анонса статьи -->
+                        <p class="card-text text-secondary fs-5">
+                            {{ post.content|truncatewords:25 }}
+                        </p>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="{% url 'blog:post_detail' post.slug %}" class="btn btn-outline-dark">
+                                Читать далее &rarr;
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            {% empty %}
+                <div class="alert alert-info border-0 shadow-sm" role="alert">
+                    Статьи ещё не опубликованы.
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Правая колонка: Сайдбар с информацией -->
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <h4 class="fw-bold mb-3">О проекте</h4>
+                    <p class="text-secondary mb-0">
+                        Это учебный блог, разработанный в рамках практического курса по Django. Проект использует Django
+                        5, менеджер зависимостей UV и CSS-фреймворк Bootstrap 5.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }} — {{ block.super }}{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <article class="bg-white p-5 rounded border shadow-sm">
+                <!-- Ссылка на возврат назад -->
+                <a href="{% url 'blog:posts_published' %}" class="text-decoration-none text-muted small">&larr; Вернуться к
+                    списку статей</a>
+
+                <header class="mt-3 mb-4">
+                    <!-- Категория -->
+                    {% if post.category %}
+                        <span class="badge bg-secondary text-uppercase mb-2">{{ post.category.title }}</span>
+                    {% endif %}
+
+                    <h1 class="display-4 fw-bold text-dark">{{ post.title }}</h1>
+
+                    <!-- Метаданные публикации -->
+                    <div class="text-muted mt-3 d-flex flex-wrap gap-3">
+                        <span>📅 Опубликовано: <strong>{{ post.created_at|date:"d E Y в H:i" }}</strong></span>
+                        <span>✍️ Автор: <strong>{{ post.author }}</strong></span>
+                        <span>👁️ Просмотров: <strong>{{ post.views_count|default:"0" }}</strong></span>
+                    </div>
+                </header>
+
+                <hr class="my-4">
+
+                <!-- Содержимое статьи -->
+                <div class="post-content text-dark fs-5 lh-lg mb-5">
+                    <!-- Фильтр linebreaksbr сохраняет разрывы абзацев из TextField -->
+                    {{ post.content|linebreaksbr }}
+                </div>
+
+                <!-- Панель управления -->
+                <div class="bg-light p-4 rounded border d-flex justify-content-between align-items-center">
+                    <div>
+                        {% if post.category %}
+                            <a href="{% url 'blog:category_detail' post.category.id %}" class="btn btn-outline-primary">
+                                Все из категории «{{ post.category.title }}»
+                            </a>
+                        {% endif %}
+                    </div>
+                    <a href="{% url 'blog:posts_published' %}" class="btn btn-dark">Все статьи</a>
+                </div>
+            </article>
+        </div>
+    </div>
+{% endblock %}
