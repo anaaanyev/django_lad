@@ -6,7 +6,7 @@ from blog_app.models import Post, Category
 
 def index(request):
     # Получаем 5 последних опубликованных постов
-    posts_published = Post.objects.filter(published=Post.Status.PUBLISHED)[:5]
+    posts_published = Post.objects.filter(published=True)[:5]
     context = {
         "posts": posts_published,
     }
@@ -14,7 +14,7 @@ def index(request):
 
 
 def posts_list(request):
-    posts = Post.objects.filter(published=Post.Status.PUBLISHED)
+    posts = Post.objects.filter(published=True)
     context = {
         "posts": posts
     }
@@ -34,7 +34,7 @@ def categories_list(request):
     # Получаем из БД только те категории в которых есть опубликованные статьи
     # https://www.youtube.com/watch?v=eSlIF3FDs5s&list=PLA0M1Bcd0w8yU5h2vwZ4LO7h1xt8COUXl&index=34
     categories = Category.objects.annotate(count_posts=Count(
-        'posts', filter=Q(posts__published=Post.Status.PUBLISHED))
+        'posts', filter=Q(posts__published=True))
     ).filter(count_posts__gt=0)
     context = {
         'categories': categories
@@ -46,7 +46,7 @@ def category_detail(request, category_id):
     # Безопасно находим категорию
     category = get_object_or_404(Category, id=category_id)
     # Выбираем только опубликованные статьи, привязанные к этой категории
-    posts = Post.objects.filter(category=category, published=Post.Status.PUBLISHED)
+    posts = Post.objects.filter(category=category, published=True)
     context = {
         'category': category,
         'posts': posts
