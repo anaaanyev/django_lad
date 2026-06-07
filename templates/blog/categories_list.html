@@ -17,7 +17,12 @@
                         </div>
                         <!-- related_name="posts" позволяет узнать количество привязанных постов -->
                         <span class="badge bg-primary rounded-pill">
-                            {{ category.posts.count }}
+                            {% if category.count_posts %}
+                                <!-- count_posts - получили доп. поле в модели Category за счет annotate -->
+                            	{{ category.count_posts }}
+                            {% else %}
+                                {{ category.posts.count }}
+                            {% endif %}
                         </span>
                     </a>
                 {% empty %}

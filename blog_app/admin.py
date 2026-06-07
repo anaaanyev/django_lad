@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.db.models import Count, Q
+
 from .models import Post, Category
 
 
@@ -8,7 +10,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'category', 'published', 'created_at', 'views_count')
 
     # По каким полям можно фильтровать список сбоку
-    list_filter = ('author__username', 'published', 'created_at')
+    list_filter = ('category', 'author__username', 'published', 'created_at')
 
     # По каким полям будет работать строка текстового поиска
     search_fields = ('title', 'content')
@@ -26,7 +28,15 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display_links = ('title',)
     prepopulated_fields = {'slug': ('title',)}
 
+    # https://docs.djangoproject.com/en/6.0/ref/contrib/admin/#django.contrib.admin.ModelAdmin.get_queryset
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        return qs.annotate(count_posts=Count('posts', filter=Q(posts__published=Post.Status.PUBLISHED)))
+
     # https://www.youtube.com/watch?v=eb-Oesr4Zbk&list=PLA0M1Bcd0w8yU5h2vwZ4LO7h1xt8COUXl&index=40
     @admin.display(description="Кол-во опубликованных статей")
     def show_count_posts(self, category: Category):
+        # Оптимизация запроса в БД с помощью annotate по полю count_posts
+        if hasattr(category, 'count_posts'):
+            return category.count_posts
         return category.posts.filter(published=Post.Status.PUBLISHED).count()
