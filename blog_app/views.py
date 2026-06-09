@@ -6,7 +6,7 @@ from blog_app.models import Post, Category
 
 def index(request):
     # Получаем 5 последних опубликованных постов
-    posts_published = Post.objects.filter(published=True)[:5]
+    posts_published = Post.objects.filter(published=True).select_related("category", "author")[:5]
     context = {
         "posts": posts_published,
     }
@@ -14,7 +14,7 @@ def index(request):
 
 
 def posts_list(request):
-    posts = Post.objects.filter(published=True)
+    posts = Post.objects.filter(published=True).select_related("category", "author")
     context = {
         "posts": posts
     }
@@ -46,7 +46,7 @@ def category_detail(request, category_id):
     # Безопасно находим категорию
     category = get_object_or_404(Category, id=category_id)
     # Выбираем только опубликованные статьи, привязанные к этой категории
-    posts = Post.objects.filter(category=category, published=True)
+    posts = Post.objects.filter(category=category, published=True).select_related('author')
     context = {
         'category': category,
         'posts': posts

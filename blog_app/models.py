@@ -23,10 +23,6 @@ class Category(models.Model):
 
 
 class Post(models.Model):
-    # class Status(models.IntegerChoices):  # найден баг
-    #     DRAFT = 0, "Черновик"
-    #     PUBLISHED = 1, "Опубликовано"
-
     title = models.CharField(max_length=255, verbose_name="Заголовок")
     slug = models.SlugField(unique=True, verbose_name="URL")
     # content = tinymce_models.HTMLField(verbose_name="Содержимое")
@@ -38,7 +34,6 @@ class Post(models.Model):
     )
 
     # Флаг "Черновик" или "Опубликовано". По умолчанию - черновик.
-    # published = models.BooleanField(choices=Status.choices, default=Status.DRAFT, verbose_name="Статус")  # найден баг
     published = models.BooleanField(default=False, verbose_name="Опубликовать статью")
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
