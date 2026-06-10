@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Опубликованные статьи — {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <h1 class="mb-4 fw-bold">Опубликованные статьи</h1>
+        {% for post in posts %}
+            <article class="card mb-4 border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <!-- Заголовок категории (если она есть) -->
+                    {% if post.category %}
+                        <a href="{{ post.category.get_absolute_url }}"
+                           class="text-decoration-none text-primary fw-bold text-uppercase fs-6">
+                            {{ post.category.title }}
+                        </a>
+                    {% endif %}
+
+                    <h3 class="card-title h2 mt-2 fw-bold">
+                        <a href="{{ post.get_absolute_url }}"
+                           class="text-decoration-none text-dark hover-primary">
+                            {{ post.title }}
+                        </a>
+                    </h3>
+
+                    <!-- Метаинформация -->
+                    <div class="text-muted small mb-3">
+                        Опубликовано: {{ post.created_at|date:"d M Y в H:i" }} | Автор: {{ post.author }}
+                    </div>
+
+                    <!-- Обрезка анонса статьи -->
+                    <p class="card-text text-secondary fs-5">
+                        {{ post.content|truncatewords:25 }}
+                    </p>
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a href="{{ post.get_absolute_url }}" class="btn btn-outline-dark">
+                            Читать далее &rarr;
+                        </a>
+                    </div>
+                </div>
+            </article>
+        {% empty %}
+            <div class="alert alert-info border-0 shadow-sm" role="alert">
+                Статьи ещё не опубликованы.
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -121,13 +121,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
+# 1. Ссылка, по которой браузер будет запрашивать статику (например, /static/css/style.css)
 STATIC_URL = "static/"
 
+# 2. Папки на вашем диске, где Django должен искать статические файлы при разработке
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
+# 3. Ссылка, по которой будут доступны медиафайлы пользователей (например, /media/posts/photo.jpg)
 MEDIA_URL = "media/"
+
+# 4. Физическая папка на диске, куда Django будет сохранять все пользовательские файлы
 MEDIA_ROOT = BASE_DIR / "media"
 
 INTERNAL_IPS = [

@@ -23,10 +23,6 @@ class Category(models.Model):
 
 
 class Post(models.Model):
-    class Status(models.IntegerChoices):
-        DRAFT = 0, "Черновик"
-        PUBLISHED = 1, "Опубликовано"
-
     title = models.CharField(max_length=255, verbose_name="Заголовок")
     slug = models.SlugField(unique=True, verbose_name="URL")
     # content = tinymce_models.HTMLField(verbose_name="Содержимое")
@@ -38,7 +34,7 @@ class Post(models.Model):
     )
 
     # Флаг "Черновик" или "Опубликовано". По умолчанию - черновик.
-    published = models.BooleanField(choices=Status.choices, default=Status.DRAFT, verbose_name="Статус")
+    published = models.BooleanField(default=False, verbose_name="Опубликовать статью")
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
@@ -61,9 +57,11 @@ class Post(models.Model):
 
 
     def increase_views_count(self):
+        """Увеличивает число просмотров статьи"""
         self.views_count += 1
         self.save()
 
+    # https://www.youtube.com/watch?v=QFYIEwDkepM&list=PLA0M1Bcd0w8yU5h2vwZ4LO7h1xt8COUXl&index=23
     def get_absolute_url(self):
         return reverse("blog:post_detail", kwargs={"post_slug": self.slug})
 

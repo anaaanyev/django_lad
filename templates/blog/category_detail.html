@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Категория: {{ category.title }} — {{ block.super }}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="mb-4">
+                <a href="{% url 'blog:categories_list' %}" class="text-decoration-none text-muted small">&larr; Назад к
+                    каталогу</a>
+                <h1 class="display-5 fw-bold text-dark mt-2">Категория: {{ category.title }}</h1>
+                <p class="text-muted">Всего статей в категории: {{ posts.count }}</p>
+            </div>
+
+            <hr class="my-4">
+
+            {% for post in posts %}
+                <article class="card mb-4 border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h3 class="card-title h3 fw-bold">
+                            <a href="{{ post.get_absolute_url }}"
+                               class="text-decoration-none text-dark hover-primary">
+                                {{ post.title }}
+                            </a>
+                        </h3>
+                        <div class="text-muted small mb-3">
+                            Опубликовано: {{ post.created_at|date:"d M Y" }} | Автор: {{ post.author }}
+                        </div>
+                        <p class="card-text text-secondary">
+                            {{ post.content|truncatewords:20 }}
+                        </p>
+                        <a href="{% url 'blog:post_detail' post.slug %}" class="btn btn-outline-dark btn-sm">
+                            Читать дальше &rarr;
+                        </a>
+                    </div>
+                </article>
+            {% empty %}
+                <div class="alert alert-info border-0 shadow-sm">
+                    В этой категории пока нет опубликованных статей.
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
