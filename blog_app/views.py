@@ -1,14 +1,23 @@
 from django.db.models import Count, Q
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
+from django.utils.text import slugify
 
 from blog_app.models import Post, Category
+from blog_app.forms import PostForm, SearchForm
+from transliterate import translit
 
 
 def index(request):
+    search_form = SearchForm(data=request.GET)
     # Получаем 5 последних опубликованных постов
-    posts_published = Post.objects.filter(published=True).select_related("category", "author")[:5]
+    posts = Post.objects.filter(published=True).select_related("category", "author")
+    if search_form.is_valid():
+        query = search_form.cleaned_data.get('query')
+        posts = posts.filter(title__icontains=query)
+    posts = posts[:5]
     context = {
-        "posts": posts_published,
+        "posts": posts,
+        "search_form": search_form,
     }
     return render(request, "blog/index.html", context)
 
@@ -52,3 +61,16 @@ def category_detail(request, category_id):
         'posts': posts
     }
     return render(request, 'blog/category_detail.html', context)
+
+
+def post_create(request):
+    if request.method == "POST":
+        form = PostForm(data=request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.slug = slugify(translit(post.title, 'ru', reversed=True))
+            post.save()
+            return redirect("blog:index_page")
+    else:
+        form = PostForm()
+    return render(request, "blog/posts_create.html", context={'form': form})
