@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}Создание статьи — {{ block.super }}{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <div class="bg-white p-5 rounded border shadow-sm">
+                <!-- Навигация назад -->
+                <a href="{% url 'blog:posts_list' %}" class="text-decoration-none text-muted small">&larr; Вернуться к
+                    списку статей</a>
+
+                <h1 class="display-6 fw-bold mt-3 mb-4">✍️ Новая статья</h1>
+
+                <form method="post" novalidate>
+                    {% csrf_token %}
+
+                    <!-- Отображение общих ошибок формы -->
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {% for error in form.non_field_errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    <!-- Поле Заголовок -->
+                    <div class="mb-4">
+                        <label for="{{ form.title.id_for_label }}" class="form-label fw-semibold">
+                            {{ form.title.label }}
+                        </label>
+                        {{ form.title }}
+                        {% if form.title.errors %}
+                            <div class="invalid-feedback d-block">
+                                {% for error in form.title.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <div class="form-text">Минимум 5 символов.</div>
+                    </div>
+
+                    <!-- Поле Автор -->
+                    <div class="mb-4">
+                        <label for="{{ form.author.id_for_label }}" class="form-label fw-semibold">
+                            {{ form.author.label }}
+                        </label>
+                        {{ form.author }}
+                        {% if form.author.errors %}
+                            <div class="invalid-feedback d-block">
+                                {% for error in form.author.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Поле Категория -->
+                    <div class="mb-4">
+                        <label for="{{ form.category.id_for_label }}" class="form-label fw-semibold">
+                            {{ form.category.label }}
+                        </label>
+                        {{ form.category }}
+                        {% if form.category.errors %}
+                            <div class="invalid-feedback d-block">
+                                {% for error in form.category.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Поле Содержание -->
+                    <div class="mb-4">
+                        <label for="{{ form.content.id_for_label }}" class="form-label fw-semibold">
+                            {{ form.content.label }}
+                        </label>
+                        {{ form.content }}
+                        {% if form.content.errors %}
+                            <div class="invalid-feedback d-block">
+                                {% for error in form.content.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <hr class="my-4">
+
+                    <div class="d-flex gap-2 justify-content-between align-items-center">
+                        <a href="{% url 'blog:posts_list' %}" class="btn btn-outline-secondary">Отмена</a>
+                        <button type="submit" class="btn btn-dark px-4">Опубликовать →</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
