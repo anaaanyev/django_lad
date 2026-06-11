@@ -1,23 +1,28 @@
 from django.db.models import Count, Q
 from django.shortcuts import get_object_or_404, render, redirect
-from django.utils.text import slugify
+from slugify import slugify
 
 from blog_app.models import Post, Category
 from blog_app.forms import PostForm, SearchForm
-from transliterate import translit
 
 
 def index(request):
+    # Инициализируем форму поиска данными из GET-запроса (URL параметров)
     search_form = SearchForm(data=request.GET)
-    # Получаем 5 последних опубликованных постов
+    # Базовый набор опубликованных статей
     posts = Post.objects.filter(published=True).select_related("category", "author")
+    # Если пользователь ввел поисковый запрос
     if search_form.is_valid():
         query = search_form.cleaned_data.get('query')
-        posts = posts.filter(title__icontains=query)
+        if query:
+            # Фильтруем статьи по совпадению подстроки в заголовке без учета регистра (icontains)
+            posts = posts.filter(title__icontains=query)
+
+    # Выбираем последние 5 статей после фильтрации
     posts = posts[:5]
     context = {
         "posts": posts,
-        "search_form": search_form,
+        "search_form": search_form,     # Передаем форму поиска в шаблон
     }
     return render(request, "blog/index.html", context)
 
@@ -64,13 +69,22 @@ def category_detail(request, category_id):
 
 
 def post_create(request):
+    # Если пользователь отправил данные формы (нажал кнопку отправить)
     if request.method == "POST":
         form = PostForm(data=request.POST)
+
         if form.is_valid():
+            # Метод save(commit=False) создает объект в памяти, но не пишет его в БД.
+            # Это нужно, так как в форме нет поля slug, а оно уникальное и обязательное в модели!
             post = form.save(commit=False)
-            post.slug = slugify(translit(post.title, 'ru', reversed=True))
+            # Автоматическая генерация slug на основе заголовка статьи.
+            post.slug = slugify(post.title)
+            # Записываем статью в базу данных
             post.save()
+            # Перенаправляем пользователя на главную страницу (список постов)
             return redirect("blog:index_page")
+    # Если пользователь просто открыл страницу создания (GET)
     else:
         form = PostForm()
+    # Рендерим шаблон, передавая в него объект формы
     return render(request, "blog/posts_create.html", context={'form': form})

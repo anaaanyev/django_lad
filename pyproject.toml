@@ -11,5 +11,5 @@ dependencies = [
     "django-tinymce>=5.0.0",
     "ipython>=9.14.0",
     "pre-commit>=4.6.0",
-    "transliterate>=1.10.2",
+    "python-slugify>=8.0.4",
 ]
