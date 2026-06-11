@@ -22,26 +22,9 @@ def index(request):
     posts = posts[:5]
     context = {
         "posts": posts,
-        "search_form": search_form,     # Передаем форму поиска в шаблон
+        "search_form": search_form,  # Передаем форму поиска в шаблон
     }
     return render(request, "blog/index.html", context)
-
-
-def posts_list(request):
-    posts = Post.objects.filter(published=True).select_related("category", "author")
-    context = {
-        "posts": posts
-    }
-    return render(request, "blog/posts_list.html", context)
-
-def post_detail(request, post_slug):
-    # Безопасно получаем опубликованный пост по слагу или отдаем 404 ошибку
-    post = get_object_or_404(Post, slug=post_slug)
-    post.increase_views_count()
-    context = {
-        "post": post,
-    }
-    return render(request, "blog/post_detail.html", context)
 
 
 def category_create(request):
@@ -56,12 +39,13 @@ def category_create(request):
         form = CategoryForm()
     return render(request, 'blog/category_create.html', context={'form': form})
 
+
 def categories_list(request):
     # Получаем из БД только те категории в которых есть опубликованные статьи
     # https://www.youtube.com/watch?v=eSlIF3FDs5s&list=PLA0M1Bcd0w8yU5h2vwZ4LO7h1xt8COUXl&index=34
     categories = Category.objects.annotate(count_posts=Count(
         'posts', filter=Q(posts__published=True))
-    ).filter(count_posts__gt=0)
+    )
     context = {
         'categories': categories
     }
@@ -101,6 +85,7 @@ def post_create(request):
     # Рендерим шаблон, передавая в него объект формы
     return render(request, "blog/posts_create.html", context={'form': form})
 
+
 def post_edit(request, post_slug):
     post = get_object_or_404(Post, slug=post_slug)
     form = PostForm(data=request.POST or None, instance=post)
@@ -108,3 +93,21 @@ def post_edit(request, post_slug):
         form.save()
         return redirect('blog:post_detail', post_slug=post.slug)
     return render(request, 'blog/post_edit.html', context={'post': post, 'form': form})
+
+
+def posts_list(request):
+    posts = Post.objects.filter(published=True).select_related("category", "author")
+    context = {
+        "posts": posts
+    }
+    return render(request, "blog/posts_list.html", context)
+
+
+def post_detail(request, post_slug):
+    # Безопасно получаем опубликованный пост по слагу или отдаем 404 ошибку
+    post = get_object_or_404(Post, slug=post_slug)
+    post.increase_views_count()
+    context = {
+        "post": post,
+    }
+    return render(request, "blog/post_detail.html", context)
