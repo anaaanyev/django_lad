@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Создание категории — {{ block.super }}{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <div class="bg-white p-5 rounded border shadow-sm">
+                <!-- Навигация назад -->
+                <a href="{% url 'blog:categories_list' %}" class="text-decoration-none text-muted small">&larr;
+                    Вернуться к
+                    списку категорий</a>
+
+                <h1 class="display-6 fw-bold mt-3 mb-4">✍️ Новая категория</h1>
+
+                <!-- Форма создания статьи. Обязательно метод POST! -->
+                <form method="post" novalidate>
+                    <!-- Генерирует скрытый input со случайным уникальным ключом безопасности -->
+                    {% csrf_token %}
+
+                    <div class="mb-4">
+                        <label for="{{ form.title.id_for_label }}" class="form-label fw-semibold">
+                            {{ form.title.label }}
+                        </label>
+
+                        <!-- Вывод самого поля (сгенерирует input с классами Bootstrap) -->
+                        {{ form.title }}
+
+                        <!-- Ошибки конкретного поля -->
+                        {% if form.title.errors %}
+                            <div class="invalid-feedback d-block">
+                                {% for error in form.title.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Вывод глобальных ошибок формы, не привязанных к конкретным полям -->
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {% for error in form.non_field_errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    <hr class="my-4">
+
+                    <!-- Кнопки управления -->
+                    <div class="d-flex gap-2 justify-content-between align-items-center">
+                        <a href="{% url 'blog:categories_list' %}" class="btn btn-outline-secondary">Отмена</a>
+                        <button type="submit" class="btn btn-dark px-4">Опубликовать →</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

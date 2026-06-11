@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Создание статьи — {{ block.super }}{% endblock %}
+{% block title %}Редактирование статьи — {{ block.super }}{% endblock %}
 
 <!-- Тестировал django-tinymce. Все ок, полет отличный! -->
 {#{% block head %}{{ form.media }}{% endblock %}#}
@@ -10,13 +10,12 @@
         <div class="col-lg-8 col-md-10">
             <div class="bg-white p-5 rounded border shadow-sm">
                 <!-- Навигация назад -->
-                <a href="{% url 'blog:posts_list' %}" class="text-decoration-none text-muted small">&larr; Вернуться к
-                    списку статей</a>
+                <a href="{% url 'blog:post_detail' post.slug %}" class="text-decoration-none text-muted small">&larr; Вернуться</a>
 
-                <h1 class="display-6 fw-bold mt-3 mb-4">✍️ Новая статья</h1>
+                <h1 class="display-6 fw-bold mt-3 mb-4">✍️ Редактирование статьи</h1>
 
                 <!-- Форма создания статьи. Обязательно метод POST! -->
-                {% include 'blog/include/form_for_post_create_edit.html' %}
+                {% include "blog/include/form_for_post_create_edit.html" %}
             </div>
         </div>
     </div>

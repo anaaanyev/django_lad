@@ -1,5 +1,7 @@
+# from tinymce.widgets import TinyMCE
+
 from django import forms
-from blog_app.models import Post
+from blog_app.models import Post, Category
 
 
 class PostForm(forms.ModelForm):
@@ -15,6 +17,7 @@ class PostForm(forms.ModelForm):
             'author': forms.Select(attrs={'class': 'form-select'}),
             'category': forms.Select(attrs={'class': 'form-select'}),
             'content': forms.Textarea(attrs={'class': 'form-control'}),
+            # 'content': TinyMCE(attrs={'class': 'form-control'}),
         }
         # Перевод подписей полей (labels)
         labels = {
@@ -71,3 +74,15 @@ class SearchForm(forms.Form):
             'placeholder': 'Введите слово для поиска...',
         })
     )
+
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ["title"]
+        widgets = {
+            "title": forms.TextInput(attrs={'class': 'form-control'}),
+        }
+        labels = {
+            'title': 'Заголовок категории'
+        }
