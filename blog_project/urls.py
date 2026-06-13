@@ -23,4 +23,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('tinymce/', include('tinymce.urls')),
     path("", include("blog_app.urls", namespace="blog")),
+    path("feedback/", include("feedback_app.urls", namespace="feedback")),
 ] + debug_toolbar_urls()
