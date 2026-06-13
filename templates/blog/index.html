@@ -79,13 +79,15 @@
             <!-- Новая карточка: Поиск по блогу -->
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-body p-4">
-                    <h4 class="fw-bold mb-3">Поиск по блогу</h4>
-                    <form method="get" action="" class="d-flex" role="search">
-                        <input type="text"
-                               name="query"
-                               value="{{ request.GET.query|default:'' }}"
-                               class="form-control"
-                               placeholder="Введите слово для поиска...">
+                    <h4 class="fw-bold mb-3">{{ search_form.query.label }}</h4>
+                    <!-- Action указывает на ".", то есть форма отправляется на этот же URL (главную) -->
+                    <form method="get" action="." class="d-flex" role="search">
+{#                        <input type="text"#}
+{#                               name="query"#}
+{#                               value="{{ request.GET.query|default:'' }}"#}
+{#                               class="form-control"#}
+{#                               placeholder="Введите слово для поиска...">#}
+                        {{ search_form.query }}
                         <button class="btn btn-outline-dark ms-2" type="submit">Найти</button>
                     </form>
                     <!-- Опционально: вывод ошибок валидации, если они есть в переданной форме -->

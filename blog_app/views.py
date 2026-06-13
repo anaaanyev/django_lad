@@ -1,42 +1,43 @@
 from django.db.models import Count, Q
 from django.shortcuts import get_object_or_404, render, redirect
-from django.utils.text import slugify
+from slugify import slugify
 
 from blog_app.models import Post, Category
-from blog_app.forms import PostForm, SearchForm
-from transliterate import translit
+from blog_app.forms import PostForm, SearchForm, CategoryForm
 
 
 def index(request):
+    # Инициализируем форму поиска данными из GET-запроса (URL параметров)
     search_form = SearchForm(data=request.GET)
-    # Получаем 5 последних опубликованных постов
+    # Базовый набор опубликованных статей
     posts = Post.objects.filter(published=True).select_related("category", "author")
+    # Если пользователь ввел поисковый запрос
     if search_form.is_valid():
         query = search_form.cleaned_data.get('query')
-        posts = posts.filter(title__icontains=query)
+        if query:
+            # Фильтруем статьи по совпадению подстроки в заголовке без учета регистра (icontains)
+            posts = posts.filter(title__icontains=query)
+
+    # Выбираем последние 5 статей после фильтрации
     posts = posts[:5]
     context = {
         "posts": posts,
-        "search_form": search_form,
+        "search_form": search_form,  # Передаем форму поиска в шаблон
     }
     return render(request, "blog/index.html", context)
 
 
-def posts_list(request):
-    posts = Post.objects.filter(published=True).select_related("category", "author")
-    context = {
-        "posts": posts
-    }
-    return render(request, "blog/posts_list.html", context)
-
-def post_detail(request, post_slug):
-    # Безопасно получаем опубликованный пост по слагу или отдаем 404 ошибку
-    post = get_object_or_404(Post, slug=post_slug)
-    post.increase_views_count()
-    context = {
-        "post": post,
-    }
-    return render(request, "blog/post_detail.html", context)
+def category_create(request):
+    if request.method == 'POST':
+        form = CategoryForm(data=request.POST)
+        if form.is_valid():
+            category = form.save(commit=False)
+            category.slug = slugify(category.title)
+            category.save()
+            return redirect('blog:categories_list')
+    else:
+        form = CategoryForm()
+    return render(request, 'blog/category_create.html', context={'form': form})
 
 
 def categories_list(request):
@@ -44,7 +45,7 @@ def categories_list(request):
     # https://www.youtube.com/watch?v=eSlIF3FDs5s&list=PLA0M1Bcd0w8yU5h2vwZ4LO7h1xt8COUXl&index=34
     categories = Category.objects.annotate(count_posts=Count(
         'posts', filter=Q(posts__published=True))
-    ).filter(count_posts__gt=0)
+    )
     context = {
         'categories': categories
     }
@@ -64,13 +65,49 @@ def category_detail(request, category_id):
 
 
 def post_create(request):
+    # Если пользователь отправил данные формы (нажал кнопку отправить)
     if request.method == "POST":
         form = PostForm(data=request.POST)
+
         if form.is_valid():
+            # Метод save(commit=False) создает объект в памяти, но не пишет его в БД.
+            # Это нужно, так как в форме нет поля slug, а оно уникальное и обязательное в модели!
             post = form.save(commit=False)
-            post.slug = slugify(translit(post.title, 'ru', reversed=True))
+            # Автоматическая генерация slug на основе заголовка статьи.
+            post.slug = slugify(post.title)
+            # Записываем статью в базу данных
             post.save()
+            # Перенаправляем пользователя на главную страницу (список постов)
             return redirect("blog:index_page")
+    # Если пользователь просто открыл страницу создания (GET)
     else:
         form = PostForm()
+    # Рендерим шаблон, передавая в него объект формы
     return render(request, "blog/posts_create.html", context={'form': form})
+
+
+def post_edit(request, post_slug):
+    post = get_object_or_404(Post, slug=post_slug)
+    form = PostForm(data=request.POST or None, instance=post)
+    if request.method == 'POST' and form.is_valid():
+        form.save()
+        return redirect('blog:post_detail', post_slug=post.slug)
+    return render(request, 'blog/post_edit.html', context={'post': post, 'form': form})
+
+
+def posts_list(request):
+    posts = Post.objects.filter(published=True).select_related("category", "author")
+    context = {
+        "posts": posts
+    }
+    return render(request, "blog/posts_list.html", context)
+
+
+def post_detail(request, post_slug):
+    # Безопасно получаем опубликованный пост по слагу или отдаем 404 ошибку
+    post = get_object_or_404(Post, slug=post_slug)
+    post.increase_views_count()
+    context = {
+        "post": post,
+    }
+    return render(request, "blog/post_detail.html", context)

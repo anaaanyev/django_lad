@@ -1,0 +1,46 @@
+<form method="post" novalidate>
+    <!-- Генерирует скрытый input со случайным уникальным ключом безопасности -->
+    {% csrf_token %}
+    <!-- Перебираем все поля -->
+    {% for field in form %}
+        <div class="mb-4">
+            <label for="{{ field.id_for_label }}" class="form-label fw-semibold">
+                {{ field.label }}
+            </label>
+
+            <!-- Вывод самого поля (сгенерирует input с классами Bootstrap) -->
+            {{ field }}
+
+            <!-- Текст-подсказка (если есть) -->
+            {% if field.help_text %}
+                <div class="form-text">{{ field.help_text }}</div>
+            {% endif %}
+
+            <!-- Ошибки конкретного поля -->
+            {% if field.errors %}
+                <div class="invalid-feedback d-block">
+                    {% for error in field.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+
+    <!-- Вывод глобальных ошибок формы, не привязанных к конкретным полям -->
+    {% if form.non_field_errors %}
+        <div class="alert alert-danger" role="alert">
+            {% for error in form.non_field_errors %}
+                {{ error }}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <hr class="my-4">
+
+    <!-- Кнопки управления -->
+    <div class="d-flex gap-2 justify-content-between align-items-center">
+        <a href="{% url 'blog:posts_list' %}" class="btn btn-outline-secondary">Отмена</a>
+        <button type="submit" class="btn btn-dark px-4">Опубликовать →</button>
+    </div>
+</form>
