@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     # ... базовые системные приложения Django (admin, auth, contenttypes) ...
     'blog_app', # Подключаем наше новое приложение
+    'feedback_app',
 ]
 
 MIDDLEWARE = [
