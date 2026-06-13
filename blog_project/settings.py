@@ -152,3 +152,6 @@ TINYMCE_DEFAULT_CONFIG = {
     "alignright alignjustify | bullist numlist outdent indent | "
     "removeformat | help",
 }
+
+LOGIN_URL = '/admin/'
+LOGOUT_REDIRECT_URL = 'blog:index_page'

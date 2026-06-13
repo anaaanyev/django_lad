@@ -1,5 +1,13 @@
 from django import forms
 
+SUBJECT_CHOICES = [
+    ('default', 'Выберите тему обращения'),
+    ('tech', 'Технический вопрос'),
+    ('collaboration', 'Сотрудничество'),
+    ('complaint', 'Жалоба'),
+    ('other', 'Другое'),
+]
+
 
 class FeedbackForm(forms.Form):
     name = forms.CharField(
@@ -30,6 +38,16 @@ class FeedbackForm(forms.Form):
                 'class': 'form-control',
                 'placeholder': 'Введите ваше обращение',
                 'rows': 5,
+            }
+        )
+    )
+
+    subject = forms.ChoiceField(
+        label='Тема обращения',
+        choices=SUBJECT_CHOICES,
+        widget=forms.Select(
+            attrs={
+                'class': 'form-select',
             }
         )
     )

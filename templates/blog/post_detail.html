@@ -31,7 +31,7 @@
                     <!-- Метаданные публикации -->
                     <div class="text-muted mt-3 d-flex flex-wrap gap-3">
                         <span>📅 Опубликовано: <strong>{{ post.created_at|date:"d E Y в H:i" }}</strong></span>
-                        <span>✍️ Автор: <strong>{{ post.author }}</strong></span>
+                        <span>✍️ Автор: <strong>{{ post.author.last_name }} {{ post.author.first_name }}</strong></span>
                         <span>👁️ Просмотров: <strong>{{ post.views_count|default:"0" }}</strong></span>
                     </div>
                 </header>

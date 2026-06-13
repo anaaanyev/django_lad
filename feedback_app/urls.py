@@ -5,4 +5,5 @@ app_name = 'feedback'
 
 urlpatterns = [
     path('', views.feedback_view, name='index_page'),
+    path('success/', views.feedback_success, name='feedback_success'),
 ]
