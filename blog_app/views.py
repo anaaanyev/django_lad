@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.db.models import Count, Q
 from django.shortcuts import get_object_or_404, render, redirect
 from slugify import slugify
@@ -28,6 +29,9 @@ def index(request):
 
 
 def category_create(request):
+    if not request.user.is_superuser:
+        return redirect('blog:categories_list')
+
     if request.method == 'POST':
         form = CategoryForm(data=request.POST)
         if form.is_valid():
@@ -64,6 +68,7 @@ def category_detail(request, category_id):
     return render(request, 'blog/category_detail.html', context)
 
 
+@login_required
 def post_create(request):
     # Если пользователь отправил данные формы (нажал кнопку отправить)
     if request.method == "POST":
@@ -88,6 +93,11 @@ def post_create(request):
 
 def post_edit(request, post_slug):
     post = get_object_or_404(Post, slug=post_slug)
+
+    # Исключаем возможность любому пользователю изменить статью
+    if request.user != post.author:
+        return redirect('blog:post_detail', post_slug=post.slug)
+
     form = PostForm(data=request.POST or None, instance=post)
     if request.method == 'POST' and form.is_valid():
         form.save()

@@ -6,6 +6,7 @@ class Feedback(models.Model):
     email = models.EmailField(verbose_name='Почта отправителя')
     message = models.TextField(verbose_name='Сообщение')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата отправки')
+    subject = models.CharField(max_length=150, blank=True, null=True, verbose_name='Тема обращения')
 
     class Meta:
         ordering = ('-created_at',)

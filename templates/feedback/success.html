@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Обращение отправлено - {{ block.super }}{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm text-center">
+                <div class="card-body p-5">
+                    <div class="mb-4">
+                        <span class="display-1">✅</span>
+                    </div>
+                    <h3 class="fw-bold mb-3">Спасибо!</h3>
+                    <p class="text-secondary mb-4">
+                        Ваше обращение успешно отправлено.<br>
+                        Мы свяжемся с вами в ближайшее время.
+                    </p>
+                    <hr class="my-4">
+                    <a href="{% url 'blog:index_page' %}" class="btn btn-dark px-4">
+                        Вернуться на главную
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

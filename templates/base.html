@@ -34,12 +34,33 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'blog:posts_list' %}">Статьи</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'blog:posts_create' %}">Написать статью</a>
-                    </li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'blog:posts_create' %}">Написать статью</a>
+                        </li>
+                    {% endif %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'blog:categories_list' %}">Категории</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'feedback:index_page' %}">Обратная связь</a>
+                    </li>
+                    <!-- Временный вариант. Поправлю после того как создадим приложение users_app -->
+                    {% if user.is_authenticated %}
+                        {% if user.is_superuser or user.is_staff %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/">Админ панель</a>
+                            </li>
+                        {% endif %}
+                        <form action="/admin/logout/" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="nav-link">Выйти</button>
+                        </form>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/">Авторизоваться</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>

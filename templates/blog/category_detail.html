@@ -24,7 +24,7 @@
                             </a>
                         </h3>
                         <div class="text-muted small mb-3">
-                            Опубликовано: {{ post.created_at|date:"d M Y" }} | Автор: {{ post.author }}
+                            Опубликовано: {{ post.created_at|date:"d M Y" }} | Автор: {{ post.author.last_name }} {{ post.author.first_name }}
                         </div>
                         <p class="card-text text-secondary">
                             {{ post.content|truncatewords:20 }}

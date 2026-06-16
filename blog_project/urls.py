@@ -21,7 +21,7 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("feedback/", include("feedback_app.urls", namespace="feedback")),
     path('tinymce/', include('tinymce.urls')),
     path("", include("blog_app.urls", namespace="blog")),
-    path("feedback/", include("feedback_app.urls", namespace="feedback")),
 ] + debug_toolbar_urls()
