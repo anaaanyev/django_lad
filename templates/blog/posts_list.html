@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-	Опубликованные статьи — {{ block.super }}
+    Опубликованные статьи — {{ block.super }}
 {% endblock %}
 
 {% block content %}
@@ -27,7 +27,8 @@
 
                     <!-- Метаинформация -->
                     <div class="text-muted small mb-3">
-                        Опубликовано: {{ post.created_at|date:"d M Y в H:i" }} | Автор: {{ post.author.last_name }} {{ post.author.first_name }}
+                        Опубликовано: {{ post.created_at|date:"d M Y в H:i" }} |
+                        Автор: {{ post.author.last_name }} {{ post.author.first_name }}
                     </div>
 
                     <!-- Обрезка анонса статьи -->
@@ -47,5 +48,8 @@
                 Статьи ещё не опубликованы.
             </div>
         {% endfor %}
+
+        <!-- Подключаем пагинацию из отдельного шаблона -->
+        {% include 'includes/pagination.html' %}
     </div>
 {% endblock %}
