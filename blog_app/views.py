@@ -1,10 +1,12 @@
-from django.contrib.auth.decorators import login_required
 from django.db.models import Count, Q
 from django.shortcuts import get_object_or_404, render, redirect
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from slugify import slugify
+from django.urls import reverse_lazy
 
 from blog_app.models import Post, Category
-from blog_app.forms import PostForm, SearchForm, CategoryForm
+from blog_app.forms import SearchForm, CategoryForm
+from mixins import PostFormBase
 
 
 def index(request):
@@ -68,56 +70,107 @@ def category_detail(request, category_id):
     return render(request, 'blog/category_detail.html', context)
 
 
-@login_required
-def post_create(request):
-    # Если пользователь отправил данные формы (нажал кнопку отправить)
-    if request.method == "POST":
-        form = PostForm(data=request.POST)
+class PostCreateView(PostFormBase, CreateView):
+    """Создание новой статьи."""
+    template_name = "blog/posts_create.html"
 
-        if form.is_valid():
-            # Метод save(commit=False) создает объект в памяти, но не пишет его в БД.
-            # Это нужно, так как в форме нет поля slug, а оно уникальное и обязательное в модели!
-            post = form.save(commit=False)
-            # Автоматическая генерация slug на основе заголовка статьи.
-            post.slug = slugify(post.title)
-            # Записываем статью в базу данных
-            post.save()
-            # Перенаправляем пользователя на главную страницу (список постов)
-            return redirect("blog:index_page")
-    # Если пользователь просто открыл страницу создания (GET)
-    else:
-        form = PostForm()
-    # Рендерим шаблон, передавая в него объект формы
-    return render(request, "blog/posts_create.html", context={'form': form})
+    def form_valid(self, form):
+        """
+        Переопределяем form_valid() для автоматической генерации slug.
+        form.instance — это объект модели Post, который форма создала
+        в памяти, но ещё НЕ сохранила в базу данных.
+        Мы можем дополнить его нужными полями перед сохранением.
+        """
+        # Генерируем slug из заголовка статьи
+        form.instance.slug = slugify(form.instance.title)
+        # Вызываем родительский form_valid(), который сделает form.save() + redirect
+        return super().form_valid(form)
 
 
-def post_edit(request, post_slug):
-    post = get_object_or_404(Post, slug=post_slug)
+# @login_required
+# def post_create(request):
+#     # Если пользователь отправил данные формы (нажал кнопку отправить)
+#     if request.method == "POST":
+#         form = PostForm(data=request.POST)
+#
+#         if form.is_valid():
+#             # Метод save(commit=False) создает объект в памяти, но не пишет его в БД.
+#             # Это нужно, так как в форме нет поля slug, а оно уникальное и обязательное в модели!
+#             post = form.save(commit=False)
+#             # Автоматическая генерация slug на основе заголовка статьи.
+#             post.slug = slugify(post.title)
+#             # Записываем статью в базу данных
+#             post.save()
+#             # Перенаправляем пользователя на главную страницу (список постов)
+#             return redirect("blog:index_page")
+#     # Если пользователь просто открыл страницу создания (GET)
+#     else:
+#         form = PostForm()
+#     # Рендерим шаблон, передавая в него объект формы
+#     return render(request, "blog/posts_create.html", context={'form': form})
 
-    # Исключаем возможность любому пользователю изменить статью
-    if request.user != post.author:
-        return redirect('blog:post_detail', post_slug=post.slug)
-
-    form = PostForm(data=request.POST or None, instance=post)
-    if request.method == 'POST' and form.is_valid():
-        form.save()
-        return redirect('blog:post_detail', post_slug=post.slug)
-    return render(request, 'blog/post_edit.html', context={'post': post, 'form': form})
+class PostUpdateView(PostFormBase, UpdateView):
+    """Редактирование существующей статьи."""
+    template_name = 'blog/post_edit.html'
+    slug_url_kwarg = 'post_slug'
 
 
-def posts_list(request):
-    posts = Post.objects.filter(published=True).select_related("category", "author")
-    context = {
-        "posts": posts
-    }
-    return render(request, "blog/posts_list.html", context)
+# def post_edit(request, post_slug):
+#     post = get_object_or_404(Post, slug=post_slug)
+#
+#     # Исключаем возможность любому пользователю изменить статью
+#     if request.user != post.author:
+#         return redirect('blog:post_detail', post_slug=post.slug)
+#
+#     form = PostForm(data=request.POST or None, instance=post)
+#     if request.method == 'POST' and form.is_valid():
+#         form.save()
+#         return redirect('blog:post_detail', post_slug=post.slug)
+#     return render(request, 'blog/post_edit.html', context={'post': post, 'form': form})
 
 
-def post_detail(request, post_slug):
-    # Безопасно получаем опубликованный пост по слагу или отдаем 404 ошибку
-    post = get_object_or_404(Post, slug=post_slug)
-    post.increase_views_count()
-    context = {
-        "post": post,
-    }
-    return render(request, "blog/post_detail.html", context)
+class PostListView(ListView):
+    """Страница статей — список опубликованных статей."""
+    model = Post  # Модель
+    template_name = "blog/posts_list.html"  # Шаблон
+    context_object_name = "posts"  # Имя переменной (по умолчанию: object_list - для предка ListView)
+    paginate_by = 5  # Показываем 5 статей на странице
+
+    def get_queryset(self):
+        """Возвращаем только опубликованные посты"""
+        # по умолчанию: model.objects.all()
+        return self.model.objects.filter(published=True).select_related("category", "author")
+
+
+# def posts_list(request):
+#     posts = Post.objects.filter(published=True).select_related("category", "author")
+#     context = {
+#         "posts": posts
+#     }
+#     return render(request, "blog/posts_list.html", context)
+
+
+class PostDetailView(DetailView):
+    """Страница отдельной статьи."""
+    model = Post
+    template_name = "blog/post_detail.html"
+    slug_url_kwarg = "post_slug"  # Говорим Django: "slug в URL называется post_slug"
+    # context_object_name по умолчанию = 'post' (имя модели в нижнем регистре)
+
+
+# def post_detail(request, post_slug):
+#     # Безопасно получаем опубликованный пост по слагу или отдаем 404 ошибку
+#     post = get_object_or_404(Post, slug=post_slug)
+#     post.increase_views_count()
+#     context = {
+#         "post": post,
+#     }
+#     return render(request, "blog/post_detail.html", context)
+
+class PostDeleteView(DeleteView):
+    """Удаление статьи с подтверждением."""
+    model = Post
+    template_name = "blog/post_confirm_delete.html"
+    slug_url_kwarg = "post_slug"
+    success_url = reverse_lazy('blog:index_page')  # Куда перенаправить после успеха
+    # context_object_name по умолчанию = 'post' (имя модели в нижнем регистре)
