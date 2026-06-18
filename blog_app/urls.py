@@ -17,3 +17,10 @@ urlpatterns = [
     path("categories/<int:category_id>/", views.CategoryDetailView.as_view(), name="category_detail"),    # blog:category_detail
     path('about/', TemplateView.as_view(template_name='blog/about.html'), name='about'),
 ]
+
+htmx_urlpatterns = [
+    path('query_posts_list/', views.query_posts_list, name="query_posts_list"),
+    path('check_title_category/', views.check_title_category, name="check_title_category")
+]
+
+urlpatterns += htmx_urlpatterns

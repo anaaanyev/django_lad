@@ -1,6 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Count, Q
-from django.shortcuts import get_object_or_404, redirect
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from slugify import slugify
 from django.urls import reverse_lazy
@@ -29,6 +30,13 @@ class MainPageView(ListView):
         context['posts'] = posts[:5]
         context['search_form'] = search_form
         return context
+
+
+# https://www.youtube.com/watch?v=NOX83nszcwI&list=PL4cUxeGkcC9hgO93oEHPBMuLA20y0SBVK&index=5
+def query_posts_list(request):
+    query = request.GET.get('query', '')
+    posts = Post.objects.filter(title__icontains=query, published=True).select_related("category", "author")
+    return render(request, 'blog/partials/posts_list_main_page.html', {'posts': posts})
 
 
 # def index(request):
@@ -66,6 +74,18 @@ class CategoryCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.slug = slugify(form.instance.title)
         return super().form_valid(form)
+
+
+# https://www.youtube.com/watch?v=Ula0c_rZ6gk&list=PL-2EBeDYMIbRByZ8GXhcnQSuv2dog4JxY
+def check_title_category(request):
+    title = request.POST.get('title')
+    slug = slugify(title)
+    if len(title) < 5:
+        return HttpResponse("<div class='invalid-feedback d-block'>Ошибка! Укажите больше 5 символов</div>")
+    elif Category.objects.filter(slug=slug).exists():
+        return HttpResponse("<div class='invalid-feedback d-block'>Такая категория уже существует</div>")
+    else:
+        return HttpResponse("<div class='invalid-feedback d-block success'>Доступно для создания</div>")
 
 
 # def category_create(request):
@@ -246,6 +266,7 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
     template_name = "blog/post_confirm_delete.html"
     slug_url_kwarg = "post_slug"
     success_url = reverse_lazy('blog:index_page')  # Куда перенаправить после успеха
+
     # context_object_name по умолчанию = 'post' (имя модели в нижнем регистре)
 
     def dispatch(self, request, *args, **kwargs):
