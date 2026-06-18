@@ -27,6 +27,7 @@ class MainPageView(ListView):
             if query:
                 posts = posts.filter(title__icontains=query)
         context['posts'] = posts[:5]
+        context['search_form'] = search_form
         return context
 
 
@@ -51,7 +52,7 @@ class MainPageView(ListView):
 #     return render(request, "blog/index.html", context)
 
 
-class CategoryCreateView(CreateView):
+class CategoryCreateView(LoginRequiredMixin, CreateView):
     model = Category
     form_class = CategoryForm
     template_name = "blog/category_create.html"
@@ -168,7 +169,7 @@ class PostCreateView(LoginRequiredMixin, PostFormBase, CreateView):
 #     # Рендерим шаблон, передавая в него объект формы
 #     return render(request, "blog/posts_create.html", context={'form': form})
 
-class PostUpdateView(PostFormBase, UpdateView):
+class PostUpdateView(LoginRequiredMixin, PostFormBase, UpdateView):
     """Редактирование существующей статьи."""
     template_name = 'blog/post_edit.html'
     slug_url_kwarg = 'post_slug'
@@ -239,10 +240,16 @@ class PostDetailView(DetailView):
 #     }
 #     return render(request, "blog/post_detail.html", context)
 
-class PostDeleteView(DeleteView):
+class PostDeleteView(LoginRequiredMixin, DeleteView):
     """Удаление статьи с подтверждением."""
     model = Post
     template_name = "blog/post_confirm_delete.html"
     slug_url_kwarg = "post_slug"
     success_url = reverse_lazy('blog:index_page')  # Куда перенаправить после успеха
     # context_object_name по умолчанию = 'post' (имя модели в нижнем регистре)
+
+    def dispatch(self, request, *args, **kwargs):
+        post = get_object_or_404(Post, slug=self.kwargs[self.slug_url_kwarg])
+        if request.user != post.author:
+            return redirect('blog:post_detail', post_slug=post.slug)
+        return super().dispatch(request, *args, **kwargs)
