@@ -19,9 +19,20 @@ class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
 
     # Пагинатор (кол-во отображаемых статей в админке на странице)
-    list_per_page = 30
+    list_per_page = 10
 
     show_full_result_count = False
+
+    # https://django.fun/docs/django/5.2/ref/contrib/admin/actions/
+    actions = ["make_published", "make_draft"]
+
+    @admin.action(description="Отметить выбранные статьи как опубликованные")
+    def make_published(modeladmin, request, queryset):
+        queryset.update(published=True)
+
+    @admin.action(description="Отметить выбранные статьи как черновик")
+    def make_draft(modeladmin, request, queryset):
+        queryset.update(published=False)
 
 
 @admin.register(Category)
