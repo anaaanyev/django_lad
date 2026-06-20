@@ -8,7 +8,7 @@ from django.urls import reverse_lazy
 
 from blog_app.models import Post, Category
 from blog_app.forms import SearchForm, CategoryForm
-from mixins import PostFormBase
+from blog_app.mixins import PostFormBase
 
 
 class MainPageView(ListView):
