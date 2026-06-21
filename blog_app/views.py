@@ -2,25 +2,29 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Count, Q
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 from slugify import slugify
 from django.urls import reverse_lazy
 
 from blog_app.models import Post, Category
-from blog_app.forms import SearchForm, CategoryForm
-from blog_app.mixins import PostFormBase
+from blog_app.forms import SearchForm, CategoryForm, PostForm
+from blog_app.mixins import TitleMixin
+from mixins import StaffRequiredMixin
 
 
-class MainPageView(ListView):
+class PostFormBase:
     model = Post
-    template_name = 'blog/index.html'
-    context_object_name = 'posts'
+    form_class = PostForm  # Используем нашу ModelForm
+    success_url = reverse_lazy("blog:index_page")  # После создания — на главную
 
-    def get_queryset(self):
-        return self.model.objects.filter(published=True).select_related("category", "author")
+
+class MainPageView(TitleMixin, TemplateView):
+    title = "Главная страница"
+    template_name = 'blog/index.html'
 
     def get_context_data(self, *, object_list=..., **kwargs):
         context = super().get_context_data(**kwargs)
+        context['posts'] = Post.objects.filter(published=True).select_related("category", "author")
         search_form = SearchForm(data=self.request.GET)
         posts = context['posts']
         if search_form.is_valid():
@@ -32,6 +36,7 @@ class MainPageView(ListView):
         return context
 
 
+# HTMX
 # https://www.youtube.com/watch?v=NOX83nszcwI&list=PL4cUxeGkcC9hgO93oEHPBMuLA20y0SBVK&index=5
 def query_posts_list(request):
     query = request.GET.get('query', '')
@@ -150,7 +155,7 @@ class CategoryDetailView(DetailView):
 #     return render(request, 'blog/category_detail.html', context)
 
 
-class PostCreateView(LoginRequiredMixin, PostFormBase, CreateView):
+class PostCreateView(StaffRequiredMixin, PostFormBase, CreateView):
     """Создание новой статьи."""
     template_name = "blog/posts_create.html"
 
@@ -163,6 +168,7 @@ class PostCreateView(LoginRequiredMixin, PostFormBase, CreateView):
         """
         # Генерируем slug из заголовка статьи
         form.instance.slug = slugify(form.instance.title)
+        form.instance.author = self.request.user
         # Вызываем родительский form_valid(), который сделает form.save() + redirect
         return super().form_valid(form)
 
@@ -215,12 +221,13 @@ class PostUpdateView(LoginRequiredMixin, PostFormBase, UpdateView):
 #     return render(request, 'blog/post_edit.html', context={'post': post, 'form': form})
 
 
-class PostListView(ListView):
+class PostListView(TitleMixin, ListView):
     """Страница статей — список опубликованных статей."""
     model = Post  # Модель
     template_name = "blog/posts_list.html"  # Шаблон
     context_object_name = "posts"  # Имя переменной (по умолчанию: object_list - для предка ListView)
     paginate_by = 5  # Показываем 5 статей на странице
+    title = "Список статей"
 
     def get_queryset(self):
         """Возвращаем только опубликованные посты"""
@@ -245,10 +252,14 @@ class PostDetailView(DetailView):
     # context_object_name по умолчанию = 'post' (имя модели в нижнем регистре)
 
     # https://proproprogs.ru/django4/django4-klass-detailview
-    def get_object(self, queryset=...):
-        post = get_object_or_404(Post, slug=self.kwargs[self.slug_url_kwarg])
+    def get_object(self, queryset=None):
+        # post = get_object_or_404(Post, slug=self.kwargs[self.slug_url_kwarg])
+        post = super().get_object(queryset=queryset)
         post.increase_views_count()
         return post
+
+    def get_queryset(self, *args, **kwargs):
+        return self.model.objects.select_related('category', 'author')
 
 
 # def post_detail(request, post_slug):

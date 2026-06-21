@@ -11,12 +11,12 @@ class PostForm(forms.ModelForm):
         # Связываем форму с моделью
         model = Post
         # Перечисляем поля, которые пользователь заполняет на сайте
-        fields = ['title', 'author', 'category', 'content']
+        fields = ['title', 'category', 'content']
 
         # Переопределяем виджеты для добавления стилей Bootstrap
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'author': forms.Select(attrs={'class': 'form-select'}),
+            # 'author': forms.Select(attrs={'class': 'form-select'}),
             'category': forms.Select(attrs={'class': 'form-select'}),
             'content': forms.Textarea(attrs={'class': 'form-control'}),
             # 'content': TinyMCE(attrs={'class': 'form-control'}),
@@ -24,7 +24,7 @@ class PostForm(forms.ModelForm):
         # Перевод подписей полей (labels)
         labels = {
             'title': 'Заголовок статьи',
-            'author': 'Автор',
+            # 'author': 'Автор',
             'category': 'Категория',
             'content': 'Содержание статьи',
         }
@@ -42,7 +42,7 @@ class PostForm(forms.ModelForm):
         # 'author': <django.forms.models.ModelChoiceField object at 0x1066f14f0>,
         # 'category': <django.forms.models.ModelChoiceField object at 0x1064cf7a0>,
         # 'content': <django.forms.fields.CharField object at 0x1062cd100>}
-        self.fields['author'].empty_label = "Выберите автора"
+        # self.fields['author'].empty_label = "Выберите автора"
         self.fields['category'].empty_label = "Выберите категорию"
 
     # Кастомная валидация заголовка
