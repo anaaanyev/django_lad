@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    О проекте - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <!-- Заголовок страницы -->
+            <div class="text-center mb-5">
+                <h1 class="display-4 fw-bold text-dark">🚀 О проекте DevBlog</h1>
+                <p class="lead text-muted">Узнайте больше о нашем учебном блоге и технологиях, которые мы используем</p>
+                <hr class="w-25 mx-auto">
+            </div>
+
+            <!-- Основная информация -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-5">
+                    <h3 class="fw-bold mb-4">📖 Что такое DevBlog?</h3>
+                    <p class="text-secondary fs-5">
+                        <strong>DevBlog</strong> — это учебный проект, созданный в рамках практического курса по
+                        разработке веб-приложений на Django. Здесь мы публикуем интересные статьи о разработке
+                        программного обеспечения, современных технологиях, архитектуре и многих других аспектах
+                        IT-индустрии.
+                    </p>
+                    <p class="text-secondary fs-5">
+                        Наш блог — это не просто площадка для публикации, а целый экосистема, где каждый может
+                        найти полезную информацию, поделиться своим опытом и поучаствовать в обсуждениях.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Технологический стек -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-5">
+                    <h3 class="fw-bold mb-4">🛠️ Технологический стек</h3>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-start">
+                                <span class="fs-2 me-3">🐍</span>
+                                <div>
+                                    <h5 class="fw-bold mb-1">Backend</h5>
+                                    <p class="text-secondary mb-0">
+                                        <span class="badge bg-primary me-1">Django 5</span>
+                                        <span class="badge bg-info text-dark me-1">Python</span>
+                                        <span class="badge bg-success">SQLite</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-start">
+                                <span class="fs-2 me-3">🎨</span>
+                                <div>
+                                    <h5 class="fw-bold mb-1">Frontend</h5>
+                                    <p class="text-secondary mb-0">
+                                        <span class="badge bg-primary me-1">Bootstrap 5</span>
+                                        <span class="badge bg-info text-dark me-1">CSS3</span>
+                                        <span class="badge bg-warning text-dark">JavaScript</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-start">
+                                <span class="fs-2 me-3">📦</span>
+                                <div>
+                                    <h5 class="fw-bold mb-1">Управление зависимостями</h5>
+                                    <p class="text-secondary mb-0">
+                                        <span class="badge bg-primary">UV</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-start">
+                                <span class="fs-2 me-3">🔧</span>
+                                <div>
+                                    <h5 class="fw-bold mb-1">Дополнительно</h5>
+                                    <p class="text-secondary mb-0">
+                                        <span class="badge bg-primary me-1">TinyMCE</span>
+                                        <span class="badge bg-success">HTML5</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Возможности блога -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-5">
+                    <h3 class="fw-bold mb-4">✨ Возможности блога</h3>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-start">
+                                <span class="text-success fs-4 me-3">✓</span>
+                                <div>
+                                    <h6 class="fw-bold mb-1">Публикация статей</h6>
+                                    <p class="text-secondary small">Создавайте и редактируйте свои статьи с помощью
+                                        удобного редактора</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-start">
+                                <span class="text-success fs-4 me-3">✓</span>
+                                <div>
+                                    <h6 class="fw-bold mb-1">Категоризация</h6>
+                                    <p class="text-secondary small">Удобная сортировка статей по тематическим
+                                        категориям</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-start">
+                                <span class="text-success fs-4 me-3">✓</span>
+                                <div>
+                                    <h6 class="fw-bold mb-1">Поиск</h6>
+                                    <p class="text-secondary small">Быстрый поиск статей по ключевым словам</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-start">
+                                <span class="text-success fs-4 me-3">✓</span>
+                                <div>
+                                    <h6 class="fw-bold mb-1">Обратная связь</h6>
+                                    <p class="text-secondary small">Возможность связаться с администрацией блога</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Команда проекта -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-5">
+                    <h3 class="fw-bold mb-4">👨‍💻 О команде</h3>
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-light rounded-circle d-flex align-items-center justify-content-center me-3"
+                             style="width: 60px; height: 60px;">
+                            <span class="fs-1">🎓</span>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold mb-1">Учебный проект</h5>
+                            <p class="text-secondary mb-0">
+                                Проект создан студентами в рамках изучения Django-разработки.
+                                Вся структура и код разрабатываются в образовательных целях.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div class="bg-light rounded-circle d-flex align-items-center justify-content-center me-3"
+                             style="width: 60px; height: 60px;">
+                            <span class="fs-1">❤️</span>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold mb-1">Сделано с любовью</h5>
+                            <p class="text-secondary mb-0">
+                                Код с душой, комментарии с заботой и внимание к каждой детали.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Контактная информация -->
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-5 text-center">
+                    <h4 class="fw-bold mb-3">📬 Есть вопросы?</h4>
+                    <p class="text-secondary mb-3">
+                        Если у вас есть предложения или вопросы, вы можете связаться с нами через форму обратной связи.
+                    </p>
+                    <a href="{% url 'feedback:index_page' %}" class="btn btn-dark btn-lg">
+                        Перейти к обратной связи
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="d-flex gap-2 justify-content-center align-items-center">
+        <a href="{% url 'blog:index_page' %}" class="btn btn-outline-secondary">Вернуться на главную</a>
+    </div>
+{% endblock %}

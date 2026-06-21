@@ -34,4 +34,4 @@ def feedback_success(request):
     del request.session['feedback_success']
 
     # Отображаем страницу разово для тех кто заполнил форму и отправил ее
-    return redirect('feedback:feedback_success')
+    return render(request, 'feedback/success.html')

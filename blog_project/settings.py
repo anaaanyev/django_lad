@@ -39,6 +39,7 @@ INSTALLED_APPS = [
 
     "debug_toolbar",
     "django_extensions",
+    "widget_tweaks",
     "tinymce",
 
     # ... базовые системные приложения Django (admin, auth, contenttypes) ...

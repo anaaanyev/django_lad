@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 
 {% block title %}Создание категории — {{ block.super }}{% endblock %}
 
@@ -24,16 +25,17 @@
                         </label>
 
                         <!-- Вывод самого поля (сгенерирует input с классами Bootstrap) -->
-                        {{ form.title }}
-
-                        <!-- Ошибки конкретного поля -->
-                        {% if form.title.errors %}
-                            <div class="invalid-feedback d-block">
-                                {% for error in form.title.errors %}
-                                    {{ error }}
-                                {% endfor %}
-                            </div>
-                        {% endif %}
+                        {% render_field form.title hx-post="/check_title_category/" hx-trigger="keyup changed delay:1s" hx-swap="outerhtml" hx-target="#category-title-error" %}
+                        <div id="category-title-error">
+                            <!-- Ошибки конкретного поля -->
+                            {% if form.title.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.title.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
                     </div>
 
                     <!-- Вывод глобальных ошибок формы, не привязанных к конкретным полям -->
@@ -49,7 +51,7 @@
 
                     <!-- Кнопки управления -->
                     <div class="d-flex gap-2 justify-content-between align-items-center">
-                        <a href="{% url 'blog:categories_list' %}" class="btn btn-outline-secondary">Отмена</a>
+                        <a href="{% url 'blog:index_page' %}" class="btn btn-outline-secondary">Вернуться на главную</a>
                         <button type="submit" class="btn btn-dark px-4">Опубликовать →</button>
                     </div>
                 </form>

@@ -7,8 +7,8 @@
         <div class="col-lg-8 col-md-10">
             <div class="bg-white p-5 rounded border shadow-sm">
                 <!-- Навигация назад -->
-                <a href="{% url 'blog:posts_list' %}" class="text-decoration-none text-muted small">&larr; Вернуться к
-                    списку статей</a>
+                <a href="{{ post.get_absolute_url }}" class="text-decoration-none text-muted small">&larr; Вернуться к
+                     статье</a>
 
                 <h1 class="display-6 fw-bold mt-3 mb-4">⚠️ Удаление статьи</h1>
 
