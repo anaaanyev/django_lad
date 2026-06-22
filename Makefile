@@ -1,6 +1,9 @@
 run:
 	uv run manage.py runserver
 
+startapp:
+	uv run manage.py startapp $(name)
+
 createsuperuser:
 	uv run manage.py createsuperuser
 

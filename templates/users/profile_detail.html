@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Профиль пользователя - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <!-- Заголовок страницы -->
+            <div class="text-center mb-5">
+                <h1 class="display-7 fw-bold text-dark">👤 Профиль пользователя</h1>
+                <p class="lead text-muted">Информация о пользователе: {{ profile.user.username }}</p>
+                <hr class="w-25 mx-auto">
+            </div>
+
+            <!-- Карточка профиля -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-5">
+                    <div class="row g-4">
+                        <!-- Аватар пользователя (заглушка) -->
+                        <div class="col-md-4 text-center">
+                            <div class="bg-light rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3"
+                                 style="width: 150px; height: 150px; border: 3px solid #dee2e6;">
+                                <span class="display-1 text-secondary">{{ profile.user.username|first|upper }}</span>
+                            </div>
+                            <h4 class="fw-bold mb-1">{{ profile.user.get_full_name|default:profile.user.username }}</h4>
+                            <p class="text-muted small">username: {{ profile.user.username }}</p>
+                            {% if profile.user == request.user %}
+                                <a href="{% url "users:profile_edit" %}" class="btn btn-outline-primary btn-sm mt-2">
+                                    ✏️ Редактировать профиль
+                                </a>
+                            {% endif %}
+                        </div>
+
+                        <!-- Информация о пользователе -->
+                        <div class="col-md-8">
+                            <h5 class="fw-bold mb-3">📋 Основная информация</h5>
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <div class="bg-light p-3 rounded">
+                                        <small class="text-muted d-block">Имя</small>
+                                        <span class="fw-semibold">{{ profile.user.first_name|default:"Не указано" }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="bg-light p-3 rounded">
+                                        <small class="text-muted d-block">Фамилия</small>
+                                        <span class="fw-semibold">{{ profile.user.last_name|default:"Не указано" }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="bg-light p-3 rounded">
+                                        <small class="text-muted d-block">Email</small>
+                                        <span class="fw-semibold">{{ profile.user.email|default:"Не указан" }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="bg-light p-3 rounded">
+                                        <small class="text-muted d-block">Дата регистрации</small>
+                                        <span class="fw-semibold">{{ profile.user.date_joined|date:"d.m.Y" }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="bg-light p-3 rounded">
+                                        <small class="text-muted d-block">Последний визит</small>
+                                        <span class="fw-semibold">{{ profile.user.last_login|date:"d.m.Y H:i"|default:"Никогда" }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="bg-light p-3 rounded">
+                                        <small class="text-muted d-block">Статус</small>
+                                        <span class="fw-semibold">
+                                            {% if profile.user.is_superuser %}
+                                                <span class="badge bg-danger">Администратор</span>
+                                            {% elif profile.user.is_staff %}
+                                                <span class="badge bg-warning text-dark">Модератор</span>
+                                            {% else %}
+                                                <span class="badge bg-info text-dark">Пользователь</span>
+                                            {% endif %}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Биография -->
+                            {% if profile.bio %}
+                                <div class="mt-4">
+                                    <h6 class="fw-bold mb-2">📝 О себе</h6>
+                                    <div class="bg-light p-3 rounded">
+                                        <p class="mb-0 text-secondary">{{ profile.bio|linebreaks }}</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            <!-- Ссылка на соцсеть -->
+                            {% if profile.social_link %}
+                                <div class="mt-4">
+                                    <h6 class="fw-bold mb-2">🔗 Социальная сеть</h6>
+                                    <div class="d-flex flex-wrap gap-2">
+                                        <a href="{{ profile.social_link }}" target="_blank"
+                                           class="btn btn-outline-primary btn-sm">
+                                            🌐 Перейти в соцсеть
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
