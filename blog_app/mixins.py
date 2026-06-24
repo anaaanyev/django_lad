@@ -1,6 +1,4 @@
 from django.core.exceptions import PermissionDenied
-from django.shortcuts import get_object_or_404
-from blog_app.models import Post
 
 
 class TitleMixin:
@@ -26,7 +24,15 @@ class StaffRequiredMixin:
 
 class AuthorRequiredMixin:
     def dispatch(self, request, *args, **kwargs):
-        post = get_object_or_404(Post, slug=self.kwargs['post_slug'])
+        post = self.get_object()
         if self.request.user.username != post.author.username:
             raise PermissionDenied("Доступно только автору статьи")
+        return super().dispatch(request, *args, **kwargs)
+
+
+class AuthorOrStaffRequiredMixin:
+    def dispatch(self, request, *args, **kwargs):
+        post = self.get_object()
+        if not request.user.is_authenticated or not request.user.is_staff or self.request.user.username != post.author.username:
+            raise PermissionDenied("Доступно только модератору и автору статьи")
         return super().dispatch(request, *args, **kwargs)

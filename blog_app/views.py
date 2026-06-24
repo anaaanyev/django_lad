@@ -7,7 +7,7 @@ from django.urls import reverse_lazy, reverse
 
 from blog_app.models import Post, Category
 from blog_app.forms import SearchForm, CategoryForm, PostForm
-from blog_app.mixins import TitleMixin, StaffRequiredMixin
+from blog_app.mixins import TitleMixin, StaffRequiredMixin, AuthorOrStaffRequiredMixin
 from mixins import AuthorRequiredMixin
 
 
@@ -155,7 +155,7 @@ class PostDetailView(TitleMixin, DetailView):
         return self.model.objects.select_related('category', 'author')
 
 
-class PostDeleteView(StaffRequiredMixin, DeleteView):
+class PostDeleteView(AuthorOrStaffRequiredMixin, DeleteView):
     """Удаление статьи с подтверждением."""
     model = Post
     template_name = "blog/post_confirm_delete.html"
