@@ -1,15 +1,14 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Count, Q
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import redirect, render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 from slugify import slugify
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 
 from blog_app.models import Post, Category
 from blog_app.forms import SearchForm, CategoryForm, PostForm
-from blog_app.mixins import TitleMixin
-from mixins import StaffRequiredMixin
+from blog_app.mixins import TitleMixin, StaffRequiredMixin, AuthorOrStaffRequiredMixin
+from mixins import AuthorRequiredMixin
 
 
 class PostFormBase:
@@ -22,9 +21,10 @@ class MainPageView(TitleMixin, TemplateView):
     title = "Главная страница"
     template_name = 'blog/index.html'
 
-    def get_context_data(self, *, object_list=..., **kwargs):
+    def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['posts'] = Post.objects.filter(published=True).select_related("category", "author")
+        context['categories'] = Category.objects.all()
         search_form = SearchForm(data=self.request.GET)
         posts = context['posts']
         if search_form.is_valid():
@@ -42,6 +42,125 @@ def query_posts_list(request):
     query = request.GET.get('query', '')
     posts = Post.objects.filter(title__icontains=query, published=True).select_related("category", "author")
     return render(request, 'blog/partials/posts_list_main_page.html', {'posts': posts})
+
+
+class CategoryCreateView(StaffRequiredMixin, CreateView):
+    model = Category
+    form_class = CategoryForm
+    template_name = "blog/category_create.html"
+    success_url = reverse_lazy("blog:categories_list")
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_superuser:
+            return redirect('blog:categories_list')
+        return super().dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        form.instance.slug = slugify(form.instance.title)
+        return super().form_valid(form)
+
+
+# HTMX
+# https://www.youtube.com/watch?v=Ula0c_rZ6gk&list=PL-2EBeDYMIbRByZ8GXhcnQSuv2dog4JxY
+def check_title_category(request):
+    title = request.POST.get('title')
+    slug = slugify(title)
+    if len(title) < 5:
+        return HttpResponse("<div class='invalid-feedback d-block'>Ошибка! Укажите больше 5 символов</div>")
+    elif Category.objects.filter(slug=slug).exists():
+        return HttpResponse("<div class='invalid-feedback d-block'>Такая категория уже существует</div>")
+    else:
+        return HttpResponse("<div class='invalid-feedback d-block success'>Доступно для создания</div>")
+
+
+class CategoriesListView(ListView):
+    model = Category
+    template_name = 'blog/categories_list.html'
+    context_object_name = 'categories'
+
+    def get_queryset(self):
+        return self.model.objects.annotate(count_posts=Count(
+            'posts', filter=Q(posts__published=True))
+        )
+
+
+class CategoryDetailView(DetailView):
+    model = Category
+    template_name = 'blog/category_detail.html'
+    pk_url_kwarg = 'category_id'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['posts'] = Post.objects.filter(category=context['category'], published=True).select_related('author')
+        return context
+
+
+class PostCreateView(StaffRequiredMixin, TitleMixin, PostFormBase, CreateView):
+    """Создание новой статьи."""
+    template_name = "blog/posts_create.html"
+    title = "Создание статьи"
+
+    def form_valid(self, form):
+        """
+        Переопределяем form_valid() для автоматической генерации slug.
+        form.instance — это объект модели Post, который форма создала
+        в памяти, но ещё НЕ сохранила в базу данных.
+        Мы можем дополнить его нужными полями перед сохранением.
+        """
+        # Генерируем slug из заголовка статьи
+        form.instance.slug = slugify(form.instance.title)
+        # Заполняем поле author именем авторизованного пользователя
+        form.instance.author = self.request.user
+        # Вызываем родительский form_valid(), который сделает form.save() + redirect
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        """Перенаправляем на страницу созданной статьи."""
+        return reverse('blog:post_detail', kwargs={'post_slug': self.object.slug})
+
+
+class PostUpdateView(AuthorRequiredMixin, PostFormBase, UpdateView):
+    """Редактирование существующей статьи."""
+    template_name = 'blog/post_edit.html'
+    slug_url_kwarg = 'post_slug'
+
+
+class PostListView(TitleMixin, ListView):
+    """Страница статей — список опубликованных статей."""
+    model = Post  # Модель
+    template_name = "blog/posts_list.html"  # Шаблон
+    context_object_name = "posts"  # Имя переменной (по умолчанию: object_list - для предка ListView)
+    paginate_by = 5  # Показываем 5 статей на странице
+    title = "Все статьи"
+
+    def get_queryset(self):
+        """Возвращаем только опубликованные посты"""
+        # по умолчанию: model.objects.all()
+        return self.model.objects.filter(published=True).select_related("category", "author")
+
+
+class PostDetailView(TitleMixin, DetailView):
+    """Страница отдельной статьи."""
+    model = Post
+    template_name = "blog/post_detail.html"
+    slug_url_kwarg = "post_slug"  # Говорим Django: "slug в URL называется post_slug"
+    title = "Просмотр статьи"
+
+    def get_object(self, queryset=None):
+        post = super().get_object(queryset=queryset)
+        post.increase_views_count()
+        return post
+
+    def get_queryset(self, *args, **kwargs):
+        return self.model.objects.select_related('category', 'author')
+
+
+class PostDeleteView(AuthorOrStaffRequiredMixin, DeleteView):
+    """Удаление статьи с подтверждением."""
+    model = Post
+    template_name = "blog/post_confirm_delete.html"
+    slug_url_kwarg = "post_slug"
+    success_url = reverse_lazy('blog:index_page')  # Куда перенаправить после успеха
 
 
 # def index(request):
@@ -65,34 +184,6 @@ def query_posts_list(request):
 #     return render(request, "blog/index.html", context)
 
 
-class CategoryCreateView(LoginRequiredMixin, CreateView):
-    model = Category
-    form_class = CategoryForm
-    template_name = "blog/category_create.html"
-    success_url = reverse_lazy("blog:categories_list")
-
-    def dispatch(self, request, *args, **kwargs):
-        if not request.user.is_superuser:
-            return redirect('blog:categories_list')
-        return super().dispatch(request, *args, **kwargs)
-
-    def form_valid(self, form):
-        form.instance.slug = slugify(form.instance.title)
-        return super().form_valid(form)
-
-
-# https://www.youtube.com/watch?v=Ula0c_rZ6gk&list=PL-2EBeDYMIbRByZ8GXhcnQSuv2dog4JxY
-def check_title_category(request):
-    title = request.POST.get('title')
-    slug = slugify(title)
-    if len(title) < 5:
-        return HttpResponse("<div class='invalid-feedback d-block'>Ошибка! Укажите больше 5 символов</div>")
-    elif Category.objects.filter(slug=slug).exists():
-        return HttpResponse("<div class='invalid-feedback d-block'>Такая категория уже существует</div>")
-    else:
-        return HttpResponse("<div class='invalid-feedback d-block success'>Доступно для создания</div>")
-
-
 # def category_create(request):
 #     if not request.user.is_superuser:
 #         return redirect('blog:categories_list')
@@ -109,17 +200,6 @@ def check_title_category(request):
 #     return render(request, 'blog/category_create.html', context={'form': form})
 
 
-class CategoriesListView(ListView):
-    model = Category
-    template_name = 'blog/categories_list.html'
-    context_object_name = 'categories'
-
-    def get_queryset(self):
-        return self.model.objects.annotate(count_posts=Count(
-            'posts', filter=Q(posts__published=True))
-        )
-
-
 # def categories_list(request):
 #     # Получаем из БД только те категории в которых есть опубликованные статьи
 #     # https://www.youtube.com/watch?v=eSlIF3FDs5s&list=PLA0M1Bcd0w8yU5h2vwZ4LO7h1xt8COUXl&index=34
@@ -132,17 +212,6 @@ class CategoriesListView(ListView):
 #     return render(request, 'blog/categories_list.html', context)
 
 
-class CategoryDetailView(DetailView):
-    model = Category
-    template_name = 'blog/category_detail.html'
-    pk_url_kwarg = 'category_id'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['posts'] = Post.objects.filter(category=context['category'], published=True).select_related('author')
-        return context
-
-
 # def category_detail(request, category_id):
 #     # Безопасно находим категорию
 #     category = get_object_or_404(Category, id=category_id)
@@ -153,24 +222,6 @@ class CategoryDetailView(DetailView):
 #         'posts': posts
 #     }
 #     return render(request, 'blog/category_detail.html', context)
-
-
-class PostCreateView(StaffRequiredMixin, PostFormBase, CreateView):
-    """Создание новой статьи."""
-    template_name = "blog/posts_create.html"
-
-    def form_valid(self, form):
-        """
-        Переопределяем form_valid() для автоматической генерации slug.
-        form.instance — это объект модели Post, который форма создала
-        в памяти, но ещё НЕ сохранила в базу данных.
-        Мы можем дополнить его нужными полями перед сохранением.
-        """
-        # Генерируем slug из заголовка статьи
-        form.instance.slug = slugify(form.instance.title)
-        form.instance.author = self.request.user
-        # Вызываем родительский form_valid(), который сделает form.save() + redirect
-        return super().form_valid(form)
 
 
 # @login_required
@@ -195,17 +246,6 @@ class PostCreateView(StaffRequiredMixin, PostFormBase, CreateView):
 #     # Рендерим шаблон, передавая в него объект формы
 #     return render(request, "blog/posts_create.html", context={'form': form})
 
-class PostUpdateView(LoginRequiredMixin, PostFormBase, UpdateView):
-    """Редактирование существующей статьи."""
-    template_name = 'blog/post_edit.html'
-    slug_url_kwarg = 'post_slug'
-
-    def dispatch(self, request, *args, **kwargs):
-        post = get_object_or_404(Post, slug=self.kwargs[self.slug_url_kwarg])
-        if request.user != post.author:
-            return redirect('blog:post_detail', post_slug=post.slug)
-        return super().dispatch(request, *args, **kwargs)
-
 
 # def post_edit(request, post_slug):
 #     post = get_object_or_404(Post, slug=post_slug)
@@ -221,45 +261,12 @@ class PostUpdateView(LoginRequiredMixin, PostFormBase, UpdateView):
 #     return render(request, 'blog/post_edit.html', context={'post': post, 'form': form})
 
 
-class PostListView(TitleMixin, ListView):
-    """Страница статей — список опубликованных статей."""
-    model = Post  # Модель
-    template_name = "blog/posts_list.html"  # Шаблон
-    context_object_name = "posts"  # Имя переменной (по умолчанию: object_list - для предка ListView)
-    paginate_by = 5  # Показываем 5 статей на странице
-    title = "Список статей"
-
-    def get_queryset(self):
-        """Возвращаем только опубликованные посты"""
-        # по умолчанию: model.objects.all()
-        return self.model.objects.filter(published=True).select_related("category", "author")
-
-
 # def posts_list(request):
 #     posts = Post.objects.filter(published=True).select_related("category", "author")
 #     context = {
 #         "posts": posts
 #     }
 #     return render(request, "blog/posts_list.html", context)
-
-
-class PostDetailView(DetailView):
-    """Страница отдельной статьи."""
-    model = Post
-    template_name = "blog/post_detail.html"
-    slug_url_kwarg = "post_slug"  # Говорим Django: "slug в URL называется post_slug"
-
-    # context_object_name по умолчанию = 'post' (имя модели в нижнем регистре)
-
-    # https://proproprogs.ru/django4/django4-klass-detailview
-    def get_object(self, queryset=None):
-        # post = get_object_or_404(Post, slug=self.kwargs[self.slug_url_kwarg])
-        post = super().get_object(queryset=queryset)
-        post.increase_views_count()
-        return post
-
-    def get_queryset(self, *args, **kwargs):
-        return self.model.objects.select_related('category', 'author')
 
 
 # def post_detail(request, post_slug):
@@ -270,18 +277,3 @@ class PostDetailView(DetailView):
 #         "post": post,
 #     }
 #     return render(request, "blog/post_detail.html", context)
-
-class PostDeleteView(LoginRequiredMixin, DeleteView):
-    """Удаление статьи с подтверждением."""
-    model = Post
-    template_name = "blog/post_confirm_delete.html"
-    slug_url_kwarg = "post_slug"
-    success_url = reverse_lazy('blog:index_page')  # Куда перенаправить после успеха
-
-    # context_object_name по умолчанию = 'post' (имя модели в нижнем регистре)
-
-    def dispatch(self, request, *args, **kwargs):
-        post = get_object_or_404(Post, slug=self.kwargs[self.slug_url_kwarg])
-        if request.user != post.author:
-            return redirect('blog:post_detail', post_slug=post.slug)
-        return super().dispatch(request, *args, **kwargs)

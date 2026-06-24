@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Страница не найдена (404){% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body text-center p-5">
+                    <!-- Иконка ошибки -->
+                    <div class="display-1 text-warning mb-4">
+                        <i class="bi bi-compass"></i> 404
+                    </div>
+
+                    <h1 class="h3 mb-3 fw-bold">Страница не найдена</h1>
+
+                    <p class="text-muted mb-4">
+                        К сожалению, страница, которую вы ищете, не существует
+                        или была перемещена. Проверьте правильность адреса или
+                        вернитесь на главную.
+                    </p>
+
+                    <!-- Кнопка возврата на главную -->
+                    <a href="{% url 'blog:index_page' %}" class="btn btn-dark btn-lg px-4">
+                        <i class="bi bi-house"></i> На главную
+                    </a>
+                </div>
+            </div>
+
+            <!-- Дополнительная информация -->
+            <div class="text-center mt-3">
+                <small class="text-muted">
+                    Код ошибки: 404 Not Found
+                </small>
+            </div>
+        </div>
+    </div>
+{% endblock %}
