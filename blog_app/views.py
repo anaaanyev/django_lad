@@ -7,8 +7,7 @@ from django.urls import reverse_lazy, reverse
 
 from blog_app.models import Post, Category
 from blog_app.forms import SearchForm, CategoryForm, PostForm
-from blog_app.mixins import TitleMixin, StaffRequiredMixin, AuthorOrStaffRequiredMixin
-from mixins import AuthorRequiredMixin
+from blog_app.mixins import TitleMixin, StaffRequiredMixin, AuthorOrStaffRequiredMixin, AuthorRequiredMixin
 
 
 class PostFormBase:
