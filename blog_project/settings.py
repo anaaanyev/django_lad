@@ -155,5 +155,6 @@ TINYMCE_DEFAULT_CONFIG = {
     "removeformat | help",
 }
 
-LOGIN_URL = '/admin/'
+LOGIN_URL = 'users:login'
+LOGIN_REDIRECT_URL = 'blog:index_page'
 LOGOUT_REDIRECT_URL = 'blog:index_page'
