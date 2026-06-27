@@ -42,8 +42,32 @@
                             <a class="nav-link" href="{% url 'blog:posts_create' %}">Создать статью</a>
                         </li>
                     {% endif %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'blog:categories_list' %}">Категории</a>
+
+                    <!-- Выпадающий список категорий -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Категории
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="categoriesDropdown">
+                            {% for category in nav_categories %}
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'blog:category_detail' category.id %}">
+                                        {{ category.title }}
+                                    </a>
+                                </li>
+                            {% empty %}
+                                <li><span class="dropdown-item text-muted">Нет категорий</span></li>
+                            {% endfor %}
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'blog:categories_list' %}">
+                                    Все категории
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'feedback:index_page' %}">Обратная связь</a>

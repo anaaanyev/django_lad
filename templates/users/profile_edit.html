@@ -15,7 +15,7 @@
 
                     <h1 class="display-6 fw-bold mt-3 mb-4">✍️ Редактирование профиля</h1>
 
-                    <form method="post" novalidate>
+                    <form method="post" novalidate enctype="multipart/form-data">
                         <!-- Генерирует скрытый input со случайным уникальным ключом безопасности -->
                         {% csrf_token %}
                         <!-- Перебираем все поля -->
