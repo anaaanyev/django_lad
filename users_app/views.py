@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, UpdateView, CreateView
-from django.contrib.auth.forms import UserCreationForm
+from users_app.forms import CustomUserCreationForm
 
 from users_app.forms import ProfileForm
 from users_app.models import Profile
@@ -21,6 +21,6 @@ class ProfileUpdateView(LoginRequiredMixin, ProfileGetOrCreateMixin, UpdateView)
 
 
 class RegisterView(CreateView):
-    form_class = UserCreationForm
+    form_class = CustomUserCreationForm
     template_name = "users/register.html"
     success_url = reverse_lazy("blog:index_page")

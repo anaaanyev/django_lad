@@ -6,7 +6,7 @@
 
 {% block content %}
     <div class="row justify-content-center">
-        <div class="col-lg-6 col-md-8 col-sm-10">
+        <div class="col-lg-4 col-md-8 col-sm-10">
             <div class="card border-0 shadow-sm">
                 <div class="card-header bg-dark text-white text-center py-3">
                     <h2 class="h4 mb-0">Вход</h2>
@@ -45,11 +45,17 @@
                     </form>
                 </div>
                 <div class="card-footer bg-white border-0 text-center py-3">
-                    <p class="mb-0 text-muted">
+                    <p class="mb-1">
+                        <i class="bi bi-person-plus me-1"></i>
                         Нет аккаунта?
-                        <a href="{% url 'users:register' %}" class="text-dark">
-                            Зарегистрируйтесь
-                        </a>
+                        <a href="{% url 'users:register' %}"
+                           class="text-decoration-none fw-semibold">Зарегистрируйтесь</a>
+                    </p>
+                    <p class="mb-0">
+                        <i class="bi bi-key me-1"></i>
+                        Забыли пароль?
+                        <a href="{% url 'users:password_reset' %}" class="text-decoration-none fw-semibold">Восстановите
+                            доступ</a>
                     </p>
                 </div>
             </div>
