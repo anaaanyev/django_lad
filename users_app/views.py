@@ -20,6 +20,10 @@ class ProfileUpdateView(LoginRequiredMixin, ProfileGetOrCreateMixin, UpdateView)
     success_url = reverse_lazy("users:profile")
 
 
+# В функциональных представлениях (FBV) при обработке формы с файлами нужно обязательно передавать request.FILES:
+# form = ProfileForm(request.POST, request.FILES, instance=profile)
+
+
 class RegisterView(CreateView):
     form_class = CustomUserCreationForm
     template_name = "users/register.html"

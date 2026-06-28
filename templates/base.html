@@ -43,7 +43,7 @@
                         </li>
                     {% endif %}
 
-                    <!-- Выпадающий список категорий -->
+                    <!-- Выпадающий список категорий из контекстного процессора -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">
@@ -75,27 +75,46 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'blog:about' %}">О проекте</a>
                     </li>
-                    <!-- Временный вариант. Поправлю после того как создадим приложение users_app -->
+                </ul>
+                <!-- Блок аутентификации -->
+                <div class="d-flex align-items-center gap-2">
                     {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url "users:profile" %}">Мой профиль</a>
-                        </li>
-                        <form action="{% url 'users:logout' %}" method="post">
+                        <span class="text-light me-2">
+                            Привет, <strong>{{ user.username }}</strong>!
+                        </span>
+
+                        {% if user.profile.avatar %}
+                            <img src="{{ user.profile.avatar.url }}" alt="Аватар"
+                                 class="rounded-circle"
+                                 width="32" height="32"
+                                 style="object-fit: cover;">
+                        {% else %}
+                            <div class="bg-light rounded-circle d-flex align-items-center justify-content-center"
+                                 style="width: 32px; height: 32px; border: 1px solid #dee2e6; font-size: 14px; font-weight: bold; color: #6c757d; flex-shrink: 0;">
+                                {{ user.username|first|upper }}
+                            </div>
+                        {% endif %}
+
+                        <a href="{% url 'users:profile' %}" class="btn btn-outline-light btn-sm">
+                            Мой профиль
+                        </a>
+
+                        <form action="{% url 'users:logout' %}" method="post" class="d-inline m-0 p-0">
                             {% csrf_token %}
-                            <button type="submit" class="nav-link">Выйти</button>
+                            <button type="submit" class="btn btn-outline-danger btn-sm">
+                                Выйти
+                            </button>
                         </form>
                     {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'users:login' %}">Войти</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link">|</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'users:register' %}">Регистрация</a>
-                        </li>
+                        <a href="{% url 'users:login' %}" class="btn btn-outline-light btn-sm">
+                            Войти
+                        </a>
+                        <a href="{% url 'users:register' %}" class="btn btn-primary btn-sm">
+                            Регистрация
+                        </a>
                     {% endif %}
-                </ul>
+                </div>
+
             </div>
         </div>
     </nav>
@@ -105,9 +124,25 @@
 </main>
 
 <footer class="bg-dark text-light py-4 mt-auto">
-    <div class="container text-center">
-        <p class="mb-1">&copy; 2026 Учебный Django-проект.</p>
-        <small class="text-muted">Сделано с любовью на курсе по Django</small>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <p class="mb-1">&copy; 2026 Учебный Django-проект.</p>
+                <small class="text-ligh">Сделано с любовью на курсе по Django</small>
+                <div class="d-flex justify-content-center gap-4 mt-2">
+                    <small>
+                        <span class="badge bg-primary bg-opacity-25 text-light px-3 py-2">
+                            📄 {{ total_posts }} статей
+                        </span>
+                    </small>
+                    <small>
+                        <span class="badge bg-success bg-opacity-25 text-light px-3 py-2">
+                            👥 {{ total_users }} пользователей
+                        </span>
+                    </small>
+                </div>
+            </div>
+        </div>
     </div>
 </footer>
 

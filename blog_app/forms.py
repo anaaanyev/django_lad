@@ -11,13 +11,14 @@ class PostForm(forms.ModelForm):
         # Связываем форму с моделью
         model = Post
         # Перечисляем поля, которые пользователь заполняет на сайте
-        fields = ['title', 'category', 'content']
+        fields = ['title', 'category', 'content', 'image']
 
         # Переопределяем виджеты для добавления стилей Bootstrap
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'category': forms.Select(attrs={'class': 'form-select'}),
             'content': forms.Textarea(attrs={'class': 'form-control'}),
+            'image': forms.ClearableFileInput(attrs={'class': 'form-control'}),
             # 'content': TinyMCE(attrs={'class': 'form-control'}),
         }
         # Перевод подписей полей (labels)
@@ -25,6 +26,7 @@ class PostForm(forms.ModelForm):
             'title': 'Заголовок статьи',
             'category': 'Категория',
             'content': 'Содержание статьи',
+            'image': 'Обложка статьи',
         }
         # Текст подсказка для полей
         help_texts = {

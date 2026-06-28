@@ -13,6 +13,7 @@ class ProfileForm(forms.ModelForm):
         widgets = {
             "bio": forms.Textarea(attrs={'class': 'form-control'}),
             "social_link": forms.URLInput(attrs={'class': 'form-control'}),
+            # ClearableFileInput добавляет кнопку выбора файла и галочку удаления текущего файла
             "avatar": forms.ClearableFileInput(attrs={'class': 'form-control'})
         }
 
