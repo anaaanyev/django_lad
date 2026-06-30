@@ -18,6 +18,16 @@
                     <form method="post" novalidate enctype="multipart/form-data">
                         <!-- Генерирует скрытый input со случайным уникальным ключом безопасности -->
                         {% csrf_token %}
+
+                        {# Вывод текущей аватарки (если она есть) перед формой #}
+                        {% if form.instance.avatar %}
+                            <div class="text-center mb-4">
+                                <img src="{{ form.instance.avatar.url }}" alt="Текущий аватар"
+                                     class="rounded-circle shadow" width="120" height="120" style="object-fit: cover;">
+                                <div class="form-text mt-1 text-muted">Текущее изображение профиля</div>
+                            </div>
+                        {% endif %}
+
                         <!-- Перебираем все поля -->
                         {% for field in form %}
                             <div class="mb-4">

@@ -1,5 +1,5 @@
 # from tinymce import models as tinymce_models
-
+from PIL import Image
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
@@ -52,6 +52,13 @@ class Post(models.Model):
         verbose_name="Категория"
     )
 
+    image = models.ImageField(
+        upload_to="posts/",
+        blank=True,
+        null=True,
+        verbose_name="Обложка"
+    )
+
     class Meta:
         ordering = ("-created_at", )
         verbose_name = "Статью"
@@ -69,3 +76,12 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if self.image:
+            image = Image.open(self.image.path)
+            if image.width > 1200 or image.height > 1200:
+                output_size = (1200, 1200)
+                image.thumbnail(output_size)
+                image.save(self.image.path)

@@ -17,9 +17,9 @@
                         </div>
                         <!-- related_name="posts" позволяет узнать количество привязанных постов -->
                         <span class="badge bg-primary rounded-pill">
-                                <!-- count_posts - получили доп. поле в модели Category за счет annotate -->
-                                {{ category.count_posts }}
-                            </span>
+                            <!-- count_posts - получили доп. поле в модели Category за счет annotate -->
+                            {{ category.count_posts }}
+                        </span>
                     </a>
                 {% empty %}
                     <div class="alert alert-info mb-0">Категории ещё не созданы.</div>

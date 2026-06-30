@@ -20,7 +20,18 @@
                     <div class="row g-4">
                         <!-- Аватар пользователя (заглушка) -->
                         <div class="col-md-4 text-center">
-                            <img src="{{ profile.avatar.url }}" alt="Аватар {{ profile.user.username }}">
+                            <div class="text-center mb-4">
+                                {% if profile.avatar %}
+                                    <img src="{{ profile.avatar.url }}" alt="Текущий аватар"
+                                         class="rounded-circle shadow" width="150" height="150" style="object-fit: cover;">
+                                {% else %}
+                                <!-- Заглушка, если аватар не загружен (кружок с первой буквой имени) -->
+                                    <div class="bg-light rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3"
+                                         style="width: 150px; height: 150px; border: 3px solid #dee2e6;">
+                                        <span class="display-1 text-secondary">{{ profile.user.username|first|upper }}</span>
+                                    </div>
+                                {% endif %}
+                            </div>
                             <h4 class="fw-bold mb-1">{{ profile.user.get_full_name|default:profile.user.username }}</h4>
                             <p class="text-muted small">username: {{ profile.user.username }}</p>
                             {% if profile.user == request.user %}

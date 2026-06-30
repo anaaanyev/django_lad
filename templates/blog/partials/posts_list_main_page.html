@@ -24,6 +24,16 @@
                     Автор: {{ post.author.last_name }} {{ post.author.first_name }}
                 </div>
 
+                <!-- Изображение (если есть) -->
+                {% if post.image %}
+                    <div class="mb-3">
+                        <img src="{{ post.image.url }}"
+                             alt="{{ post.title }}"
+                             class="img-fluid rounded w-100"
+                             style="max-height: 400px; object-fit: cover;">
+                    </div>
+                {% endif %}
+
                 <!-- Обрезка анонса статьи -->
                 <p class="card-text text-secondary fs-5">
                     {{ post.content|truncatewords:25 }}

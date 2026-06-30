@@ -28,5 +28,6 @@ urlpatterns = [
     path("", include("blog_app.urls", namespace="blog")),
 ] + debug_toolbar_urls()
 
+# Раздача медиафайлов сервером разработки ТОЛЬКО при DEBUG = True
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

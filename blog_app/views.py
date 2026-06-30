@@ -23,7 +23,6 @@ class MainPageView(TitleMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['posts'] = Post.objects.filter(published=True).select_related("category", "author")
-        context['categories'] = Category.objects.all()
         search_form = SearchForm(data=self.request.GET)
         posts = context['posts']
         if search_form.is_valid():
@@ -80,7 +79,7 @@ class CategoriesListView(ListView):
     def get_queryset(self):
         return self.model.objects.annotate(count_posts=Count(
             'posts', filter=Q(posts__published=True))
-        )
+        ).filter(count_posts__gt=0)
 
 
 class CategoryDetailView(DetailView):
