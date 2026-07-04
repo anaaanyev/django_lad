@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Count, Q
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
@@ -93,7 +94,7 @@ class CategoryDetailView(DetailView):
         return context
 
 
-class PostCreateView(StaffRequiredMixin, TitleMixin, PostFormBase, CreateView):
+class PostCreateView(LoginRequiredMixin, TitleMixin, PostFormBase, CreateView):
     """Создание новой статьи."""
     template_name = "blog/posts_create.html"
     title = "Создание статьи"

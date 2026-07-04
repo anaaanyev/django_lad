@@ -33,3 +33,6 @@ update_post:
 
 shell_plus:
 	uv run manage.py shell_plus --print-sql
+
+test_all:
+	uv run manage.py test
