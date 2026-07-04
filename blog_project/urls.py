@@ -26,6 +26,7 @@ urlpatterns = [
     path("feedback/", include("feedback_app.urls", namespace="feedback")),
     path('tinymce/', include('tinymce.urls')),
     path("", include("blog_app.urls", namespace="blog")),
+    path("api/v1/", include("drf_app.urls"), name="drf"),
 ] + debug_toolbar_urls()
 
 # Раздача медиафайлов сервером разработки ТОЛЬКО при DEBUG = True
