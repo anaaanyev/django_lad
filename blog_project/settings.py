@@ -42,10 +42,12 @@ INSTALLED_APPS = [
     "django_extensions",
     "widget_tweaks",
     "tinymce",
+    "rest_framework",
 
     'blog_app',
     'feedback_app',
     "users_app",
+    "drf_app",
 ]
 
 MIDDLEWARE = [
