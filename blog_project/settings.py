@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     "widget_tweaks",
     "tinymce",
     "rest_framework",
+    "rest_framework_simplejwt",
+    "django_filters",   # Бэкенд фильтрации для DRF
 
     'blog_app',
     'feedback_app',
@@ -164,3 +166,11 @@ LOGIN_REDIRECT_URL = 'blog:index_page'
 LOGOUT_REDIRECT_URL = 'blog:index_page'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Настройки Django REST Framework
+REST_FRAMEWORK = {
+    # Указываем DRF использовать JWT как метод аутентификации по умолчанию
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}

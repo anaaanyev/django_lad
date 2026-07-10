@@ -19,6 +19,7 @@ from django.urls import path, include
 from debug_toolbar.toolbar import debug_toolbar_urls
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -26,6 +27,10 @@ urlpatterns = [
     path("feedback/", include("feedback_app.urls", namespace="feedback")),
     path('tinymce/', include('tinymce.urls')),
     path("", include("blog_app.urls", namespace="blog")),
+    # JWT-аутентификация: получение и обновление токенов
+    path("api/v1/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("api/v1/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    # API приложения
     path("api/v1/", include("drf_app.urls"), name="drf"),
 ] + debug_toolbar_urls()
 
