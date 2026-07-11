@@ -9,6 +9,7 @@ dependencies = [
     "django-debug-toolbar>=6.3.0",
     "django-extensions>=4.1",
     "django-filter>=25.2",
+    "django-ninja>=1.6.2",
     "django-tinymce>=5.0.0",
     "django-widget-tweaks>=1.5.1",
     "djangorestframework>=3.17.1",
