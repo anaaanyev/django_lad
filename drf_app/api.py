@@ -1,10 +1,11 @@
-from rest_framework import generics, permissions, viewsets
+from rest_framework import permissions, viewsets
 from slugify import slugify
 
 from blog_app.models import Post, Category
 from drf_app.serializers import PostSerializer, CategorySerializer
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
+from drf_app.permissions import IsAuthorOrReadOnly
 
 
 class PostViewSet(viewsets.ModelViewSet):
@@ -15,7 +16,7 @@ class PostViewSet(viewsets.ModelViewSet):
     """
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]
 
     # --- Фильтрация, поиск и сортировка ---
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
@@ -46,11 +47,11 @@ class PostViewSet(viewsets.ModelViewSet):
         )
 
 
-class CategoryListCreateAPIView(generics.ListCreateAPIView):
+class CategoriesViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
-
-class CategoryRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
+    def get_permissions(self):
+        if self.action in ['list', 'retrieve']:
+            return [permissions.AllowAny()]
+        return [permissions.IsAdminUser()]
