@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'feedback_app',
     "users_app",
     "drf_app",
+    "ninja_app",
 ]
 
 MIDDLEWARE = [
