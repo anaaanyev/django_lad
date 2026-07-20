@@ -4,7 +4,11 @@ from ninja.errors import HttpError
 from slugify import slugify
 
 from blog_app.models import Post, Category
-from ninja_app.schemas import PostOutSchema, PostInSchema, CategoryOutSchema, CategoryInSchema
+from feedback_app.models import Feedback
+from ninja_app.schemas import (
+    PostOutSchema, PostInSchema, CategoryOutSchema, CategoryInSchema, FeedbackOutSchema,
+    FeedbackInSchema
+)
 
 router = Router()
 
@@ -97,3 +101,9 @@ async def delete_category(request, category_id: int):
         return 204, category
     except Category.DoesNotExist:
         raise HttpError(status_code=404, message="Категория не найдена")
+
+
+@router.post(path="/feedback", response={201: FeedbackOutSchema})
+async def create_feedback(request, payload: FeedbackInSchema):
+    new_feedback = await Feedback.objects.acreate(**payload.dict())
+    return 201, new_feedback
