@@ -1,0 +1,2913 @@
+[
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$m4zCO8P55mCG0fjDIYxwOm$hVRhyQb6c6sT7kfFvrTsbOfwwfTuay2j1SlXyoVLt/8=",
+        "last_login": "2026-07-12T07:42:17.552Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "Сергей",
+        "last_name": "Ананьев",
+        "email": "anaaanyev@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-05-30T11:37:27Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$joyYMJoFE1ZghxIxQNJfEq$q+XK0Hv1U8Zpn/EQOgvJRaq84PKKhLgqnqZ4a2J8Lng=",
+        "last_login": "2026-07-10T15:32:45.988Z",
+        "is_superuser": false,
+        "username": "user1",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-06-24T05:38:22Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$wzze7TjZ0ZGrY9ABYIrj4h$HTNyw0y6aQRlFjuwDvKbI9sM4UEBSGxkBILfyh4nXp0=",
+        "last_login": "2026-07-02T14:45:55.193Z",
+        "is_superuser": false,
+        "username": "user_1",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-24T16:57:48.682Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$l9WFjcvNgQmwfljXym9Yp8$EOtuF4PHNwsvWGRBW2CiAaTt1nBucjrc0Pz6EDJ/b/I=",
+        "last_login": "2026-06-25T07:16:20.501Z",
+        "is_superuser": false,
+        "username": "user_2",
+        "first_name": "",
+        "last_name": "",
+        "email": "user_2@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-25T07:15:54.755Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$5oHBq6wCRJmnBMDb6eugjs$oekra63TwNmvpCUesJffKiNFmiiluizQIZ2WPsa6+2k=",
+        "last_login": "2026-06-25T07:28:56.092Z",
+        "is_superuser": false,
+        "username": "mike",
+        "first_name": "Майкл",
+        "last_name": "Белов",
+        "email": "mike@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-25T07:22:42.125Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$QQ5LsF5VomTRhi3K8gGbam$KDLJ8+8pkbZu1NBYPz0r0/wR/xhzkX3wnzKChsRsEHA=",
+        "last_login": "2026-06-28T07:23:02.584Z",
+        "is_superuser": false,
+        "username": "user111",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-27T08:39:16.548Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "1qtcyhusbaff96y99me9xobb484vo598",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hAZKKBL9z0DGWZGqRpISrsy3l2bdKHb_977L5VwXUpau8xpYnVWRh1-t4z0kLoBvmO9NU2tLvOU9abonXY9NpbnZXf_Dgr28q1BTLQhDmizOAshu2iAgMkCcBASBDb56iizJy9MfnAhGOvQHuOJvHp_AOIvN_Y:1wZ3ak:tMJt4BZEypiNrTW6t22ggImp2y-tZGutdmgITxFznYo",
+        "expire_date": "2026-06-29T09:26:50.125Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "28q3pm491xh82gmow99bi2ia8c4o31ad",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hAZKKBL9z0DGWZGqRpISrsy3l2bdKHb_977L5VwXUpau8xpYnVWRh1-t4z0kLoBvmO9NU2tLvOU9abonXY9NpbnZXf_Dgr28q1BTLQhDmizOAshu2iAgMkCcBASBDb56iizJy9MfnAhGOvQHuOJvHp_AOIvN_Y:1waBTj:eyL4xbB3xm_JsR_kDkHSWNBpF0lq3RGZGxMhAxK_PzM",
+        "expire_date": "2026-07-02T12:04:15.763Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "4ona0skpafwgg5m0p6pgq3wohcgfbylc",
+    "fields": {
+        "session_data": ".eJxVjEEOgjAQRe_StWkYSkfq0j1nIDPTqaCmTSisjHdXEha6_e-9_zIjbes0blWXcY7mYrw5_W5M8tC8g3infCtWSl6Xme2u2INWO5Soz-vh_h1MVKdv3RH0xK6jBEFQUT15TsCaPIUEoo2T2AKjCw2BSE_hTJiwdQ1gj868PwxaOFQ:1wcRb4:41EZFTTL8uiSOGbBcjwqKubmknSLyhhyXxxGHxmw480",
+        "expire_date": "2026-07-08T17:41:10.081Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "6009kcth2k3yyfd0ozija1od838ob4cz",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSE8Ziy4dN9vIAMMUjU0Ke3K-O_apAvd3nPOfYlA21rD1nkJUxYXAeL0u0VKD247yHdqt1mmua3LFOWuyIN2Oc6Zn9fD_Tuo1Ou3VuBwGMBSZOsRCjI6H8-xgCsuGwtZkyvGFUyQkTQZa9DqpEzS7EmJ9wfQbjd0:1wcHs8:hNc_NuLXCR4EKidDuVVgl3LMThPEDrrce7QoxN9zTBo",
+        "expire_date": "2026-07-08T07:18:08.776Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "745gao910q2w22b37s44hdyc99kztvs1",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hAZKKBL9z0DGWZGqRpISrsy3l2bdKHb_977L5VwXUpau8xpYnVWRh1-t4z0kLoBvmO9NU2tLvOU9abonXY9NpbnZXf_Dgr28q1BTLQhDmizOAshu2iAgMkCcBASBDb56iizJy9MfnAhGOvQHuOJvHp_AOIvN_Y:1wbheE:YrpEVfLfqjVZ0UM5B15Hw8xIxTqrU3trcEUztZZtalU",
+        "expire_date": "2026-07-06T16:37:22.915Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "89fkqxfa7zsvrkc9vevf0jrmpoxd1a8b",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2pCGwAy4dO8ZyDADUjWQlHZlvLs26UK3_733XyrStta4jbzEWdRZOXX63RLxI7cdyJ3arWvubV3mpHdFH3Toa5f8vBzu30GlUb81CAtbI0jgIBCy8cI5kS1eQsnOJyuIScAUDOgQLZcJkgUrxk_GqfcHESk4Wg:1wdkiT:Xg1YgIixP5xuKjhT5mNjS1y36wwqLz6qNNPUZzM_lII",
+        "expire_date": "2026-07-12T08:18:13.778Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "b4cabxho29icrmb66zjf9pkh0uu04lb0",
+    "fields": {
+        "session_data": ".eJxVjDsOwjAQBe_iGln-ZE1MSZ8zWN71Lg6gRIqTCnF3iJQC2jcz76VS3taatsZLGou6KKtOvxtmevC0g3LP023WNE_rMqLeFX3Qpoe58PN6uH8HNbf6rUE8EtlexAQxEfoOo1DojOUA5LsijAZc9AzRuYJkcwE5h-wDoHes3h_yQzg0:1wiopN:jDfZmnJp__5cU3zBUcsiJ4xW07J7QpGm2xrqIqt2PPc",
+        "expire_date": "2026-07-26T07:42:17.561Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "cnrxjguatjld4qch8djhtzla8rzwm9zj",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hBaOpRx6d4zkBmGStVAUtqV8e7apAvd_vfef6lA25rD1tISZlFnBer0uzHFRyo7kDuVW9WxlnWZWe-KPmjT1yrpeTncv4NMLX9rwzayHSYPFpENjx6t6dFCmoAdoEHqGagbvZMhJiPsEdFh7FiIvFfvD81SN5A:1wcRa9:ynu-5ePboLVAqS0Gzu_OFHbm2XC2_-ek2b6w8prQ_nA",
+        "expire_date": "2026-07-08T17:40:13.439Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "kn4l0s00z402cpxo528ktzpi2nh3do5i",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hAZKKBL9z0DGWZGqRpISrsy3l2bdKHb_977L5VwXUpau8xpYnVWRh1-t4z0kLoBvmO9NU2tLvOU9abonXY9NpbnZXf_Dgr28q1BTLQhDmizOAshu2iAgMkCcBASBDb56iizJy9MfnAhGOvQHuOJvHp_AOIvN_Y:1wars2:JcL1JUuyxbA36hQGWMNpovEA6rfIaCjp6WTOpxeTD_A",
+        "expire_date": "2026-07-04T09:20:10.232Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "m80pef4g40wabktt8qaix0py094u7l3j",
+    "fields": {
+        "session_data": ".eJxVjDsOwjAQBe_iGln-ZE1MSZ8zWN71Lg6gRIqTCnF3iJQC2jcz76VS3taatsZLGou6KKtOvxtmevC0g3LP023WNE_rMqLeFX3Qpoe58PN6uH8HNbf6rUE8EtlexAQxEfoOo1DojOUA5LsijAZc9AzRuYJkcwE5h-wDoHes3h_yQzg0:1wdk8O:6dOX6zUg2DNO7mP7owvCIxpSZsmgEFIkuULI3YeiOdE",
+        "expire_date": "2026-07-12T07:40:56.229Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "q2ktcf2axnuj9gv25skksbggzc7981u1",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hAZKKBL9z0DGWZGqRpISrsy3l2bdKHb_977L5VwXUpau8xpYnVWRh1-t4z0kLoBvmO9NU2tLvOU9abonXY9NpbnZXf_Dgr28q1BTLQhDmizOAshu2iAgMkCcBASBDb56iizJy9MfnAhGOvQHuOJvHp_AOIvN_Y:1wVaB3:5wrGCn4sOsCUQ31EwOC1JGOnB0tbWIsyw_LGY_ff5uc",
+        "expire_date": "2026-06-19T19:25:57.814Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "tc0c8ymug7ng37gb2fdelvom5u044lhf",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hAZKKBL9z0DGWZGqRpISrsy3l2bdKHb_977L5VwXUpau8xpYnVWRh1-t4z0kLoBvmO9NU2tLvOU9abonXY9NpbnZXf_Dgr28q1BTLQhDmizOAshu2iAgMkCcBASBDb56iizJy9MfnAhGOvQHuOJvHp_AOIvN_Y:1wTI0y:L27mpZjTBAAKrrrx950qFSrQZ-jWX6U1bc7AixLNVc8",
+        "expire_date": "2026-06-13T11:38:04.480Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "typ2b0ylzb5mkjnqnpaz9jqcsn4eq0bp",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hAZKKBL9z0DGWZGqRpISrsy3l2bdKHb_977L5VwXUpau8xpYnVWRh1-t4z0kLoBvmO9NU2tLvOU9abonXY9NpbnZXf_Dgr28q1BTLQhDmizOAshu2iAgMkCcBASBDb56iizJy9MfnAhGOvQHuOJvHp_AOIvN_Y:1wUQAt:fK9-KQexASvTi-9pgtHRDeNvy1vqpzEB680CVRiv3O4",
+        "expire_date": "2026-06-16T14:32:59.388Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "v04zfeyqq1olo7rjm8go6oh959ono3fn",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hAZKKBL9z0DGWZGqRpISrsy3l2bdKHb_977L5VwXUpau8xpYnVWRh1-t4z0kLoBvmO9NU2tLvOU9abonXY9NpbnZXf_Dgr28q1BTLQhDmizOAshu2iAgMkCcBASBDb56iizJy9MfnAhGOvQHuOJvHp_AOIvN_Y:1waXIG:FBSJlzW-aUjt4savbwpsl2Kr00G_07_7YP1FN9ZAuVg",
+        "expire_date": "2026-07-03T11:21:52.839Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "wz1s52n1vo4tniknrpryj9zix26mvlat",
+    "fields": {
+        "session_data": "e30:1waWsQ:afb3F7jm67Oiz_Ud89AVRgsxx8SgnITN6z2QTpnMa70",
+        "expire_date": "2026-07-03T10:55:10.493Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "z1nov1cii7saa3jquyeymqcna76abhwv",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQAP-FsyFAu13q0Xu_gSyPlaqBpLQn478bkh70OjOZt3B07NkdLW1ujeIqQFx-mafwTKWL-KByrzLUsm-rlz2Rp21yqTG9bmf7N8jUct-OMCgTB-NZ-Qm1wRRmGmli4siomaxlHw1gSGCDZlBAJg0eDSo7B_H5AuyKODU:1wcRWg:TlaqGu6nADLFDxizNdHSiVup7ou5Oo94J1BqLZSYNY4",
+        "expire_date": "2026-07-08T17:36:38.508Z"
+    }
+},
+{
+    "model": "blog_app.category",
+    "pk": 1,
+    "fields": {
+        "title": "Технологии",
+        "slug": "tehnologii"
+    }
+},
+{
+    "model": "blog_app.category",
+    "pk": 2,
+    "fields": {
+        "title": "Дизайн",
+        "slug": "dizajn"
+    }
+},
+{
+    "model": "blog_app.category",
+    "pk": 3,
+    "fields": {
+        "title": "Автомобили",
+        "slug": "avtomobili"
+    }
+},
+{
+    "model": "blog_app.category",
+    "pk": 4,
+    "fields": {
+        "title": "Роботы",
+        "slug": "roboty"
+    }
+},
+{
+    "model": "blog_app.category",
+    "pk": 5,
+    "fields": {
+        "title": "Животные",
+        "slug": "zhivotnye"
+    }
+},
+{
+    "model": "blog_app.category",
+    "pk": 9,
+    "fields": {
+        "title": "ИИ и все связанное с ним",
+        "slug": "ii-i-vse-sviazannoe-s-nim"
+    }
+},
+{
+    "model": "blog_app.category",
+    "pk": 10,
+    "fields": {
+        "title": "Мобильный телефоны",
+        "slug": "mobilnyi-telefony"
+    }
+},
+{
+    "model": "blog_app.category",
+    "pk": 21,
+    "fields": {
+        "title": "new cat 123",
+        "slug": "title_123"
+    }
+},
+{
+    "model": "blog_app.category",
+    "pk": 22,
+    "fields": {
+        "title": "cat 456",
+        "slug": "cat_456"
+    }
+},
+{
+    "model": "blog_app.category",
+    "pk": 23,
+    "fields": {
+        "title": "strin212g221",
+        "slug": "string44"
+    }
+},
+{
+    "model": "blog_app.post",
+    "pk": 1,
+    "fields": {
+        "title": "Big Data/Аналитика",
+        "slug": "big-dataanalitika",
+        "content": "Платформы, решения и сервисы по сбору, передаче, обработке, хранению и аналитической обработке больших массивов данных (Big Data). Онпремисные и облачные архитектуры больших данных. Инструменты бизнес-аналитики (BI) для получения инсайтов данных и подготовки принятия решений в госуправлении и бизнесе.",
+        "author": [
+            "admin"
+        ],
+        "published": true,
+        "created_at": "2026-05-28T08:58:05.727Z",
+        "updated_at": "2026-06-07T07:52:29.162Z",
+        "views_count": 2,
+        "category": 1,
+        "image": ""
+    }
+},
+{
+    "model": "blog_app.post",
+    "pk": 2,
+    "fields": {
+        "title": "Open Source",
+        "slug": "open-source",
+        "content": "Различные аспекты разработки и использования приложений и операционных систем с открытым кодом. Практика внедрения систем и решений на базе открытого кода в корпоративных и государственных структурах.",
+        "author": [
+            "admin"
+        ],
+        "published": true,
+        "created_at": "2026-05-28T09:01:30.230Z",
+        "updated_at": "2026-06-08T16:47:28.813Z",
+        "views_count": 3,
+        "category": 1,
+        "image": ""
+    }
+},
+{
+    "model": "blog_app.post",
+    "pk": 3,
+    "fields": {
+        "title": "Безопасность",
+        "slug": "bezopasnost",
+        "content": "Программные и аппаратные средства защиты информации, системы видеонаблюдения, системы контроля доступа в помещения, биометрия, проблемы обеспечения соответствия нормативным требованиям к системам информационной безопасности, услуги в области ИБ.",
+        "author": [
+            "admin"
+        ],
+        "published": true,
+        "created_at": "2026-05-28T09:02:05.528Z",
+        "updated_at": "2026-06-11T15:11:59.530Z",
+        "views_count": 0,
+        "category": 1,
+        "image": ""
+    }
+},
+{
+    "model": "blog_app.post",
+    "pk": 4,
+    "fields": {
+        "title": "Блокчейн",
+        "slug": "blokchejn",
+        "content": "Блокчейн (blockcahin) и другие технологии защищенного распределенного реестра (distributed ledger technology, DLT): онпремисные и облачные платформы, программные и аппаратные решения. Сферы применения блокчейн, отраслевые и корпоративные развертывания, проблемы и перспективы технологии. Криптовалюты и токены, основанные на блокчейн: биткоин, эфириум и пр.",
+        "author": [
+            "admin"
+        ],
+        "published": true,
+        "created_at": "2026-05-28T09:02:24.503Z",
+        "updated_at": "2026-06-11T15:11:56.367Z",
+        "views_count": 0,
+        "category": 1,
+        "image": ""
+    }
+},
+{
+    "model": "blog_app.post",
+    "pk": 5,
+    "fields": {
+        "title": "Дизайн балкона в 2026: тренды, советы и идеи",
+        "slug": "dizajn-balkona-v-2026-trendy-sovety-i-idei",
+        "content": "Балкон давно перестал быть местом, куда выносят коробки, банки, старые лыжи и все, что «пока жалко выбросить». Даже небольшие 2–4 квадратных метра можно превратить в рабочее место, зону отдыха, мини-сад, библиотеку или продолжение кухни. Главное — заранее понять, как именно Вы хотите использовать пространство, и подобрать отделку, мебель, освещение и хранение под эту задачу.",
+        "author": [
+            "admin"
+        ],
+        "published": true,
+        "created_at": "2026-05-28T09:03:16.258Z",
+        "updated_at": "2026-05-28T09:03:16.258Z",
+        "views_count": 0,
+        "category": 2,
+        "image": ""
+    }
+},
+{
+    "model": "blog_app.post",
+    "pk": 6,
+    "fields": {
+        "title": "Дизайн студии в 2026: тренды, советы и идеи",
+        "slug": "dizajn-studii-v-2026-trendy-sovety-i-idei",
+        "content": "Квартира-студия — это формат жилья, в котором особенно важно грамотное планирование. Ограниченное пространство требует продуманного подхода: каждая зона должна быть функциональной, а интерьер — визуально легким и комфортным для жизни.",
+        "author": [
+            "admin"
+        ],
+        "published": true,
+        "created_at": "2026-05-28T09:03:37.499Z",
+        "updated_at": "2026-06-18T08:21:57.217Z",
+        "views_count": 48,
+        "category": 2,
+        "image": ""
+    }
+},
+{
+    "model": "blog_app.post",
+    "pk": 7,
+    "fields": {
+        "title": "В Китае тестируют гуманоидов на чайных плантациях",
+        "slug": "v-kitae-testiruyut-gumanoidov-na-chajnyh-plantaciy",
+        "content": "В Китае гуманоиды вышли за пределы лабораторных демонстраций. Новым этапом проверки их возможностей стали чайные плантации.",
+        "author": [
+            "admin"
+        ],
+        "published": true,
+        "created_at": "2026-05-30T11:52:42.005Z",
+        "updated_at": "2026-06-10T08:55:42.406Z",
+        "views_count": 10,
+        "category": 4,
+        "image": ""
+    }
+},
+{
+    "model": "blog_app.post",
+    "pk": 8,
+    "fields": {
+        "title": "BYD Song Plus: хотели оценить износостойкость салона, но ...",
+        "slug": "byd-song-plus-hoteli-ocenit-iznosostojkost-salona",
+        "content": "Весна — это всегда к бытовым хлопотам. Но если самую затратную по деньгам статью мы уже, можно сказать, закрыли, заранее прикупив шикарные «двадцать первые тапочки», то интерьер к весне оказался не готов. Хотя тут как посмотреть — при беглом взгляде как раз таки уже «готов». Поэтому план был максимально бытовой и, как нам казалось, безопасный: заехать к старому знакомому — Константину — на детейлинг, посмотреть (экспертно, а не обывательски!), как за 50 тысяч пробега чувствует себя светлый салон, и заодно навести лоск к сезону.",
+        "author": [
+            "admin"
+        ],
+        "published": true,
+        "created_at": "2026-05-30T11:55:27.341Z",
+        "updated_at": "2026-06-18T08:23:05.825Z",
+        "views_count": 14,
+        "category": 3,
+        "image": ""
+    }
+},
+{
+    "model": "blog_app.post",
+    "pk": 9,
+    "fields": {
+        "title": "Как ухаживать за рыбками в аквариуме",
+        "slug": "kak-uhazhivat-za-rybkami-v-akvariume",
+        "content": "В списке самых распространенных видов домашних животных, аквариумные рыбки стоят на третьем месте. Это не удивительно, аквариум придает уют и красоту дому, а также помогает успокоиться. В погоне за этими преимуществами начинающие аквариумисты упускают важные аспекты по уходу за рыбками и местом их обитания. В итоге морские питомцы становятся больными, тускнеют, а в крайнем случае погибают.",
+        "author": [
+            "admin"
+        ],
+        "published": true,
+        "created_at": "2026-05-30T11:56:06.671Z",
+        "updated_at": "2026-06-17T14:47:22.546Z",
+        "views_count": 8,
+        "category": 5,
+        "image": ""
+    }
+},
+{
+    "model": "blog_app.post",
+    "pk": 26,
+    "fields": {
+        "title": "Юбилейный геймерский комплект ASUS ROG 20th Anniversary оценили в $16 580",
+        "slug": "iubileinyi-geimerskii-komplekt",
+        "content": "Компания ASUS объявила о грядущем старте продаж юбилейной серии ROG 20th Anniversary Collection Edition, выпущенной к 20-летию линейки ROG. Помимо игрового ПК, в комплект входит полный набор периферии, включая фирменный монитор и даже компьютерное кресло.",
+        "author": [
+            "admin"
+        ],
+        "published": true,
+        "created_at": "2026-06-18T08:33:07.519Z",
+        "updated_at": "2026-06-18T08:33:07.519Z",
+        "views_count": 0,
+        "category": 9,
+        "image": ""
+    }
+},
+{
+    "model": "blog_app.post",
+    "pk": 27,
+    "fields": {
+        "title": "Обладатели GTA V для PS4 и Xbox One теперь могут бесплатно получить версии для PS5 и Xbox Series",
+        "slug": "obladateli-gta-v-dlia-ps4-i-xbox-one",
+        "content": "Когда Grand Theft Auto V добралась до PlayStation 5 и Xbox Series, многих геймеров огорчило, что Rockstar Games и Take-Two Interactive повесили ценник на некстген-обновление криминального экшена. Спустя несколько лет после запуска Grand Theft Auto V Enhanced разработчики наконец-то исправили это недоразумение.",
+        "author": [
+            "admin"
+        ],
+        "published": true,
+        "created_at": "2026-06-18T08:33:38.596Z",
+        "updated_at": "2026-06-18T08:33:38.596Z",
+        "views_count": 0,
+        "category": 9,
+        "image": ""
+    }
+},
+{
+    "model": "blog_app.post",
+    "pk": 28,
+    "fields": {
+        "title": "Тим Кук анонсировал подорожание продукции Apple",
+        "slug": "tim-kuk-anonsiroval-podorozhanie-produktsii-apple",
+        "content": "Готовящийся к отставке генеральный директор Apple Тим Кук рассказал о том, как повышение цен на чипы памяти скажется на стоимости продукции Apple. Судя его по заявлению, в ближайшее время подорожают все продукты американского бренда.",
+        "author": [
+            "admin"
+        ],
+        "published": true,
+        "created_at": "2026-06-18T08:34:06.080Z",
+        "updated_at": "2026-06-18T08:34:06.080Z",
+        "views_count": 0,
+        "category": 4,
+        "image": ""
+    }
+},
+{
+    "model": "blog_app.post",
+    "pk": 29,
+    "fields": {
+        "title": "Представлен мини-ПК Lenovo AI Mini PC с китайским ARM-процессором Cixin",
+        "slug": "predstavlen-mini-pk-lenovo-ai",
+        "content": "Компания Lenovo презентовала в Китае компактный ПК AI Mini PC, ориентированный на локальный запуск нейросетей. Устройство работает на базе ARM-процессора и поставляется со специальной программной средой Tianxi Claw.",
+        "author": [
+            "admin"
+        ],
+        "published": true,
+        "created_at": "2026-06-18T08:34:31.772Z",
+        "updated_at": "2026-06-18T08:34:31.772Z",
+        "views_count": 0,
+        "category": 3,
+        "image": ""
+    }
+},
+{
+    "model": "blog_app.post",
+    "pk": 30,
+    "fields": {
+        "title": "NVIDIA научила ИИ-роботов самостоятельно собирать компьютеры",
+        "slug": "nvidia-nauchila-ii-robotov",
+        "content": "NVIDIA представила свой новый проект ENPIRE, в рамках которого группа роботов, управляемых ИИ-агентами, самостоятельно выполнила высокоточные операции по сборке компонентов ПК. При этом обучение роботов происходило прямо в процессе — без заранее написанного кода.",
+        "author": [
+            "admin"
+        ],
+        "published": true,
+        "created_at": "2026-06-18T08:48:18.185Z",
+        "updated_at": "2026-06-18T08:48:18.185Z",
+        "views_count": 0,
+        "category": 9,
+        "image": ""
+    }
+},
+{
+    "model": "blog_app.post",
+    "pk": 31,
+    "fields": {
+        "title": "Zenless Zone Zero добралась до Steam",
+        "slug": "zenless-zone-zero-dobralas-do-steam",
+        "content": "Рано или поздно любая мало-мальски известная игра выходит в Steam. Вот и miHoYo надоело игнорировать столь популярную среди PC-геймеров площадку.",
+        "author": [
+            "admin"
+        ],
+        "published": true,
+        "created_at": "2026-06-18T08:48:36.805Z",
+        "updated_at": "2026-06-18T08:48:36.805Z",
+        "views_count": 0,
+        "category": 3,
+        "image": ""
+    }
+},
+{
+    "model": "blog_app.post",
+    "pk": 32,
+    "fields": {
+        "title": "Xreal представила умные очки Aura с внешним чипом Snapdragon и экранами micro-OLED",
+        "slug": "xreal-predstavila-umnye-ochki-aura",
+        "content": "В ассортименте компании Xreal появились новые умные очки Aura. Они оснащены сразу двумя процессорами: встроенным и выносным с проводным соединением. Такая конфигурация, как утверждает производитель, позволила сделать устройство сравнительно компактным, не теряя в вычислительной мощности.",
+        "author": [
+            "admin"
+        ],
+        "published": true,
+        "created_at": "2026-06-18T08:48:53.104Z",
+        "updated_at": "2026-06-18T08:48:53.104Z",
+        "views_count": 0,
+        "category": 5,
+        "image": ""
+    }
+},
+{
+    "model": "blog_app.post",
+    "pk": 33,
+    "fields": {
+        "title": "Ugreen выпустила ультратонкую GaN-зарядку Nexode Air мощностью 45 Вт",
+        "slug": "ugreen-vypustila-ultratonkuiu-gan",
+        "content": "В каталоге продукции Ugreen появилось зарядное устройство Nexode Air 45W Ice Chip. Его ключевой особенностью стала необычная плоская конструкция в духе пауэрбанков, позволяющая легко переносить новинку даже в кармане, не испытывая неудобств.",
+        "author": [
+            "admin"
+        ],
+        "published": true,
+        "created_at": "2026-06-18T08:49:47.852Z",
+        "updated_at": "2026-06-18T08:49:47.852Z",
+        "views_count": 0,
+        "category": 10,
+        "image": ""
+    }
+},
+{
+    "model": "blog_app.post",
+    "pk": 34,
+    "fields": {
+        "title": "Google начала продажи умной колонки Home Speaker с нейросетью Gemini",
+        "slug": "google-nachala-prodazhi-umnoi",
+        "content": "Компания Google открыла предзаказы на ранее анонсированную смарт-колонку Home Speaker. Помимо узнаваемого дизайна, устройство получило поддержку ИИ-помощника Gemini и возможность объединения с другими фирменными устройствами в рамках домашней экосистемы умного дома.",
+        "author": [
+            "admin"
+        ],
+        "published": true,
+        "created_at": "2026-06-18T08:50:03.305Z",
+        "updated_at": "2026-06-21T08:50:34.036Z",
+        "views_count": 3,
+        "category": 2,
+        "image": ""
+    }
+},
+{
+    "model": "blog_app.post",
+    "pk": 35,
+    "fields": {
+        "title": "Microsoft чуть было не «убила» новую игру создателя The Last of Us и Uncharted",
+        "slug": "microsoft-chut-bylo-ne-ubila-novuiu",
+        "content": "Серии The Last of Us и Uncharted прочно ассоциируются у публики с Нилом Дракманном, нынешним главой Naughty Dog. Однако легендарные тайтлы не состоялись бы без участия Брюса Стрейли — художника и геймдиректора, который помог сделать приключения Джоэла, Элли и Нейтана Дрейка настолько запоминающимися. В данный момент он занят совершенно новым проектом, однако его детище чуть было не умерло в зародыше.",
+        "author": [
+            "admin"
+        ],
+        "published": true,
+        "created_at": "2026-06-18T08:50:25.690Z",
+        "updated_at": "2026-06-28T08:40:28.276Z",
+        "views_count": 60,
+        "category": 1,
+        "image": "posts/Как_написать_обзорну.png"
+    }
+},
+{
+    "model": "blog_app.post",
+    "pk": 40,
+    "fields": {
+        "title": "New article",
+        "slug": "new_article",
+        "content": "something",
+        "author": [
+            "admin"
+        ],
+        "published": false,
+        "created_at": "2026-07-04T07:51:03.347Z",
+        "updated_at": "2026-07-04T07:51:03.347Z",
+        "views_count": 0,
+        "category": 1,
+        "image": ""
+    }
+},
+{
+    "model": "blog_app.post",
+    "pk": 41,
+    "fields": {
+        "title": "Тест",
+        "slug": "test",
+        "content": "Текст",
+        "author": [
+            "admin"
+        ],
+        "published": false,
+        "created_at": "2026-07-10T11:14:16.412Z",
+        "updated_at": "2026-07-10T11:14:16.412Z",
+        "views_count": 0,
+        "category": 1,
+        "image": ""
+    }
+},
+{
+    "model": "blog_app.post",
+    "pk": 42,
+    "fields": {
+        "title": "New article 123",
+        "slug": "new-article-123",
+        "content": "something",
+        "author": [
+            "user_1"
+        ],
+        "published": false,
+        "created_at": "2026-07-10T11:44:12.720Z",
+        "updated_at": "2026-07-10T11:44:12.720Z",
+        "views_count": 0,
+        "category": 1,
+        "image": ""
+    }
+},
+{
+    "model": "blog_app.post",
+    "pk": 44,
+    "fields": {
+        "title": "New article 123",
+        "slug": "string",
+        "content": "string",
+        "author": [
+            "admin"
+        ],
+        "published": true,
+        "created_at": "2026-07-11T08:13:22.127Z",
+        "updated_at": "2026-07-11T10:57:09.047Z",
+        "views_count": 0,
+        "category": 1,
+        "image": ""
+    }
+},
+{
+    "model": "feedback_app.feedback",
+    "pk": 32,
+    "fields": {
+        "name": "Sergei",
+        "email": "anaaanyev@gmail.com",
+        "message": "55",
+        "created_at": "2026-06-19T10:46:57.399Z",
+        "subject": "collaboration"
+    }
+},
+{
+    "model": "feedback_app.feedback",
+    "pk": 33,
+    "fields": {
+        "name": "Sergei",
+        "email": "anaaanyev@gmail.com",
+        "message": "sds",
+        "created_at": "2026-06-19T10:49:43.718Z",
+        "subject": "tech"
+    }
+},
+{
+    "model": "feedback_app.feedback",
+    "pk": 34,
+    "fields": {
+        "name": "Sergei",
+        "email": "anaaanyev@gmail.com",
+        "message": "22",
+        "created_at": "2026-06-19T10:51:53.896Z",
+        "subject": "tech"
+    }
+},
+{
+    "model": "feedback_app.feedback",
+    "pk": 35,
+    "fields": {
+        "name": "Sergei",
+        "email": "anaaanyev@gmail.com",
+        "message": "ss",
+        "created_at": "2026-06-19T10:52:44.224Z",
+        "subject": "complaint"
+    }
+},
+{
+    "model": "feedback_app.feedback",
+    "pk": 36,
+    "fields": {
+        "name": "Sergei",
+        "email": "anaaanyev@gmail.com",
+        "message": "22",
+        "created_at": "2026-06-19T10:53:06.783Z",
+        "subject": "collaboration"
+    }
+},
+{
+    "model": "feedback_app.feedback",
+    "pk": 37,
+    "fields": {
+        "name": "Sergei",
+        "email": "anaaanyev@gmail.com",
+        "message": "ss",
+        "created_at": "2026-06-19T10:55:10.435Z",
+        "subject": "default"
+    }
+},
+{
+    "model": "feedback_app.feedback",
+    "pk": 38,
+    "fields": {
+        "name": "Sergei",
+        "email": "anaaanyev@gmail.com",
+        "message": "ff",
+        "created_at": "2026-06-19T11:06:35.827Z",
+        "subject": "collaboration"
+    }
+},
+{
+    "model": "feedback_app.feedback",
+    "pk": 39,
+    "fields": {
+        "name": "Sergei",
+        "email": "anaaanyev@gmail.com",
+        "message": "цц",
+        "created_at": "2026-06-19T11:11:00.599Z",
+        "subject": "collaboration"
+    }
+},
+{
+    "model": "feedback_app.feedback",
+    "pk": 40,
+    "fields": {
+        "name": "Sergei",
+        "email": "anaaanyev@gmail.com",
+        "message": "ы",
+        "created_at": "2026-06-19T11:21:52.812Z",
+        "subject": "default"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2026-05-30T11:52:42.006Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "7",
+        "object_repr": "В Китае тестируют гуманоидов на чайных плантациях",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2026-05-30T11:55:27.342Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "8",
+        "object_repr": "BYD Song Plus: хотели оценить износостойкость салона, но «электричка» умерла в детейлинге",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2026-05-30T11:56:06.672Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "9",
+        "object_repr": "Как ухаживать за рыбками в аквариуме",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2026-05-30T11:56:43.820Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "10",
+        "object_repr": "Как отучить котенка кусаться и царапаться",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2026-05-30T12:49:24.307Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "11",
+        "object_repr": "Мой новый пост",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2026-05-30T18:55:51.547Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "8",
+        "object_repr": "BYD Song Plus: хотели оценить износостойкость салона, но ...",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0417\\u0430\\u0433\\u043e\\u043b\\u043e\\u0432\\u043e\\u043a\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2026-06-01T05:54:28.908Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "20",
+        "object_repr": "новая статья",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2026-06-01T05:58:02.044Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "20",
+        "object_repr": "новая статья",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2026-06-02T14:37:39.715Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "11",
+        "object_repr": "Новая статья",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2026-06-02T14:40:15.797Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "12",
+        "object_repr": "Hi every one",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2026-06-02T14:43:02.854Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "13",
+        "object_repr": "Привет как дела",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2026-06-02T14:48:27.494Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "14",
+        "object_repr": "вот чем заняться",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2026-06-02T14:52:32.252Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "14",
+        "object_repr": "вот чем заняться",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+        "action_time": "2026-06-02T14:52:32.252Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "13",
+        "object_repr": "Привет как дела",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+        "action_time": "2026-06-02T14:52:32.252Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "12",
+        "object_repr": "Hi every one",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+        "action_time": "2026-06-02T14:52:32.252Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "11",
+        "object_repr": "Новая статья",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+        "action_time": "2026-06-02T15:14:42.466Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "15",
+        "object_repr": "привет как ты и что нового",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+        "action_time": "2026-06-02T15:16:16.463Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "16",
+        "object_repr": "hello world",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+        "action_time": "2026-06-02T15:26:31.152Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "16",
+        "object_repr": "hello world",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+        "action_time": "2026-06-02T15:26:31.152Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "15",
+        "object_repr": "привет как ты и что нового",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+        "action_time": "2026-06-04T07:56:49.127Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "17",
+        "object_repr": "Новая тачка",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+        "action_time": "2026-06-04T07:57:02.910Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "17",
+        "object_repr": "Новая тачка",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+        "action_time": "2026-06-04T09:11:47.983Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "10",
+        "object_repr": "Как отучить котенка кусаться и царапаться",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u043e\\u0434\\u0435\\u0440\\u0436\\u0438\\u043c\\u043e\\u0435\", \"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+        "action_time": "2026-06-06T08:25:02.011Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "10",
+        "object_repr": "Как отучить котенка кусаться и царапаться",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u043e\\u0434\\u0435\\u0440\\u0436\\u0438\\u043c\\u043e\\u0435\", \"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+        "action_time": "2026-06-06T08:25:53.279Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "10",
+        "object_repr": "Как отучить котенка кусаться и царапаться",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+        "action_time": "2026-06-06T08:27:20.595Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "10",
+        "object_repr": "Как отучить котенка кусаться и царапаться",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u043e\\u0434\\u0435\\u0440\\u0436\\u0438\\u043c\\u043e\\u0435\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+        "action_time": "2026-06-06T10:00:31.096Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "8",
+        "object_repr": "BYD Song Plus: хотели оценить износостойкость салона, но ...",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+        "action_time": "2026-06-06T12:50:10.252Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "8",
+        "object_repr": "BYD Song Plus: хотели оценить износостойкость салона, но ...",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+        "action_time": "2026-06-10T17:41:37.186Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "18",
+        "object_repr": "Новая статья через форму",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0443\\u0431\\u043b\\u0438\\u043a\\u043e\\u0432\\u0430\\u0442\\u044c \\u0441\\u0442\\u0430\\u0442\\u044c\\u044e\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+        "action_time": "2026-06-11T09:49:13.768Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "20",
+        "object_repr": "New test",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 31,
+    "fields": {
+        "action_time": "2026-06-11T09:49:20.336Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "19",
+        "object_repr": "Безумие продолжается. Машины начали летать",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 32,
+    "fields": {
+        "action_time": "2026-06-11T12:45:33.703Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "8",
+        "object_repr": "BYD Song Plus: хотели оценить износостойкость салона, но ...",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0443\\u0431\\u043b\\u0438\\u043a\\u043e\\u0432\\u0430\\u0442\\u044c \\u0441\\u0442\\u0430\\u0442\\u044c\\u044e\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 33,
+    "fields": {
+        "action_time": "2026-06-11T12:45:50.786Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "8",
+        "object_repr": "BYD Song Plus: хотели оценить износостойкость салона, но ...",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0443\\u0431\\u043b\\u0438\\u043a\\u043e\\u0432\\u0430\\u0442\\u044c \\u0441\\u0442\\u0430\\u0442\\u044c\\u044e\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 34,
+    "fields": {
+        "action_time": "2026-06-11T15:11:47.152Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "21",
+        "object_repr": "новая статья 2028",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 35,
+    "fields": {
+        "action_time": "2026-06-11T15:11:52.528Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "8",
+        "object_repr": "BYD Song Plus: хотели оценить износостойкость салона, но ...",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0443\\u0431\\u043b\\u0438\\u043a\\u043e\\u0432\\u0430\\u0442\\u044c \\u0441\\u0442\\u0430\\u0442\\u044c\\u044e\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 36,
+    "fields": {
+        "action_time": "2026-06-11T15:11:56.369Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "4",
+        "object_repr": "Блокчейн",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0443\\u0431\\u043b\\u0438\\u043a\\u043e\\u0432\\u0430\\u0442\\u044c \\u0441\\u0442\\u0430\\u0442\\u044c\\u044e\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 37,
+    "fields": {
+        "action_time": "2026-06-11T15:11:59.532Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "3",
+        "object_repr": "Безопасность",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0443\\u0431\\u043b\\u0438\\u043a\\u043e\\u0432\\u0430\\u0442\\u044c \\u0441\\u0442\\u0430\\u0442\\u044c\\u044e\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 38,
+    "fields": {
+        "action_time": "2026-06-12T05:12:52.933Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "18",
+        "object_repr": "Беспредел ИИ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0443\\u0431\\u043b\\u0438\\u043a\\u043e\\u0432\\u0430\\u0442\\u044c \\u0441\\u0442\\u0430\\u0442\\u044c\\u044e\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 39,
+    "fields": {
+        "action_time": "2026-06-13T12:17:16.640Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "1",
+        "object_repr": "Сообщение от Сергей (email@bk.ru)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0422\\u0435\\u043c\\u0430 \\u043e\\u0431\\u0440\\u0430\\u0449\\u0435\\u043d\\u0438\\u044f\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 40,
+    "fields": {
+        "action_time": "2026-06-13T15:05:34.547Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "20",
+        "object_repr": "Сообщение от Sergei (anaaanyev@gmail.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 41,
+    "fields": {
+        "action_time": "2026-06-13T15:05:34.547Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "19",
+        "object_repr": "Сообщение от Sergei (anaaanyev@gmail.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 42,
+    "fields": {
+        "action_time": "2026-06-13T15:05:34.547Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "18",
+        "object_repr": "Сообщение от Sergei (anaaanyev@gmail.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 43,
+    "fields": {
+        "action_time": "2026-06-13T15:05:34.547Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "17",
+        "object_repr": "Сообщение от Sergei (anaaanyev@gmail.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 44,
+    "fields": {
+        "action_time": "2026-06-13T15:05:34.547Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "16",
+        "object_repr": "Сообщение от Sergei (anaaanyev@gmail.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 45,
+    "fields": {
+        "action_time": "2026-06-13T15:05:34.547Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "15",
+        "object_repr": "Сообщение от Sergei (anaaanyev@gmail.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 46,
+    "fields": {
+        "action_time": "2026-06-13T15:05:34.547Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "14",
+        "object_repr": "Сообщение от Sergei (anaaanyev@gmail.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 47,
+    "fields": {
+        "action_time": "2026-06-13T15:05:34.547Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "13",
+        "object_repr": "Сообщение от Sergei (anaaanyev@gmail.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 48,
+    "fields": {
+        "action_time": "2026-06-13T15:05:34.547Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "12",
+        "object_repr": "Сообщение от Sergei (anaaanyev@gmail.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 49,
+    "fields": {
+        "action_time": "2026-06-13T15:05:34.547Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "11",
+        "object_repr": "Сообщение от Sergei (anaaanyev@gmail.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 50,
+    "fields": {
+        "action_time": "2026-06-13T15:05:34.547Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "10",
+        "object_repr": "Сообщение от Sergei (anaaanyev@gmail.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 51,
+    "fields": {
+        "action_time": "2026-06-13T15:05:34.547Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "9",
+        "object_repr": "Сообщение от Sergei (anaaanyev@gmail.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 52,
+    "fields": {
+        "action_time": "2026-06-13T15:05:34.547Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "8",
+        "object_repr": "Сообщение от Sergei (anaaanyev@gmail.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 53,
+    "fields": {
+        "action_time": "2026-06-13T15:05:34.547Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "7",
+        "object_repr": "Сообщение от Sergei (anaaanyev@gmail.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 54,
+    "fields": {
+        "action_time": "2026-06-13T15:05:34.547Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "6",
+        "object_repr": "Сообщение от Sergei (anaaanyev@gmail.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 55,
+    "fields": {
+        "action_time": "2026-06-13T15:05:34.547Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "5",
+        "object_repr": "Сообщение от Чигивар (noname@gmail.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 56,
+    "fields": {
+        "action_time": "2026-06-13T15:05:34.547Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "4",
+        "object_repr": "Сообщение от Kwaa (kwaa@bk.ru)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 57,
+    "fields": {
+        "action_time": "2026-06-13T15:05:34.547Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "3",
+        "object_repr": "Сообщение от Виктор (victor@bk.ru)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 58,
+    "fields": {
+        "action_time": "2026-06-13T15:05:34.547Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "2",
+        "object_repr": "Сообщение от Пётр (petrushka@list.ru)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 59,
+    "fields": {
+        "action_time": "2026-06-15T08:15:00.144Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "23",
+        "object_repr": "Новая",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 60,
+    "fields": {
+        "action_time": "2026-06-15T08:15:15.046Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "23",
+        "object_repr": "Новая",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 61,
+    "fields": {
+        "action_time": "2026-06-15T08:15:15.046Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "22",
+        "object_repr": "супер крутая погода",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 62,
+    "fields": {
+        "action_time": "2026-06-15T08:15:15.046Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "18",
+        "object_repr": "Беспредел ИИ пройдёт",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 63,
+    "fields": {
+        "action_time": "2026-06-15T09:42:58.945Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "2",
+        "object_repr": "Mike",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 64,
+    "fields": {
+        "action_time": "2026-06-15T09:43:18.205Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "2",
+        "object_repr": "Mike",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"First name\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 65,
+    "fields": {
+        "action_time": "2026-06-15T09:43:28.021Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "1",
+        "object_repr": "admin",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"First name\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 66,
+    "fields": {
+        "action_time": "2026-06-15T09:44:14.671Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "1",
+        "object_repr": "admin",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Last name\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 67,
+    "fields": {
+        "action_time": "2026-06-16T17:20:50.749Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "29",
+        "object_repr": "Сообщение от Sergei (anaaanyev@gmail.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 68,
+    "fields": {
+        "action_time": "2026-06-16T17:20:50.749Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "28",
+        "object_repr": "Сообщение от Sergei (anaaanyev@gmail.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 69,
+    "fields": {
+        "action_time": "2026-06-16T17:20:50.749Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "27",
+        "object_repr": "Сообщение от Sergei (anaaanyev@gmail.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 70,
+    "fields": {
+        "action_time": "2026-06-16T17:20:50.749Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "26",
+        "object_repr": "Сообщение от Sergei (anaaanyev@gmail.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 71,
+    "fields": {
+        "action_time": "2026-06-16T17:20:50.749Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "25",
+        "object_repr": "Сообщение от Sergei (anaaanyev@gmail.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 72,
+    "fields": {
+        "action_time": "2026-06-16T17:20:50.749Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "24",
+        "object_repr": "Сообщение от Sergei (anaaanyev@gmail.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 73,
+    "fields": {
+        "action_time": "2026-06-16T17:20:50.749Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "23",
+        "object_repr": "Сообщение от Sergei (anaaanyev@gmail.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 74,
+    "fields": {
+        "action_time": "2026-06-16T17:20:50.749Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "22",
+        "object_repr": "Сообщение от Sergei (anaaanyev@gmail.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 75,
+    "fields": {
+        "action_time": "2026-06-16T17:20:50.749Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "21",
+        "object_repr": "Сообщение от Sergei (anaaanyev@gmail.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 76,
+    "fields": {
+        "action_time": "2026-06-16T19:10:07.195Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "31",
+        "object_repr": "Сообщение от  ()",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 77,
+    "fields": {
+        "action_time": "2026-06-16T19:10:19.867Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "31",
+        "object_repr": "Сообщение от  ()",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 78,
+    "fields": {
+        "action_time": "2026-06-17T14:49:05.059Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "24",
+        "object_repr": "Как ухаживать за рыбками в аквариуме",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 79,
+    "fields": {
+        "action_time": "2026-06-17T14:49:23.045Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "category"
+        ],
+        "object_id": "6",
+        "object_repr": "Природа",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 80,
+    "fields": {
+        "action_time": "2026-06-17T14:49:23.045Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "category"
+        ],
+        "object_id": "7",
+        "object_repr": "Новая",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 81,
+    "fields": {
+        "action_time": "2026-06-17T15:12:50.308Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "category"
+        ],
+        "object_id": "8",
+        "object_repr": "Новая",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 82,
+    "fields": {
+        "action_time": "2026-06-18T10:14:39.803Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "2",
+        "object_repr": "Mike",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 83,
+    "fields": {
+        "action_time": "2026-06-18T10:15:01.845Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "3",
+        "object_repr": "Mike",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 84,
+    "fields": {
+        "action_time": "2026-06-18T10:16:50.381Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "3",
+        "object_repr": "Mike",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"User permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 85,
+    "fields": {
+        "action_time": "2026-06-18T10:17:00.580Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "3",
+        "object_repr": "Mike",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Staff status\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 86,
+    "fields": {
+        "action_time": "2026-06-18T16:54:25.902Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "category"
+        ],
+        "object_id": "11",
+        "object_repr": "катег",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 87,
+    "fields": {
+        "action_time": "2026-06-19T10:47:35.873Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "30",
+        "object_repr": "Сообщение от Sergei (anaaanyev@gmail.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 88,
+    "fields": {
+        "action_time": "2026-06-19T11:03:41.304Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "1",
+        "object_repr": "Сообщение от Сергей (email@bk.ru)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 89,
+    "fields": {
+        "action_time": "2026-06-22T09:39:03.471Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "category"
+        ],
+        "object_id": "12",
+        "object_repr": "робот",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 90,
+    "fields": {
+        "action_time": "2026-06-22T09:39:03.471Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "category"
+        ],
+        "object_id": "13",
+        "object_repr": "малаша",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 91,
+    "fields": {
+        "action_time": "2026-06-22T09:39:03.471Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "category"
+        ],
+        "object_id": "14",
+        "object_repr": "квавааа",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 92,
+    "fields": {
+        "action_time": "2026-06-22T09:39:03.471Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "category"
+        ],
+        "object_id": "15",
+        "object_repr": "sdfsdfsdfsdf",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 93,
+    "fields": {
+        "action_time": "2026-06-22T09:39:03.471Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "category"
+        ],
+        "object_id": "16",
+        "object_repr": "sadasdasda",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 94,
+    "fields": {
+        "action_time": "2026-06-22T12:46:06.441Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "users_app",
+            "profile"
+        ],
+        "object_id": "1",
+        "object_repr": "Профиль admin",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0411\\u0438\\u043e\\u0433\\u0440\\u0430\\u0444\\u0438\\u044f\", \"\\u0421\\u0441\\u044b\\u043b\\u043a\\u0430 \\u043d\\u0430 \\u0441\\u043e\\u0446\\u0441\\u0435\\u0442\\u044c\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 95,
+    "fields": {
+        "action_time": "2026-06-22T13:34:23.354Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "1",
+        "object_repr": "admin",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Email address\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 96,
+    "fields": {
+        "action_time": "2026-06-24T05:38:00.612Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "3",
+        "object_repr": "Mike",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 97,
+    "fields": {
+        "action_time": "2026-06-24T05:38:22.797Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "4",
+        "object_repr": "user1",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 98,
+    "fields": {
+        "action_time": "2026-06-24T05:39:03.388Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "4",
+        "object_repr": "user1",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Staff status\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 99,
+    "fields": {
+        "action_time": "2026-06-24T06:54:08.270Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "users_app",
+            "profile"
+        ],
+        "object_id": "1",
+        "object_repr": "Профиль admin",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0411\\u0438\\u043e\\u0433\\u0440\\u0430\\u0444\\u0438\\u044f\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 100,
+    "fields": {
+        "action_time": "2026-06-27T08:39:16.808Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "8",
+        "object_repr": "user111",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 101,
+    "fields": {
+        "action_time": "2026-07-20T10:18:41.667Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "45",
+        "object_repr": "Сообщение от string121241214214214 (user@example.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 102,
+    "fields": {
+        "action_time": "2026-07-20T10:18:41.667Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "44",
+        "object_repr": "Сообщение от string Or try the solution proposed by @MatsLindh. It's almost always better to use an existing solution than to build one's own.Or try the solution proposed by @MatsLindh. It's almost al",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 103,
+    "fields": {
+        "action_time": "2026-07-20T10:18:41.667Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "43",
+        "object_repr": "Сообщение от string1232313 (user1223@example.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 104,
+    "fields": {
+        "action_time": "2026-07-20T10:18:41.667Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "42",
+        "object_repr": "Сообщение от string22 (user1@example.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 105,
+    "fields": {
+        "action_time": "2026-07-20T10:18:41.667Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "41",
+        "object_repr": "Сообщение от string (user@example.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 106,
+    "fields": {
+        "action_time": "2026-07-20T10:39:26.432Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "51",
+        "object_repr": "Сообщение от string (user@example.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 107,
+    "fields": {
+        "action_time": "2026-07-20T10:39:26.432Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "50",
+        "object_repr": "Сообщение от string (user@example.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 108,
+    "fields": {
+        "action_time": "2026-07-20T10:39:26.432Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "49",
+        "object_repr": "Сообщение от string (user@example.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 109,
+    "fields": {
+        "action_time": "2026-07-20T10:39:26.432Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "48",
+        "object_repr": "Сообщение от string (user@example.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 110,
+    "fields": {
+        "action_time": "2026-07-20T10:39:26.432Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "47",
+        "object_repr": "Сообщение от string (user@example.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 111,
+    "fields": {
+        "action_time": "2026-07-20T10:39:26.432Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "46",
+        "object_repr": "Сообщение от string (user@example.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 112,
+    "fields": {
+        "action_time": "2026-07-20T10:53:01.354Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "52",
+        "object_repr": "Сообщение от string (user@example.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 113,
+    "fields": {
+        "action_time": "2026-07-20T11:13:28.439Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "56",
+        "object_repr": "Сообщение от stri3242342342342342342342425235233462342536235ngstri3242342342342342342342425235233462342536235ngstri3242342342342342342342425235233462342536235ngstri324234234234234234234242523523346234",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 114,
+    "fields": {
+        "action_time": "2026-07-20T11:28:36.431Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "55",
+        "object_repr": "Сообщение от string (user@example.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 115,
+    "fields": {
+        "action_time": "2026-07-20T11:28:36.431Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "54",
+        "object_repr": "Сообщение от stringsdfuesfgesgfesfsefuygefs (user@example.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 116,
+    "fields": {
+        "action_time": "2026-07-20T11:28:36.431Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "feedback_app",
+            "feedback"
+        ],
+        "object_id": "53",
+        "object_repr": "Сообщение от string (user@example.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+}
+]

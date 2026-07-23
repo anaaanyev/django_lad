@@ -3,6 +3,7 @@ from PIL import Image
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
+from django.contrib.postgres.indexes import GinIndex
 
 
 class Category(models.Model):
@@ -63,6 +64,13 @@ class Post(models.Model):
         ordering = ("-created_at", )
         verbose_name = "Статью"
         verbose_name_plural = "Статьи"
+        indexes = [
+            GinIndex(
+                fields=["title", "content"],
+                name="post_title_content_gin",
+                opclasses=["gin_trgm_ops", "gin_trgm_ops"]
+            )
+        ]
 
 
     def increase_views_count(self):
