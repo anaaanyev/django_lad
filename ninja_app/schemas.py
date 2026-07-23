@@ -44,3 +44,11 @@ class FeedbackInSchema(Schema):
     email: EmailStr
     message: str
     subject: Literal['default', 'tech', 'collaboration', 'complaint', 'other']
+
+
+class PostSearchResultSchema(Schema):
+    id: int
+    title: str
+    slug: str
+    headline: str
+    rank: float

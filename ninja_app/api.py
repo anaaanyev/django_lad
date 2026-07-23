@@ -7,8 +7,10 @@ from blog_app.models import Post, Category
 from feedback_app.models import Feedback
 from ninja_app.schemas import (
     PostOutSchema, PostInSchema, CategoryOutSchema, CategoryInSchema, FeedbackOutSchema,
-    FeedbackInSchema
+    FeedbackInSchema, PostSearchResultSchema
 )
+
+from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank, SearchHeadline
 
 router = Router()
 
@@ -31,6 +33,57 @@ async def list_posts(request, search: str | None = None, category_id: int | None
     posts = [post async for post in query_set]
 
     return posts
+
+
+@router.get(path="/posts/search", response=list[PostSearchResultSchema])
+async def search_posts(request, query: str):
+    if not query.strip():
+        return []
+
+    vector = (SearchVector(
+        "title",
+        weight="A",
+        config="russian"
+    ) + SearchVector(
+        "content",
+        weight="B",
+        config="russian"
+    ))
+
+    search_query = SearchQuery(query, config="russian")
+
+    headline = SearchHeadline(
+        "content",
+        search_query,
+        config="russian",
+        start_sel="<b>",
+        stop_sel="</b>",
+        max_words=15,
+        min_words=5
+    )
+
+    queryset = (
+        Post.objects.filter(published=True)
+        .annotate(
+            rank=SearchRank(vector, search_query),
+            headline=headline
+        )
+        .filter(rank__gte=0.01)
+        .order_by("-rank")
+    )
+
+    results = [
+        PostSearchResultSchema(
+            id=post.id,
+            title=post.title,
+            slug=post.slug,
+            headline=post.headline,
+            rank=float(post.rank)
+        )
+        async for post in queryset
+    ]
+
+    return results
 
 
 @router.get(path="/posts/{post_id}", response=PostOutSchema)
