@@ -65,6 +65,7 @@ class Post(models.Model):
         verbose_name = "Статью"
         verbose_name_plural = "Статьи"
         indexes = [
+            # GIN-индекс ускоряет полнотекстовый поиск по заглавию и контенту
             GinIndex(
                 fields=["title", "content"],
                 name="post_title_content_gin",

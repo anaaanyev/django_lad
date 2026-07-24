@@ -36,3 +36,16 @@ shell_plus:
 
 test_all:
 	uv run manage.py test
+
+create_docker_container:
+	docker run \
+	--name blog_db \
+	-e POSTGRES_USER=admin \
+	-e POSTGRES_PASSWORD=admin \
+	-e POSTGRES_DB=blog_db \
+	-p 5435:5432 \
+	-v blog_db_data:/var/lib/postgresql/data \
+	-d postgres:17
+
+docker_run:
+	docker start blog_db

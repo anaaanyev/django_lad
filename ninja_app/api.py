@@ -10,7 +10,7 @@ from ninja_app.schemas import (
     FeedbackInSchema, PostSearchResultSchema
 )
 
-from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank, SearchHeadline
+from blog_app.utils import q_search
 
 router = Router()
 
@@ -36,40 +36,18 @@ async def list_posts(request, search: str | None = None, category_id: int | None
 
 
 @router.get(path="/posts/search", response=list[PostSearchResultSchema])
-async def search_posts(request, query: str):
+async def search_posts(request, query: str, published_only: bool = True):
+    """Полнотекстовый асинхронный поиск по статьям с лемматизацией и ранжированием.
+    Параметр query — строка поиска (например: ?q=django+ORM).
+    """
     if not query.strip():
         return []
 
-    vector = (SearchVector(
-        "title",
-        weight="A",
-        config="russian"
-    ) + SearchVector(
-        "content",
-        weight="B",
-        config="russian"
-    ))
+    posts = Post.objects.filter(published=published_only) if published_only else Post.objects.all()
 
-    search_query = SearchQuery(query, config="russian")
-
-    headline = SearchHeadline(
-        "content",
-        search_query,
-        config="russian",
-        start_sel="<b>",
-        stop_sel="</b>",
-        max_words=15,
-        min_words=5
-    )
-
-    queryset = (
-        Post.objects.filter(published=True)
-        .annotate(
-            rank=SearchRank(vector, search_query),
-            headline=headline
-        )
-        .filter(rank__gte=0.01)
-        .order_by("-rank")
+    queryset = q_search(
+        query=query.strip(),
+        posts=posts.select_related("category", "author")
     )
 
     results = [
@@ -77,6 +55,8 @@ async def search_posts(request, query: str):
             id=post.id,
             title=post.title,
             slug=post.slug,
+            category=post.category.title,
+            author=post.author.username,
             headline=post.headline,
             rank=float(post.rank)
         )

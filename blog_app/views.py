@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Count, Q
 from django.http import HttpResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 from slugify import slugify
 from django.urls import reverse_lazy, reverse
@@ -9,6 +9,8 @@ from django.urls import reverse_lazy, reverse
 from blog_app.models import Post, Category
 from blog_app.forms import SearchForm, CategoryForm, PostForm
 from blog_app.mixins import TitleMixin, StaffRequiredMixin, AuthorOrStaffRequiredMixin, AuthorRequiredMixin
+
+from blog_app.utils import q_search
 
 
 class PostFormBase:
@@ -27,9 +29,9 @@ class MainPageView(TitleMixin, TemplateView):
         search_form = SearchForm(data=self.request.GET)
         posts = context['posts']
         if search_form.is_valid():
-            query = search_form.cleaned_data.get('query')
+            query = search_form.cleaned_data.get('query', '')
             if query:
-                posts = posts.filter(title__icontains=query)
+                posts = q_search(query=query.strip(), headline_min_words=50, headline_max_words=150, posts=posts)
         context['posts'] = posts[:5]
         context['search_form'] = search_form
         return context
@@ -37,10 +39,10 @@ class MainPageView(TitleMixin, TemplateView):
 
 # HTMX
 # https://www.youtube.com/watch?v=NOX83nszcwI&list=PL4cUxeGkcC9hgO93oEHPBMuLA20y0SBVK&index=5
-def query_posts_list(request):
-    query = request.GET.get('query', '')
-    posts = Post.objects.filter(title__icontains=query, published=True).select_related("category", "author")
-    return render(request, 'blog/partials/posts_list_main_page.html', {'posts': posts})
+# def query_posts_list(request):
+#     query = request.GET.get('query', '')
+#     posts = Post.objects.filter(title__icontains=query, published=True).select_related("category", "author")
+#     return render(request, 'blog/partials/posts_list_main_page.html', {'posts': posts})
 
 
 class CategoryCreateView(StaffRequiredMixin, CreateView):
@@ -160,7 +162,6 @@ class PostDeleteView(AuthorOrStaffRequiredMixin, DeleteView):
     template_name = "blog/post_confirm_delete.html"
     slug_url_kwarg = "post_slug"
     success_url = reverse_lazy('blog:index_page')  # Куда перенаправить после успеха
-
 
 # def index(request):
 #     # Инициализируем форму поиска данными из GET-запроса (URL параметров)

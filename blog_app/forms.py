@@ -1,5 +1,4 @@
 # from tinymce.widgets import TinyMCE
-from django.urls import reverse_lazy
 from slugify import slugify
 
 from django import forms
@@ -68,9 +67,9 @@ class SearchForm(forms.Form):
         widget=forms.TextInput(attrs={
             'class': 'form-control',
             'placeholder': 'Введите слово для поиска...',
-            'hx-get': reverse_lazy('blog:query_posts_list'),
-            'hx-trigger': 'keyup changed delay:1s',
-            'hx-target': '#query_posts_list',
+            # 'hx-get': reverse_lazy('blog:query_posts_list'),
+            # 'hx-trigger': 'keyup changed delay:1s',
+            # 'hx-target': '#query_posts_list',
         })
     )
 
