@@ -3,32 +3,15 @@
     "model": "auth.user",
     "fields": {
         "password": "pbkdf2_sha256$1200000$m4zCO8P55mCG0fjDIYxwOm$hVRhyQb6c6sT7kfFvrTsbOfwwfTuay2j1SlXyoVLt/8=",
-        "last_login": "2026-07-12T07:42:17.552Z",
+        "last_login": "2026-07-25T08:43:57Z",
         "is_superuser": true,
         "username": "admin",
-        "first_name": "Сергей",
-        "last_name": "Ананьев",
+        "first_name": "",
+        "last_name": "",
         "email": "anaaanyev@gmail.com",
         "is_staff": true,
         "is_active": true,
         "date_joined": "2026-05-30T11:37:27Z",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "auth.user",
-    "fields": {
-        "password": "pbkdf2_sha256$1200000$joyYMJoFE1ZghxIxQNJfEq$q+XK0Hv1U8Zpn/EQOgvJRaq84PKKhLgqnqZ4a2J8Lng=",
-        "last_login": "2026-07-10T15:32:45.988Z",
-        "is_superuser": false,
-        "username": "user1",
-        "first_name": "",
-        "last_name": "",
-        "email": "",
-        "is_staff": true,
-        "is_active": true,
-        "date_joined": "2026-06-24T05:38:22Z",
         "groups": [],
         "user_permissions": []
     }
@@ -71,15 +54,15 @@
     "model": "auth.user",
     "fields": {
         "password": "pbkdf2_sha256$1200000$5oHBq6wCRJmnBMDb6eugjs$oekra63TwNmvpCUesJffKiNFmiiluizQIZ2WPsa6+2k=",
-        "last_login": "2026-06-25T07:28:56.092Z",
+        "last_login": "2026-06-25T07:28:56Z",
         "is_superuser": false,
         "username": "mike",
         "first_name": "Майкл",
         "last_name": "Белов",
         "email": "mike@gmail.com",
-        "is_staff": false,
+        "is_staff": true,
         "is_active": true,
-        "date_joined": "2026-06-25T07:22:42.125Z",
+        "date_joined": "2026-06-25T07:22:42Z",
         "groups": [],
         "user_permissions": []
     }
@@ -87,16 +70,16 @@
 {
     "model": "auth.user",
     "fields": {
-        "password": "pbkdf2_sha256$1200000$QQ5LsF5VomTRhi3K8gGbam$KDLJ8+8pkbZu1NBYPz0r0/wR/xhzkX3wnzKChsRsEHA=",
-        "last_login": "2026-06-28T07:23:02.584Z",
+        "password": "pbkdf2_sha256$1200000$IRcVuSEg9ox56oVOJiZ13j$wggAILDxCQFOjjHagtRqtXnqlLeDMzNMPgDA3lD1BBg=",
+        "last_login": null,
         "is_superuser": false,
-        "username": "user111",
+        "username": "user123456",
         "first_name": "",
         "last_name": "",
-        "email": "",
+        "email": "nanaec@bk.ru",
         "is_staff": false,
         "is_active": true,
-        "date_joined": "2026-06-27T08:39:16.548Z",
+        "date_joined": "2026-07-25T08:45:39.557Z",
         "groups": [],
         "user_permissions": []
     }
@@ -163,6 +146,14 @@
     "fields": {
         "session_data": ".eJxVjEEOwiAQRe_C2hBaOpRx6d4zkBmGStVAUtqV8e7apAvd_vfef6lA25rD1tISZlFnBer0uzHFRyo7kDuVW9WxlnWZWe-KPmjT1yrpeTncv4NMLX9rwzayHSYPFpENjx6t6dFCmoAdoEHqGagbvZMhJiPsEdFh7FiIvFfvD81SN5A:1wcRa9:ynu-5ePboLVAqS0Gzu_OFHbm2XC2_-ek2b6w8prQ_nA",
         "expire_date": "2026-07-08T17:40:13.439Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "dmsq91a151f6a2y0daivadudn9e8lk0h",
+    "fields": {
+        "session_data": ".eJxVjDsOwjAQBe_iGln-ZE1MSZ8zWN71Lg6gRIqTCnF3iJQC2jcz76VS3taatsZLGou6KKtOvxtmevC0g3LP023WNE_rMqLeFX3Qpoe58PN6uH8HNbf6rUE8EtlexAQxEfoOo1DojOUA5LsijAZc9AzRuYJkcwE5h-wDoHes3h_yQzg0:1wnXzB:DWuGN3C1ry8gJ9ecfydTgFXhKm1MzpIjpWG0yKwmbto",
+        "expire_date": "2026-08-08T08:43:57.978Z"
     }
 },
 {
@@ -820,6 +811,66 @@
         "message": "ы",
         "created_at": "2026-06-19T11:21:52.812Z",
         "subject": "default"
+    }
+},
+{
+    "model": "users_app.profile",
+    "pk": 1,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "bio": "",
+        "social_link": "",
+        "avatar": ""
+    }
+},
+{
+    "model": "users_app.profile",
+    "pk": 3,
+    "fields": {
+        "user": [
+            "user_1"
+        ],
+        "bio": "",
+        "social_link": "",
+        "avatar": ""
+    }
+},
+{
+    "model": "users_app.profile",
+    "pk": 4,
+    "fields": {
+        "user": [
+            "user_2"
+        ],
+        "bio": "",
+        "social_link": "",
+        "avatar": ""
+    }
+},
+{
+    "model": "users_app.profile",
+    "pk": 5,
+    "fields": {
+        "user": [
+            "mike"
+        ],
+        "bio": "",
+        "social_link": "",
+        "avatar": ""
+    }
+},
+{
+    "model": "users_app.profile",
+    "pk": 7,
+    "fields": {
+        "user": [
+            "user123456"
+        ],
+        "bio": "",
+        "social_link": "",
+        "avatar": ""
     }
 },
 {
@@ -2906,6 +2957,78 @@
         ],
         "object_id": "53",
         "object_repr": "Сообщение от string (user@example.com)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 117,
+    "fields": {
+        "action_time": "2026-07-25T10:40:51.883Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "1",
+        "object_repr": "admin",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 118,
+    "fields": {
+        "action_time": "2026-07-25T10:41:32.529Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "2",
+        "object_repr": "user1",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 119,
+    "fields": {
+        "action_time": "2026-07-25T10:41:39.643Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "5",
+        "object_repr": "mike",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Staff status\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 120,
+    "fields": {
+        "action_time": "2026-07-25T10:41:47.388Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "6",
+        "object_repr": "user111",
         "action_flag": 3,
         "change_message": ""
     }
