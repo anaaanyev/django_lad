@@ -10,5 +10,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        TrigramExtension()
+        TrigramExtension()      # Активирует расширение pg_trgm в PostgreSQL
     ]

@@ -3,9 +3,26 @@
     "model": "auth.user",
     "fields": {
         "password": "pbkdf2_sha256$1200000$m4zCO8P55mCG0fjDIYxwOm$hVRhyQb6c6sT7kfFvrTsbOfwwfTuay2j1SlXyoVLt/8=",
-        "last_login": "2026-07-25T08:43:57Z",
+        "last_login": "2026-07-22T17:43:13Z",
         "is_superuser": true,
         "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-05-30T11:37:27Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$joyYMJoFE1ZghxIxQNJfEq$q+XK0Hv1U8Zpn/EQOgvJRaq84PKKhLgqnqZ4a2J8Lng=",
+        "last_login": "2026-07-10T15:32:45.988Z",
+        "is_superuser": false,
+        "username": "user1",
         "first_name": "",
         "last_name": "",
         "email": "anaaanyev@gmail.com",
@@ -37,15 +54,15 @@
     "model": "auth.user",
     "fields": {
         "password": "pbkdf2_sha256$1200000$l9WFjcvNgQmwfljXym9Yp8$EOtuF4PHNwsvWGRBW2CiAaTt1nBucjrc0Pz6EDJ/b/I=",
-        "last_login": "2026-06-25T07:16:20.501Z",
+        "last_login": "2026-06-25T07:16:20Z",
         "is_superuser": false,
         "username": "user_2",
         "first_name": "",
         "last_name": "",
-        "email": "user_2@gmail.com",
+        "email": "",
         "is_staff": false,
         "is_active": true,
-        "date_joined": "2026-06-25T07:15:54.755Z",
+        "date_joined": "2026-06-25T07:15:54Z",
         "groups": [],
         "user_permissions": []
     }
@@ -57,10 +74,10 @@
         "last_login": "2026-06-25T07:28:56Z",
         "is_superuser": false,
         "username": "mike",
-        "first_name": "Майкл",
-        "last_name": "Белов",
-        "email": "mike@gmail.com",
-        "is_staff": true,
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
         "is_active": true,
         "date_joined": "2026-06-25T07:22:42Z",
         "groups": [],
@@ -150,10 +167,10 @@
 },
 {
     "model": "sessions.session",
-    "pk": "dmsq91a151f6a2y0daivadudn9e8lk0h",
+    "pk": "hy1iyadkkmw1bumzot1m3b34ui5lc4ji",
     "fields": {
-        "session_data": ".eJxVjDsOwjAQBe_iGln-ZE1MSZ8zWN71Lg6gRIqTCnF3iJQC2jcz76VS3taatsZLGou6KKtOvxtmevC0g3LP023WNE_rMqLeFX3Qpoe58PN6uH8HNbf6rUE8EtlexAQxEfoOo1DojOUA5LsijAZc9AzRuYJkcwE5h-wDoHes3h_yQzg0:1wnXzB:DWuGN3C1ry8gJ9ecfydTgFXhKm1MzpIjpWG0yKwmbto",
-        "expire_date": "2026-08-08T08:43:57.978Z"
+        "session_data": ".eJxVjDsOwjAQBe_iGln-rYkp6XMGy7veJQGUSHFSIe4OkVJA-2bmvVQu2zrkrfGSx6ouKiR1-h2x0IOnndR7mW6zpnlalxH1ruiDNt3PlZ_Xw_07GEobvjWIRyLbiZgoJkEXMAnFYCxHIB-qMBpwyTMk5yqSLRXkHIuPgN6xen8AHNk4cA:1wmayP:GwkQ-Y6ttOQnBg4dK7z0Rnx1LjTagaYejnYqWl0QLcg",
+        "expire_date": "2026-08-05T17:43:13.875Z"
     }
 },
 {
@@ -274,30 +291,6 @@
     "fields": {
         "title": "Мобильный телефоны",
         "slug": "mobilnyi-telefony"
-    }
-},
-{
-    "model": "blog_app.category",
-    "pk": 21,
-    "fields": {
-        "title": "new cat 123",
-        "slug": "title_123"
-    }
-},
-{
-    "model": "blog_app.category",
-    "pk": 22,
-    "fields": {
-        "title": "cat 456",
-        "slug": "cat_456"
-    }
-},
-{
-    "model": "blog_app.category",
-    "pk": 23,
-    "fields": {
-        "title": "strin212g221",
-        "slug": "string44"
     }
 },
 {
@@ -510,8 +503,8 @@
         ],
         "published": true,
         "created_at": "2026-06-18T08:34:06.080Z",
-        "updated_at": "2026-06-18T08:34:06.080Z",
-        "views_count": 0,
+        "updated_at": "2026-07-24T06:08:26.989Z",
+        "views_count": 2,
         "category": 4,
         "image": ""
     }
@@ -546,8 +539,8 @@
         ],
         "published": true,
         "created_at": "2026-06-18T08:48:18.185Z",
-        "updated_at": "2026-06-18T08:48:18.185Z",
-        "views_count": 0,
+        "updated_at": "2026-07-24T10:19:00.135Z",
+        "views_count": 1,
         "category": 9,
         "image": ""
     }
@@ -636,82 +629,10 @@
         ],
         "published": true,
         "created_at": "2026-06-18T08:50:25.690Z",
-        "updated_at": "2026-06-28T08:40:28.276Z",
-        "views_count": 60,
+        "updated_at": "2026-07-24T08:27:01.138Z",
+        "views_count": 61,
         "category": 1,
         "image": "posts/Как_написать_обзорну.png"
-    }
-},
-{
-    "model": "blog_app.post",
-    "pk": 40,
-    "fields": {
-        "title": "New article",
-        "slug": "new_article",
-        "content": "something",
-        "author": [
-            "admin"
-        ],
-        "published": false,
-        "created_at": "2026-07-04T07:51:03.347Z",
-        "updated_at": "2026-07-04T07:51:03.347Z",
-        "views_count": 0,
-        "category": 1,
-        "image": ""
-    }
-},
-{
-    "model": "blog_app.post",
-    "pk": 41,
-    "fields": {
-        "title": "Тест",
-        "slug": "test",
-        "content": "Текст",
-        "author": [
-            "admin"
-        ],
-        "published": false,
-        "created_at": "2026-07-10T11:14:16.412Z",
-        "updated_at": "2026-07-10T11:14:16.412Z",
-        "views_count": 0,
-        "category": 1,
-        "image": ""
-    }
-},
-{
-    "model": "blog_app.post",
-    "pk": 42,
-    "fields": {
-        "title": "New article 123",
-        "slug": "new-article-123",
-        "content": "something",
-        "author": [
-            "user_1"
-        ],
-        "published": false,
-        "created_at": "2026-07-10T11:44:12.720Z",
-        "updated_at": "2026-07-10T11:44:12.720Z",
-        "views_count": 0,
-        "category": 1,
-        "image": ""
-    }
-},
-{
-    "model": "blog_app.post",
-    "pk": 44,
-    "fields": {
-        "title": "New article 123",
-        "slug": "string",
-        "content": "string",
-        "author": [
-            "admin"
-        ],
-        "published": true,
-        "created_at": "2026-07-11T08:13:22.127Z",
-        "updated_at": "2026-07-11T10:57:09.047Z",
-        "views_count": 0,
-        "category": 1,
-        "image": ""
     }
 },
 {
@@ -2965,7 +2886,7 @@
     "model": "admin.logentry",
     "pk": 117,
     "fields": {
-        "action_time": "2026-07-25T10:40:51.883Z",
+        "action_time": "2026-07-24T11:09:09.320Z",
         "user": [
             "admin"
         ],
@@ -2973,17 +2894,17 @@
             "auth",
             "user"
         ],
-        "object_id": "1",
+        "object_id": "49",
         "object_repr": "admin",
         "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\"]}}]"
+        "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"Email address\"]}}]"
     }
 },
 {
     "model": "admin.logentry",
     "pk": 118,
     "fields": {
-        "action_time": "2026-07-25T10:41:32.529Z",
+        "action_time": "2026-07-24T11:09:23.108Z",
         "user": [
             "admin"
         ],
@@ -2991,17 +2912,17 @@
             "auth",
             "user"
         ],
-        "object_id": "2",
-        "object_repr": "user1",
-        "action_flag": 3,
-        "change_message": ""
+        "object_id": "53",
+        "object_repr": "mike",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"Email address\"]}}]"
     }
 },
 {
     "model": "admin.logentry",
     "pk": 119,
     "fields": {
-        "action_time": "2026-07-25T10:41:39.643Z",
+        "action_time": "2026-07-24T11:09:34.061Z",
         "user": [
             "admin"
         ],
@@ -3009,26 +2930,134 @@
             "auth",
             "user"
         ],
-        "object_id": "5",
-        "object_repr": "mike",
+        "object_id": "52",
+        "object_repr": "user_2",
         "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"Staff status\"]}}]"
+        "change_message": "[{\"changed\": {\"fields\": [\"Email address\"]}}]"
     }
 },
 {
     "model": "admin.logentry",
     "pk": 120,
     "fields": {
-        "action_time": "2026-07-25T10:41:47.388Z",
+        "action_time": "2026-07-24T11:09:57.378Z",
         "user": [
             "admin"
         ],
         "content_type": [
-            "auth",
-            "user"
+            "blog_app",
+            "category"
         ],
-        "object_id": "6",
-        "object_repr": "user111",
+        "object_id": "21",
+        "object_repr": "new cat 123",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 121,
+    "fields": {
+        "action_time": "2026-07-24T11:09:57.378Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "category"
+        ],
+        "object_id": "22",
+        "object_repr": "cat 456",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 122,
+    "fields": {
+        "action_time": "2026-07-24T11:09:57.378Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "category"
+        ],
+        "object_id": "23",
+        "object_repr": "strin212g221",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 123,
+    "fields": {
+        "action_time": "2026-07-24T11:10:20.061Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "44",
+        "object_repr": "New article 123",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 124,
+    "fields": {
+        "action_time": "2026-07-24T11:10:20.061Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "42",
+        "object_repr": "New article 123",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 125,
+    "fields": {
+        "action_time": "2026-07-24T11:10:20.061Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "41",
+        "object_repr": "Тест",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 126,
+    "fields": {
+        "action_time": "2026-07-24T11:10:20.061Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "blog_app",
+            "post"
+        ],
+        "object_id": "40",
+        "object_repr": "New article",
         "action_flag": 3,
         "change_message": ""
     }

@@ -50,6 +50,8 @@ class PostSearchResultSchema(Schema):
     id: int
     title: str
     slug: str
+    category: str
+    author: str
     headline: str
     rank: float
 

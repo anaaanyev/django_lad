@@ -36,7 +36,13 @@
 
                 <!-- Обрезка анонса статьи -->
                 <p class="card-text text-secondary fs-5">
-                    {{ post.content|truncatewords:25 }}
+                    {% autoescape off %}
+                        {% if post.headline %}
+                            {{ post.headline|truncatewords:25 }}
+                        {% else %}
+                            {{ post.content|truncatewords:25 }}
+                        {% endif %}
+                    {% endautoescape %}
                 </p>
 
                 <div class="d-flex justify-content-between align-items-center">
