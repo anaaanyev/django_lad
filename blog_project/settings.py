@@ -192,3 +192,6 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
+
+JWT_SECRET_KEY = env('JWT_SECRET_KEY', default=SECRET_KEY)
+JWT_ACCESS_TOKEN_EXPIRE_MINUTES = 60
