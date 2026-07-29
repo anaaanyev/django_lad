@@ -1,9 +1,9 @@
 from datetime import datetime
-from typing import Literal
+from typing import Literal, Annotated
 
 from ninja import ModelSchema, Schema
 from blog_app.models import Post, Category
-from pydantic import Field, EmailStr
+from pydantic import Field, EmailStr, StringConstraints, model_validator
 
 
 class PostOutSchema(ModelSchema):
@@ -54,3 +54,40 @@ class PostSearchResultSchema(Schema):
     author: str
     headline: str
     rank: float
+
+
+class RegisterInSchema(Schema):
+    username: Annotated[str, StringConstraints(min_length=3, max_length=20)]
+    email: EmailStr
+    password: Annotated[str, StringConstraints(min_length=6)]
+    password_confirm: Annotated[str, StringConstraints(min_length=6)]
+
+    @model_validator(mode="after")
+    def passwords_match(self) -> "RegisterInSchema":
+        if self.password != self.password_confirm:
+            raise ValueError("Пароли не совпадают")
+        return self
+
+
+class RegisterOutSchema(Schema):
+    message: str
+    username: str
+    email: str
+
+
+class ActivationOutSchema(Schema):
+    message: str
+    is_activated: bool
+
+
+class LoginInSchema(Schema):
+    username: Annotated[str, StringConstraints(min_length=3, max_length=20)]
+    password: Annotated[str, StringConstraints(min_length=6)]
+
+
+class LoginOutSchema(Schema):
+   success: bool
+   message: str
+   username: str | None = None
+   email: str | None = None
+   is_staff: bool | None = None

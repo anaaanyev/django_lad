@@ -21,7 +21,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from ninja import NinjaAPI
-from ninja_app import api
+
+from ninja_app import api, auth_routes
 
 ninja_api = NinjaAPI(
     version="2.0.0",
@@ -29,6 +30,7 @@ ninja_api = NinjaAPI(
 )
 
 ninja_api.add_router("/", api.router)
+ninja_api.add_router("/auth", auth_routes.auth_router)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -41,7 +43,7 @@ urlpatterns = [
     path("api/v1/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     # API приложения
     path("api/v1/", include("drf_app.urls"), name="drf"),
-    path("api/v2/", ninja_api.urls),
+    path("api/v2/", ninja_api.urls)
 ] + debug_toolbar_urls()
 
 # Раздача медиафайлов сервером разработки ТОЛЬКО при DEBUG = True

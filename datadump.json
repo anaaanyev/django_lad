@@ -25,10 +25,10 @@
         "username": "user1",
         "first_name": "",
         "last_name": "",
-        "email": "",
+        "email": "anaaanyev@gmail.com",
         "is_staff": true,
         "is_active": true,
-        "date_joined": "2026-06-24T05:38:22Z",
+        "date_joined": "2026-05-30T11:37:27Z",
         "groups": [],
         "user_permissions": []
     }
@@ -87,16 +87,16 @@
 {
     "model": "auth.user",
     "fields": {
-        "password": "pbkdf2_sha256$1200000$QQ5LsF5VomTRhi3K8gGbam$KDLJ8+8pkbZu1NBYPz0r0/wR/xhzkX3wnzKChsRsEHA=",
-        "last_login": "2026-06-28T07:23:02.584Z",
+        "password": "pbkdf2_sha256$1200000$IRcVuSEg9ox56oVOJiZ13j$wggAILDxCQFOjjHagtRqtXnqlLeDMzNMPgDA3lD1BBg=",
+        "last_login": null,
         "is_superuser": false,
-        "username": "user111",
+        "username": "user123456",
         "first_name": "",
         "last_name": "",
-        "email": "",
+        "email": "nanaec@bk.ru",
         "is_staff": false,
         "is_active": true,
-        "date_joined": "2026-06-27T08:39:16.548Z",
+        "date_joined": "2026-07-25T08:45:39.557Z",
         "groups": [],
         "user_permissions": []
     }
@@ -732,6 +732,66 @@
         "message": "ы",
         "created_at": "2026-06-19T11:21:52.812Z",
         "subject": "default"
+    }
+},
+{
+    "model": "users_app.profile",
+    "pk": 1,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "bio": "",
+        "social_link": "",
+        "avatar": ""
+    }
+},
+{
+    "model": "users_app.profile",
+    "pk": 3,
+    "fields": {
+        "user": [
+            "user_1"
+        ],
+        "bio": "",
+        "social_link": "",
+        "avatar": ""
+    }
+},
+{
+    "model": "users_app.profile",
+    "pk": 4,
+    "fields": {
+        "user": [
+            "user_2"
+        ],
+        "bio": "",
+        "social_link": "",
+        "avatar": ""
+    }
+},
+{
+    "model": "users_app.profile",
+    "pk": 5,
+    "fields": {
+        "user": [
+            "mike"
+        ],
+        "bio": "",
+        "social_link": "",
+        "avatar": ""
+    }
+},
+{
+    "model": "users_app.profile",
+    "pk": 7,
+    "fields": {
+        "user": [
+            "user123456"
+        ],
+        "bio": "",
+        "social_link": "",
+        "avatar": ""
     }
 },
 {
