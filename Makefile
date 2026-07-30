@@ -36,3 +36,33 @@ shell_plus:
 
 test_all:
 	uv run manage.py test
+
+docker-build:
+	docker build -t blog_image .
+
+docker-create-network:
+	docker network create blog_net
+
+docker-up-blog:
+	docker run --name blog --network blog_net -p 8000:8000 \
+	  -v ./media:/app/media \
+	  --env-file .env \
+	  -e DATABASE_URL=postgres://admin:admin@blog_db:5432/blog_db \
+  	  -e ALLOWED_HOSTS=localhost,127.0.0.1,0.0.0.0 \
+	  -d blog_image
+
+docker-down:
+	docker rm -f blog
+
+docker-migrate:
+	docker exec blog uv run manage.py migrate
+
+docker-up-blog_db:
+	docker run \
+	  --name blog_db \
+	  --network blog_net \
+	  -e POSTGRES_USER=admin \
+	  -e POSTGRES_PASSWORD=admin \
+	  -e POSTGRES_DB=mydb \
+	  -v blog_db_data:/var/lib/postgresql/data \
+	  -d postgres:17
